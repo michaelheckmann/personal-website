@@ -1,0 +1,45 @@
+---
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseHead /> component.
+import "@/styles/global.css";
+import "@fontsource/geist-sans/400.css";
+import "@fontsource/inconsolata/400.css";
+
+import type { Locales } from "@/i18n/i18n-types";
+
+import BaseHead from "./base-head.astro";
+import TailwindIndicator from "./tailwind-indicator.astro";
+import LangSwitch from "./lang-switch.astro";
+
+interface Props {
+  lang: Locales;
+  title: string;
+  description: string;
+  image?: string;
+  translationLinks?: { lang: string; href: string }[];
+}
+const { lang, title, description, image, translationLinks } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="bg-zinc-900">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      translationLinks={translationLinks}
+    />
+  </head>
+  <body class="overflow-x-hidden bg-zinc-900 text-zinc-100">
+    <main>
+      <LangSwitch />
+      <slot />
+    </main>
+    <TailwindIndicator />
+    <script>
+      import textWrapBalance from "./scripts/text-balance-polyfill";
+      textWrapBalance();
+    </script>
+  </body>
+</html>

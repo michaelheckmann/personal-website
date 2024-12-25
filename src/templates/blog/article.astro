@@ -1,0 +1,39 @@
+---
+import { getTranslation } from "@/i18n/translation";
+import { getLocalHref } from "@/lib/routing";
+import { render, type CollectionEntry } from "astro:content";
+
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { Content } = await render(post);
+
+const t = getTranslation("blog");
+---
+
+<div
+  class="min-h-screen px-4 py-16 text-zinc-400 md:px-8 lg:px-16"
+  style="
+      background: radial-gradient(
+        circle at top center,
+        var(--zinc-900) 0%,
+        var(--zinc-950) 100%
+      );
+    "
+>
+  <div class="max-w-3xl py-32 mx-auto space-y-4">
+    <a
+      href={getLocalHref("/blog")}
+      class:list={[
+        "text-zinc-700 font-mono px-2 py-1 rounded relative -left-2",
+        "transition-colors duration-300 hover:text-zinc-500",
+        "outline-none focus-visible:ring-1 ring-zinc-200 focus-visible:text-zinc-200",
+      ]}
+    >
+      {t.viewAll()}
+    </a>
+    <article class="prose prose-zinc prose-invert">
+      <Content />
+    </article>
+  </div>
+</div>

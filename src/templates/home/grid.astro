@@ -1,0 +1,82 @@
+---
+import Section from "@/components/ui/section.astro";
+import { getTranslation } from "@/i18n/translation";
+import GridItem from "./grid-item.astro";
+
+const t = getTranslation("home");
+---
+
+<Section _title="grid">
+  <div class="grid gap-16 md:grid-cols-3">
+    <!-- Building -->
+    <div class="space-y-4">
+      <h2 class="text-xs tracking-widest uppercase text-zinc-400">
+        {t.building.title()}
+      </h2>
+      <div class="space-y-8">
+        <GridItem
+          title="Github"
+          description={t.building.github()}
+          href="https://github.com/michaelheckmann"
+          class={`after:content-['Github']`}
+        />
+        <!-- <GridItem
+          title="Blog"
+          description={t.building.blog()}
+          href={getLocalHref("/blog")}
+          openInNewTab={false}
+          class={`after:content-['Blog']`}
+        /> -->
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="space-y-4">
+      <h2 class="text-xs tracking-widest uppercase text-zinc-400">
+        {t.projects.title()}
+      </h2>
+      <div class="space-y-8">
+        <GridItem
+          title="Amay Health"
+          description={t.projects.amay()}
+          href="https://www.amayhealth.com/en/"
+          class="after:content-['Amay_Health']"
+        />
+        <GridItem
+          title="Qart"
+          description={t.projects.qart()}
+          href="https://www.qart.shop/"
+          class="after:content-['Qart']"
+        />
+      </div>
+    </div>
+
+    <!-- Connect -->
+    <div class="space-y-4">
+      <h2 class="text-xs tracking-widest uppercase text-zinc-400">
+        {t.connect.title()}
+      </h2>
+      <div class="space-y-8">
+        <GridItem
+          title="LinkedIn"
+          description={t.connect.linkedIn()}
+          href="https://linkedin.com/in/heckmannmichael"
+          class="after:content-['LinkedIn']"
+        />
+        <GridItem
+          title="Twitter"
+          description={t.connect.twitter()}
+          href="https://x.com/mt_heckmann"
+          class="after:content-['Twitter']"
+        />
+        <GridItem
+          title="Email"
+          description={t.connect.email()}
+          href="mailto:hello@heckmann.app"
+          openInNewTab={false}
+          class="after:content-['Email']"
+        />
+      </div>
+    </div>
+  </div></Section
+>

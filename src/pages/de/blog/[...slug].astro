@@ -1,0 +1,44 @@
+---
+import BaseLayout from "@/components/layout/base-layout.astro";
+import { setLanguage } from "@/i18n/translation";
+import { extractLocaleFromPath, removeLocaleFromPath } from "@/lib/routing";
+import type { SiteConfig } from "@/lib/types";
+import ArticleTemplate from "@/templates/blog/article.astro";
+import { type CollectionEntry, getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts
+    .filter(({ id }) => id.startsWith("de/"))
+    .map((post) => ({
+      params: { slug: removeLocaleFromPath(post.id) },
+      props: post,
+    }));
+}
+
+type Props = CollectionEntry<"blog">;
+
+const posts = await getCollection("blog");
+const references = posts.filter((post) => {
+  return post.data.reference === Astro.props.data.reference;
+});
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const config: SiteConfig = {
+  lang: "de",
+  title: Astro.props.data.title,
+  description: Astro.props.data.description,
+  image: Astro.props.data.heroImage,
+  translationLinks: references.map((ref) => {
+    const lang = extractLocaleFromPath(ref.id);
+    const path = `/${lang}/blog/${removeLocaleFromPath(ref.id)}`;
+    return { lang, href: `${new URL(path, canonicalURL.origin)}` };
+  }),
+};
+setLanguage(config.lang);
+---
+
+<BaseLayout {...config}>
+  <ArticleTemplate {...Astro.props} />
+</BaseLayout>

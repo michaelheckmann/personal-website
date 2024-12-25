@@ -1,0 +1,75 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  translationLinks?: { lang: string; href: string }[];
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteThemeColor = "#18181b";
+
+const { title, description } = Astro.props;
+const image = Astro.props.image ?? "/og-image.jpeg";
+
+const { origin, pathname } = canonicalURL;
+const rawPathname = pathname.split("/").filter(Boolean).slice(1).join("/");
+const germanUrl = new URL(`/de/${rawPathname}`, origin);
+const englishUrl = new URL(`/en/${rawPathname}`, origin);
+const translationLinks = Astro.props.translationLinks ?? [
+  { lang: "de", href: germanUrl },
+  { lang: "en", href: englishUrl },
+];
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link href="/favicon.svg" type="image/svg+xml" rel="icon" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="Michael Heckmann - RSS Feed German"
+  href={new URL("rss-de.xml", Astro.site)}
+/>
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="Michael Heckmann - RSS Feed English"
+  href={new URL("rss-en.xml", Astro.site)}
+/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Href Lang -->
+{
+  translationLinks.map(({ lang, href }) => (
+    <link rel="alternate" href={href} hreflang={lang} />
+  ))
+}
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Theme Color -->
+<meta name="theme-color" content={siteThemeColor} />
+<meta name="msapplication-navbutton-color" content={siteThemeColor} />
+<meta name="apple-mobile-web-app-status-bar-style" content={siteThemeColor} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />

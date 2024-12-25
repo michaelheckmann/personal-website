@@ -1,0 +1,17 @@
+---
+import BaseLayout from "@/components/layout/base-layout.astro";
+import { setLanguage } from "@/i18n/translation";
+import type { SiteConfig } from "@/lib/types";
+import HomeTemplate from "@/templates/home/index.astro";
+
+const config: SiteConfig = {
+ lang: "en",
+ title: "Michael Heckmann",
+ description: "I build digital things that work well and feel right.",
+};
+setLanguage(config.lang);
+---
+
+<BaseLayout {...config}>
+  <HomeTemplate />
+</BaseLayout>

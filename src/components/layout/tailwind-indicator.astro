@@ -1,0 +1,16 @@
+---
+const isDev = import.meta.env.DEV;
+---
+
+{
+  isDev && (
+    <div class="fixed z-50 flex items-center justify-center px-6 py-1 font-mono text-xs rounded-full shadow bg-neutral-800 size-6 text-neutral-50 bottom-1 left-1">
+      <div class="block sm:hidden">xs</div>
+      <div class="hidden sm:block md:hidden">sm</div>
+      <div class="hidden md:block lg:hidden">md</div>
+      <div class="hidden lg:block xl:hidden">lg</div>
+      <div class="hidden xl:block 2xl:hidden">xl</div>
+      <div class="hidden 2xl:block">2xl</div>
+    </div>
+  )
+}

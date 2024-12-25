@@ -1,0 +1,53 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  //   image: string;
+  href: string;
+}
+
+const { title, description, category, href } = Astro.props;
+---
+
+<!-- Article Card -->
+<article class="">
+  <a
+    href={href}
+    class:list={[
+      "w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 rounded group",
+      "transition-colors duration-300 outline-none focus-visible:ring-1 ring-zinc-200 ring-offset-4 ring-offset-black",
+    ]}
+  >
+    <!-- Image Section -->
+    <div
+      class="bg-zinc-700 relative min-h-[300px] md:min-h-full order-1 md:order-2"
+    >
+      <img
+        src="https://placehold.co/600x300"
+        alt="Global payments illustration"
+        class="w-full h-full object-cover rounded"
+      />
+    </div>
+
+    <!-- Content Section -->
+    <div class="flex flex-col justify-center order-2 md:order-1">
+      <!-- Category -->
+      <span class="inline-block text-zinc-700 font-mono">
+        {category}
+      </span>
+
+      <!-- Title -->
+      <h1
+        class="text-zinc-100 underline decoration-zinc-700 underline-offset-2 group-hover:decoration-zinc-200 transition-colors duration-300"
+      >
+        {title}
+      </h1>
+
+      <!-- Description -->
+      <p class="text-zinc-400">
+        {description}
+      </p>
+    </div>
+  </a>
+</article>

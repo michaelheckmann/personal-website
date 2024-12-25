@@ -1,0 +1,38 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  openInNewTab?: boolean;
+  class: string;
+}
+
+const {
+  title,
+  description,
+  href,
+  openInNewTab = true,
+  class: className,
+}: Props = Astro.props;
+---
+
+<div>
+  <a
+    href={href}
+    target={openInNewTab ? "_blank" : "_self"}
+    class:list={[
+      "block group",
+      "outline-none focus-visible:ring-1 ring-zinc-200 rounded-sm focus-visible:ring-offset-4 ring-offset-zinc-950 focus-visible:text-zinc-200",
+    ]}
+  >
+    <h3
+      class:list={[
+        "mb-2 transition-colors duration-300 text-zinc-300 group-hover:text-zinc-100 styled-underline",
+        className,
+      ]}
+    >
+      {title}
+    </h3>
+    <p>{description}</p>
+  </a>
+</div>

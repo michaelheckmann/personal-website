@@ -1,0 +1,48 @@
+---
+import { $lang } from "@/i18n/translation";
+import {
+  getPostIdFromPath,
+  isBlogPost,
+  removeLocaleFromPath,
+} from "@/lib/routing";
+import { getCollection } from "astro:content";
+import Section from "../ui/section.astro";
+
+const text = $lang.value === "en" ? "Deutsch" : "English";
+const reversedLang = $lang.value === "en" ? "de" : "en";
+let href = "";
+
+if (isBlogPost(Astro.url.pathname)) {
+  const posts = await getCollection("blog");
+  const postId = getPostIdFromPath(Astro.url.pathname);
+  const originalPost = posts.find(({ id }) => id === postId);
+  const translation = posts.find(
+    (post) =>
+      post.id.startsWith(reversedLang) &&
+      post.data.reference === originalPost?.data.reference,
+  );
+  if (!translation) {
+    throw new Error(`Translation not found for ${Astro.url.pathname}`);
+  }
+  href = `/${reversedLang}/blog/${removeLocaleFromPath(translation?.id)}`;
+} else {
+  const originalPathname = Astro.url.pathname;
+  href = originalPathname.replace(/\/de|\/en/, `/${reversedLang}`);
+}
+---
+
+<Section
+  _title="lang-switch"
+  class="absolute top-0 left-1/2 -translate-x-1/2 w-full flex justify-end pt-4 px-4"
+>
+  <a
+    href={href}
+    class:list={[
+      "text-sm text-zinc-700 font-mono px-2 py-1 rounded",
+      "transition-colors duration-300 hover:text-zinc-500",
+      "outline-none focus-visible:ring-1 ring-zinc-200 focus-visible:text-zinc-200",
+    ]}
+  >
+    {text}
+  </a>
+</Section>

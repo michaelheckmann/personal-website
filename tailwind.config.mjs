@@ -1,26 +1,24 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+const flattenColorPalette = require("tailwindcss/lib/util/flattenColorPalette");
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts}"],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     fontFamily: {
       sans: ["Geist Sans", ...defaultTheme.fontFamily.sans],
-      serif: ["Playfair Display", ...defaultTheme.fontFamily.serif],
+      mono: ["Inconsolata", ...defaultTheme.fontFamily.mono],
     },
     extend: {},
   },
-  plugins: [addVariablesForColors],
+  plugins: [require("@tailwindcss/typography"), addVariablesForColors],
 };
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
 function addVariablesForColors({ addBase, theme }) {
   const allColors = flattenColorPalette(theme("colors"));
   const newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
   );
   addBase({ ":root": newVars });
 }

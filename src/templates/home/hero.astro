@@ -1,0 +1,48 @@
+---
+import michael from "@/assets/michael.jpg";
+import Section from "@/components/ui/section.astro";
+import { getTranslation } from "@/i18n/translation";
+import { getResponsiveImageProps } from "@/lib/utils";
+import { Image } from "astro:assets";
+
+const t = getTranslation("home");
+---
+
+<Section _title="hero">
+  <header class="space-y-8">
+    <Image
+      src={michael}
+      alt="Michael"
+      class="bg-[#DCDBD5] rounded-full size-24"
+      {...getResponsiveImageProps(michael)}
+    />
+    <h1 class="text-lg text-zinc-100">Michael Heckmann</h1>
+    <div class="space-y-4">
+      <p>
+        {t.description()}
+      </p>
+      <p
+        set:html={t.work(
+          {
+            href: "a",
+            text: "Personio",
+            class: [
+              "styled-underline hover:text-zinc-100 transition-colors duration-300",
+              "after:content-['Personio'] after:-bottom-px after:bg-zinc-400",
+              "outline-none focus-visible:ring-1 ring-zinc-200 rounded-sm focus-visible:ring-offset-4 ring-offset-zinc-950 focus-visible:text-zinc-200",
+            ],
+          },
+          {
+            href: "b",
+            text: "Celonis",
+            class: [
+              "styled-underline hover:text-zinc-100 transition-colors duration-300",
+              "after:content-['Celonis'] after:-bottom-px after:bg-zinc-400",
+              "outline-none focus-visible:ring-1 ring-zinc-200 rounded-sm focus-visible:ring-offset-4 ring-offset-zinc-950 focus-visible:text-zinc-200",
+            ],
+          },
+        )}
+      />
+    </div>
+  </header>
+</Section>
