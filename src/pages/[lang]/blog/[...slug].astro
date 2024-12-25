@@ -1,20 +1,24 @@
 ---
 import BaseLayout from "@/components/layout/base-layout.astro";
-import { setLanguage } from "@/i18n/translation";
+import { ensureLang, setLanguage } from "@/i18n/translation";
 import { extractLocaleFromPath, removeLocaleFromPath } from "@/lib/routing";
 import type { SiteConfig } from "@/lib/types";
 import ArticleTemplate from "@/templates/blog/article.astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const lang = ensureLang(Astro.params.lang);
+setLanguage(lang);
+
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-
-  return posts
-    .filter(({ id }) => id.startsWith("de/"))
-    .map((post) => ({
-      params: { slug: removeLocaleFromPath(post.id) },
+  return posts.map((post) => {
+    const [lang, ...slug] = post.id.split("/");
+    return {
+      params: { lang, slug: slug.join("/") },
       props: post,
-    }));
+    };
+  });
 }
 
 type Props = CollectionEntry<"blog">;
@@ -24,9 +28,8 @@ const references = posts.filter((post) => {
   return post.data.reference === Astro.props.data.reference;
 });
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const config: SiteConfig = {
-  lang: "de",
+  lang,
   title: Astro.props.data.title,
   description: Astro.props.data.description,
   image: Astro.props.data.heroImage,

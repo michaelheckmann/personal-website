@@ -12,19 +12,36 @@ const text = $lang.value === "en" ? "Deutsch" : "English";
 const reversedLang = $lang.value === "en" ? "de" : "en";
 let href = "";
 
+// Check if current URL is a blog post
 if (isBlogPost(Astro.url.pathname)) {
-  const posts = await getCollection("blog");
-  const postId = getPostIdFromPath(Astro.url.pathname);
-  const originalPost = posts.find(({ id }) => id === postId);
-  const translation = posts.find(
+  // Get all blog posts from the content collection
+  const allBlogPosts = await getCollection("blog");
+
+  // Extract the unique post ID from the current URL
+  const currentPostId = getPostIdFromPath(Astro.url.pathname);
+
+  // Find the current blog post object by its ID
+  const currentLanguagePost = allBlogPosts.find(
+    ({ id }) => id === currentPostId,
+  );
+
+  // Find the translated version of the post by:
+  // 1. Checking if post ID starts with target language (en/de)
+  // 2. Matching the reference ID that connects translations
+  const translatedPost = allBlogPosts.find(
     (post) =>
       post.id.startsWith(reversedLang) &&
-      post.data.reference === originalPost?.data.reference,
+      post.data.reference === currentLanguagePost?.data.reference,
   );
-  if (!translation) {
-    throw new Error(`Translation not found for ${Astro.url.pathname}`);
+
+  // Error if no translation exists
+  if (!translatedPost) {
+    throw new Error(`!!Translation not found for ${Astro.url.pathname}`);
   }
-  href = `/${reversedLang}/blog/${removeLocaleFromPath(translation?.id)}`;
+
+  // Construct URL for the translated post
+  // Format: /{language}/blog/{post-slug}
+  href = `/${reversedLang}/blog/${removeLocaleFromPath(translatedPost?.id)}`;
 } else {
   const originalPathname = Astro.url.pathname;
   href = originalPathname.replace(/\/de|\/en/, `/${reversedLang}`);

@@ -95,10 +95,25 @@ export const isBlogPost = (pathname: string) => {
  * Extracts the post ID from a given path and combines it with the current language value
  * @param path - The full path string containing the post ID
  * @returns A string combining the current language value and the extracted post ID, formatted as "language/postId"
+ * @throws If path is empty or invalid
  * @example
  * getPostIdFromPath('/en/blog/my-first-post') // returns 'en/my-first-post'
+ * getPostIdFromPath('/en/blog/my-first-post/') // returns 'en/my-first-post'
  */
-export const getPostIdFromPath = (path: string) => {
-  const rawPostId = path.split("/").pop();
-  return `${$lang.value}/${rawPostId}`;
+export const getPostIdFromPath = (path: string): string => {
+  if (!path) {
+    throw new Error("Path cannot be empty");
+  }
+
+  // Remove trailing slashes and split
+  const segments = path.replace(/\/+$/, "").split("/");
+
+  // Get last non-empty segment
+  const postId = segments.filter(Boolean).pop();
+
+  if (!postId) {
+    throw new Error("Invalid path format");
+  }
+
+  return `${$lang.value}/${postId}`;
 };

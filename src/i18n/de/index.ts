@@ -3,6 +3,9 @@ import type { Translation } from "../i18n-types";
 const de = {
   images: {},
   home: {
+    metaTitle: "Michael Heckmann",
+    metaDescription:
+      "Ich entwickle digitale Lösungen, die funktionieren und sich gut anfühlen. ",
     description:
       "Ich entwickle digitale Lösungen, die funktionieren und sich gut anfühlen. Mein Hintergrund liegt in der Full-Stack-Entwicklung, mit besonderem Interesse daran, neue und interessante Wege der Mensch-KI-Interaktion zu gestalten.",
     work: "Ich habe zuvor bei {0|atag} und {1|atag} in den Bereichen Datenanalyse and Automatisierung gearbeitet. Aktuell widme ich mich eigenen Projekten und entwickle Websites für ausgewählte Kunden. Mich fasziniert besonders, wie Technologie Prozesse vereinfachen und neuartige Erlebnisse schaffen kann.",
@@ -24,6 +27,9 @@ const de = {
     },
   },
   blog: {
+    metaTitle: "Blog | Michael Heckmann",
+    metaDescription:
+      "Ich schreibe über Technologie, Design und den Schnittpunkt beider Disziplinen. Mein Ziel ist es, Wissen zu teilen und Gespräche anzuregen.",
     back: "Zurück",
     viewAll: "Alle Beiträge anzeigen",
   },

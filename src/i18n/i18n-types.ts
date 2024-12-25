@@ -18,6 +18,14 @@ type RootTranslation = {
 	}
 	home: {
 		/**
+		 * M​i​c​h​a​e​l​ ​H​e​c​k​m​a​n​n
+		 */
+		metaTitle: string
+		/**
+		 * I​ ​b​u​i​l​d​ ​d​i​g​i​t​a​l​ ​t​h​i​n​g​s​ ​t​h​a​t​ ​w​o​r​k​ ​w​e​l​l​ ​a​n​d​ ​f​e​e​l​ ​r​i​g​h​t​.​ ​M​y​ ​b​a​c​k​g​r​o​u​n​d​ ​i​s​ ​i​n​ ​f​u​l​l​-​s​t​a​c​k​ ​d​e​v​e​l​o​p​m​e​n​t​,​ ​w​i​t​h​ ​a​ ​p​a​r​t​i​c​u​l​a​r​ ​i​n​t​e​r​e​s​t​ ​i​n​ ​e​x​p​l​o​r​i​n​g​ ​n​e​w​ ​w​a​y​s​ ​t​o​ ​i​n​t​e​r​a​c​t​ ​w​i​t​h​ ​A​I​.
+		 */
+		metaDescription: string
+		/**
 		 * I​ ​b​u​i​l​d​ ​d​i​g​i​t​a​l​ ​t​h​i​n​g​s​ ​t​h​a​t​ ​w​o​r​k​ ​w​e​l​l​ ​a​n​d​ ​f​e​e​l​ ​r​i​g​h​t​.​ ​M​y​ ​b​a​c​k​g​r​o​u​n​d​ ​i​s​ ​i​n​ ​f​u​l​l​-​s​t​a​c​k​ ​d​e​v​e​l​o​p​m​e​n​t​,​ ​w​i​t​h​ ​a​ ​p​a​r​t​i​c​u​l​a​r​ ​i​n​t​e​r​e​s​t​ ​i​n​ ​e​x​p​l​o​r​i​n​g​ ​n​e​w​ ​w​a​y​s​ ​t​o​ ​i​n​t​e​r​a​c​t​ ​w​i​t​h​ ​A​I​.
 		 */
 		description: string
@@ -76,6 +84,14 @@ type RootTranslation = {
 	}
 	blog: {
 		/**
+		 * B​l​o​g​ ​|​ ​M​i​c​h​a​e​l​ ​H​e​c​k​m​a​n​n
+		 */
+		metaTitle: string
+		/**
+		 * I​ ​w​r​i​t​e​ ​a​b​o​u​t​ ​t​e​c​h​n​o​l​o​g​y​,​ ​d​e​s​i​g​n​,​ ​a​n​d​ ​t​h​e​ ​i​n​t​e​r​s​e​c​t​i​o​n​ ​o​f​ ​t​h​e​ ​t​w​o​.​ ​M​y​ ​g​o​a​l​ ​i​s​ ​t​o​ ​s​h​a​r​e​ ​k​n​o​w​l​e​d​g​e​ ​a​n​d​ ​s​p​a​r​k​ ​c​o​n​v​e​r​s​a​t​i​o​n​s​.
+		 */
+		metaDescription: string
+		/**
 		 * B​a​c​k
 		 */
 		back: string
@@ -90,6 +106,14 @@ export type TranslationFunctions = {
 	images: {
 	}
 	home: {
+		/**
+		 * Michael Heckmann
+		 */
+		metaTitle: () => LocalizedString
+		/**
+		 * I build digital things that work well and feel right. My background is in full-stack development, with a particular interest in exploring new ways to interact with AI.
+		 */
+		metaDescription: () => LocalizedString
 		/**
 		 * I build digital things that work well and feel right. My background is in full-stack development, with a particular interest in exploring new ways to interact with AI.
 		 */
@@ -146,6 +170,14 @@ export type TranslationFunctions = {
 		}
 	}
 	blog: {
+		/**
+		 * Blog | Michael Heckmann
+		 */
+		metaTitle: () => LocalizedString
+		/**
+		 * I write about technology, design, and the intersection of the two. My goal is to share knowledge and spark conversations.
+		 */
+		metaDescription: () => LocalizedString
 		/**
 		 * Back
 		 */

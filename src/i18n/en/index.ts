@@ -3,6 +3,9 @@ import type { BaseTranslation } from "../i18n-types";
 const en = {
   images: {},
   home: {
+    metaTitle: "Michael Heckmann",
+    metaDescription:
+      "I build digital things that work well and feel right. My background is in full-stack development, with a particular interest in exploring new ways to interact with AI.",
     description:
       "I build digital things that work well and feel right. My background is in full-stack development, with a particular interest in exploring new ways to interact with AI.",
     work: " Previously worked on analytics and automation at {0|atag} and {1|atag}. Currently working on independent projects and crafting websites for select clients. Interested in exploring how technology can simplify tasks and create meaningful digital experiences.",
@@ -24,6 +27,9 @@ const en = {
     },
   },
   blog: {
+    metaTitle: "Blog | Michael Heckmann",
+    metaDescription:
+      "I write about technology, design, and the intersection of the two. My goal is to share knowledge and spark conversations.",
     back: "Back",
     viewAll: "View all posts",
   },

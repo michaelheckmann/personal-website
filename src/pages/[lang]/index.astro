@@ -1,0 +1,25 @@
+---
+import BaseLayout from "@/components/layout/base-layout.astro";
+import { locales } from "@/i18n/i18n-util";
+import { ensureLang, getTranslation, setLanguage } from "@/i18n/translation";
+import type { SiteConfig } from "@/lib/types";
+import HomeTemplate from "@/templates/home/index.astro";
+
+const lang = ensureLang(Astro.params.lang);
+setLanguage(lang);
+
+export async function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const t = getTranslation("home");
+const config: SiteConfig = {
+  lang,
+  title: t.metaTitle(),
+  description: t.metaDescription(),
+};
+---
+
+<BaseLayout {...config}>
+  <HomeTemplate />
+</BaseLayout>

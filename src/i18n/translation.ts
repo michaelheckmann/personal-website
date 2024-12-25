@@ -4,7 +4,7 @@ import get from "lodash.get";
 import { atom } from "nanostores";
 
 import type { Locales, TranslationFunctions } from "./i18n-types";
-import { i18nObject } from "./i18n-util";
+import { i18nObject, isLocale } from "./i18n-util";
 import { loadLocale } from "./i18n-util.sync";
 
 type IsAny<T> = unknown extends T
@@ -42,6 +42,12 @@ export const getTranslation = <T extends Path<TranslationFunctions>>(
   path: T,
 ): GetFieldType<TranslationFunctions, T> => {
   return get(i18nObject($lang.get()), path as Parameters<typeof get>[1]);
+};
+
+export const ensureLang = (lang?: string) => {
+  if (!lang) throw new Error("Language is required");
+  if (!isLocale(lang)) throw new Error("Invalid language");
+  return lang;
 };
 
 export const setLanguage = (lang: Locales) => {
