@@ -1,0 +1,15 @@
+{
+  "name": "skhd-generator",
+  "description": "Script for generating a skhd configuration file",
+  "author": {
+    "name": "Michael Heckmann",
+    "url": "https://heckmann.app"
+  },
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "start": "bun src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}

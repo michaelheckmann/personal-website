@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "i18n": "typesafe-i18n --no-watch"
+    "i18n": "typesafe-i18n --no-watch",
+    "vale": "bun scripts/vale.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.3",

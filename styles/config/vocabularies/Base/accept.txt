@@ -1,0 +1,10 @@
+Raycast
+skhd
+LeaderKey
+Youtube
+Karabiner
+Deeplink
+Spotify
+tooltips?
+keypress
+prefill.*
