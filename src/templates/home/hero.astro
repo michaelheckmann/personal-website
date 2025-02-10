@@ -1,9 +1,10 @@
 ---
-import michael from "@/assets/michael.jpg";
-import Section from "@/components/ui/section.astro";
-import { getTranslation } from "@/i18n/translation";
-import { getResponsiveImageProps } from "@/lib/utils";
 import { Image } from "astro:assets";
+
+import { getResponsiveImageProps } from "@/lib/utils";
+import Section from "@/components/section.astro";
+import michael from "@/assets/michael.jpg";
+import { getTranslation } from "@/i18n/translation";
 
 const t = getTranslation("home");
 ---
@@ -13,7 +14,7 @@ const t = getTranslation("home");
     <Image
       src={michael}
       alt="Michael"
-      class="bg-[#DCDBD5] rounded-full size-24"
+      class="size-24 rounded-full bg-[#DCDBD5]"
       {...getResponsiveImageProps(michael)}
     />
     <h1 class="text-lg text-zinc-100">Michael Heckmann</h1>

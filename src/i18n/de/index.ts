@@ -2,6 +2,11 @@ import type { Translation } from "../i18n-types";
 
 const de = {
   images: {},
+  layout: {
+    back: "Zurück",
+    click: "Klicke",
+    tap: "Tippe",
+  },
   home: {
     metaTitle: "Michael Heckmann",
     metaDescription:
@@ -30,8 +35,16 @@ const de = {
     metaTitle: "Blog | Michael Heckmann",
     metaDescription:
       "Ich schreibe über Technologie, Design und den Schnittpunkt beider Disziplinen. Mein Ziel ist es, Wissen zu teilen und Gespräche anzuregen.",
-    back: "Zurück",
     viewAll: "Alle Beiträge anzeigen",
+    copy: "In Zwischenablage kopieren",
+    copied: "Kopiert!",
+    newContent:
+      "Möchtest du informiert werden, wenn ich neue Inhalte veröffentliche?",
+    subscribe:
+      "{0} dieses Feld, um meinen kostenlosen Newsletter zu abonnieren",
+    autoTranslated: "KI Übersetzung aus dem {0}",
+    english: "Englischen",
+    german: "Deutschen",
   },
 } satisfies Translation;
 

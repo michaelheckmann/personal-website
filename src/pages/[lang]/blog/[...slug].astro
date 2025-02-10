@@ -1,10 +1,11 @@
 ---
-import BaseLayout from "@/components/layout/base-layout.astro";
-import { ensureLang, setLanguage } from "@/i18n/translation";
+import { getCollection, type CollectionEntry } from "astro:content";
+
 import { extractLocaleFromPath, removeLocaleFromPath } from "@/lib/routing";
 import type { SiteConfig } from "@/lib/types";
+import Layout from "@/components/layout/layout.astro";
+import { ensureLang, setLanguage } from "@/i18n/translation";
 import ArticleTemplate from "@/templates/blog/article.astro";
-import { type CollectionEntry, getCollection } from "astro:content";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const lang = ensureLang(Astro.params.lang);
@@ -32,7 +33,7 @@ const config: SiteConfig = {
   lang,
   title: Astro.props.data.title,
   description: Astro.props.data.description,
-  image: Astro.props.data.heroImage,
+  image: Astro.props.data.cover.src,
   translationLinks: references.map((ref) => {
     const lang = extractLocaleFromPath(ref.id);
     const path = `/${lang}/blog/${removeLocaleFromPath(ref.id)}`;
@@ -42,6 +43,6 @@ const config: SiteConfig = {
 setLanguage(config.lang);
 ---
 
-<BaseLayout {...config}>
+<Layout {...config}>
   <ArticleTemplate {...Astro.props} />
-</BaseLayout>
+</Layout>

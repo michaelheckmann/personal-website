@@ -1,0 +1,59 @@
+---
+import { cn } from "@/lib/utils";
+import { getTranslation } from "@/i18n/translation";
+
+interface Props {
+  lowercase?: boolean;
+  class?: string;
+}
+
+const t = getTranslation("layout");
+---
+
+<span
+  class={cn(
+    "click hidden",
+    Astro.props.lowercase && "lowercase",
+    Astro.props.class,
+  )}
+>
+  {t.click()}
+</span>
+<span
+  class={cn(
+    "tap hidden",
+    Astro.props.lowercase && "lowercase",
+    Astro.props.class,
+  )}
+>
+  {t.tap()}
+</span>
+<style>
+  .click {
+    display: none;
+  }
+
+  .tap {
+    display: none;
+  }
+
+  @media (pointer: fine) {
+    .click {
+      display: inline;
+    }
+
+    .tap {
+      display: none;
+    }
+  }
+
+  @media (pointer: coarse) {
+    .click {
+      display: none;
+    }
+
+    .tap {
+      display: inline;
+    }
+  }
+</style>

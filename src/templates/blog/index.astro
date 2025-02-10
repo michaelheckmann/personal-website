@@ -1,49 +1,38 @@
 ---
-import { $lang, getTranslation } from "@/i18n/translation";
-import { getLocalHref, removeLocaleFromPath } from "@/lib/routing";
 import { getCollection } from "astro:content";
-import ArticleListItem from "./article-list-item.astro";
+
+import { getLocalHref, removeLocaleFromPath } from "@/lib/routing";
+import Header from "@/components/header.astro";
+import Section from "@/components/section.astro";
+import { $lang } from "@/i18n/translation";
+
+import ArticleListItem from "./components/article-list-item.astro";
 
 const posts = (await getCollection("blog"))
   .filter(({ id }) => id.startsWith(`${$lang.value}/`))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const t = getTranslation("blog");
 ---
 
-<div
-  class="min-h-screen px-4 py-16 text-zinc-400 md:px-8 lg:px-16"
-  style="
-      background: radial-gradient(
-        circle at top center,
-        var(--zinc-900) 0%,
-        var(--zinc-950) 100%
-      );
-    "
->
-  <div class="max-w-3xl py-32 mx-auto space-y-4">
-    <a
-      href={getLocalHref("/")}
-      class:list={[
-        "text-zinc-700 font-mono px-2 py-1 rounded relative -left-2",
-        "transition-colors duration-300 hover:text-zinc-500",
-        "outline-none focus-visible:ring-1 ring-zinc-200 focus-visible:text-zinc-200",
-      ]}
-    >
-      {t.back()}
-    </a>
-    <h1 class="text-lg text-zinc-100">Blog</h1>
+<Header back={{ href: getLocalHref("/") }} />
+<Section _title="blog" class="flex flex-col items-center justify-center pb-32">
+  <div class="flex h-32 w-full justify-center">
+    <h1 class="font-mono text-sm text-zinc-100">Blog</h1>
+  </div>
+  <div>
     <ul class="space-y-12 md:space-y-4">
       {
-        posts.map((post) => (
+        posts.map(({ id, data }) => (
           <li>
             <ArticleListItem
-              {...post.data}
-              category="Tech"
-              href={getLocalHref(`/blog/${removeLocaleFromPath(post.id)}`)}
+              {...data}
+              href={getLocalHref(`/blog/${removeLocaleFromPath(id)}`)}
             />
           </li>
         ))
       }
     </ul>
   </div>
-</div>
+</Section>
+<!-- <Section _title="newsletter" class="pt-32 pb-32">
+  <Newsletter />
+</Section> -->

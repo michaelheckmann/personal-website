@@ -4,24 +4,24 @@ import { cn, hashStringToNumber } from "@/lib/utils";
 const globalDebug = false;
 
 interface Props {
- _title: string;
- class?: string;
- debug?: boolean;
+  _title: string;
+  class?: string;
+  debug?: boolean;
 }
 
 const { _title, class: className, debug } = Astro.props;
 
 const debugColors = [
- "#f00f0050",
- "#0f00f050",
- "#00f00f50",
- "#ff0ff050",
- "#f0ff0f50",
- "#0ff0ff50",
- "#a00a0050",
- "#0a00a050",
- "#00a00a50",
- "#aa0aa050",
+  "#f00f0050",
+  "#0f00f050",
+  "#00f00f50",
+  "#ff0ff050",
+  "#f0ff0f50",
+  "#0ff0ff50",
+  "#a00a0050",
+  "#0a00a050",
+  "#00a00a50",
+  "#aa0aa050",
 ];
 
 const debugColorIndex = hashStringToNumber(_title) % debugColors.length;
@@ -29,7 +29,7 @@ const debugColor = (debug ?? globalDebug) ? debugColors[debugColorIndex] : null;
 ---
 
 <section
-  class={cn("max-w-6xl mx-auto", className)}
+  class={cn("max-w-4xl mx-auto px-4", className)}
   style={{ backgroundColor: debugColor }}
 >
   <slot />

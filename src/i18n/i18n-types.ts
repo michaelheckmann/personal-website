@@ -16,6 +16,20 @@ export type Translations = RootTranslation
 type RootTranslation = {
 	images: {
 	}
+	layout: {
+		/**
+		 * B​a​c​k
+		 */
+		back: string
+		/**
+		 * C​l​i​c​k
+		 */
+		click: string
+		/**
+		 * T​a​p
+		 */
+		tap: string
+	}
 	home: {
 		/**
 		 * M​i​c​h​a​e​l​ ​H​e​c​k​m​a​n​n
@@ -92,18 +106,58 @@ type RootTranslation = {
 		 */
 		metaDescription: string
 		/**
-		 * B​a​c​k
-		 */
-		back: string
-		/**
 		 * V​i​e​w​ ​a​l​l​ ​p​o​s​t​s
 		 */
 		viewAll: string
+		/**
+		 * C​o​p​y
+		 */
+		copy: string
+		/**
+		 * C​o​p​i​e​d
+		 */
+		copied: string
+		/**
+		 * W​a​n​t​ ​t​o​ ​k​n​o​w​ ​w​h​e​n​ ​I​ ​p​u​b​l​i​s​h​ ​n​e​w​ ​c​o​n​t​e​n​t​?
+		 */
+		newContent: string
+		/**
+		 * {​0​}​ ​t​h​i​s​ ​b​o​x​ ​t​o​ ​j​o​i​n​ ​m​y​ ​f​r​e​e​ ​n​e​w​s​l​e​t​t​e​r
+		 * @param {unknown} 0
+		 */
+		subscribe: RequiredParams<'0'>
+		/**
+		 * A​I​ ​t​r​a​n​s​l​a​t​i​o​n​ ​f​r​o​m​ ​{​0​}
+		 * @param {unknown} 0
+		 */
+		autoTranslated: RequiredParams<'0'>
+		/**
+		 * E​n​g​l​i​s​h
+		 */
+		english: string
+		/**
+		 * G​e​r​m​a​n
+		 */
+		german: string
 	}
 }
 
 export type TranslationFunctions = {
 	images: {
+	}
+	layout: {
+		/**
+		 * Back
+		 */
+		back: () => LocalizedString
+		/**
+		 * Click
+		 */
+		click: () => LocalizedString
+		/**
+		 * Tap
+		 */
+		tap: () => LocalizedString
 	}
 	home: {
 		/**
@@ -179,13 +233,37 @@ export type TranslationFunctions = {
 		 */
 		metaDescription: () => LocalizedString
 		/**
-		 * Back
-		 */
-		back: () => LocalizedString
-		/**
 		 * View all posts
 		 */
 		viewAll: () => LocalizedString
+		/**
+		 * Copy
+		 */
+		copy: () => LocalizedString
+		/**
+		 * Copied
+		 */
+		copied: () => LocalizedString
+		/**
+		 * Want to know when I publish new content?
+		 */
+		newContent: () => LocalizedString
+		/**
+		 * {0} this box to join my free newsletter
+		 */
+		subscribe: (arg0: unknown) => LocalizedString
+		/**
+		 * AI translation from {0}
+		 */
+		autoTranslated: (arg0: unknown) => LocalizedString
+		/**
+		 * English
+		 */
+		english: () => LocalizedString
+		/**
+		 * German
+		 */
+		german: () => LocalizedString
 	}
 }
 

@@ -1,0 +1,81 @@
+---
+import { getTranslation } from "@/i18n/translation";
+
+import ClickText from "./click-text.astro";
+import Noise from "./layout/noise.astro";
+
+const t = getTranslation("blog");
+---
+
+<div class="relative">
+  <a
+    href="https://michaelheckmann.beehiiv.com/subscribe"
+    target="_blank"
+    class="shimmer relative z-0 flex h-28 w-full flex-col items-center justify-center rounded-xl bg-transparent p-4 text-center text-balance transition-colors duration-500 hover:bg-zinc-900 hover:text-zinc-300"
+  >
+    <span>
+      {t.newContent()}
+    </span>
+    <span>
+      <ClickText />{t.subscribe("")}
+    </span>
+  </a>
+  <div class="pointer-events-none absolute inset-0 z-10">
+    <Noise opacity="0.1" />
+  </div>
+</div>
+<style>
+  .shimmer {
+    --border-width: 1px;
+    border: var(--border-width) solid transparent;
+  }
+
+  .shimmer::before {
+    content: " ";
+    position: absolute;
+    inset: calc(var(--border-width) * -1);
+    z-index: -1;
+    border: inherit;
+    border-radius: inherit;
+    background-image: conic-gradient(
+      from var(--angle),
+      var(--color-zinc-800) 80%,
+      var(--color-zinc-700) 88%,
+      var(--color-zinc-700) 92%,
+      var(--color-zinc-800) 100%
+    );
+    background-origin: border-box;
+    -webkit-mask:
+      linear-gradient(black, black) content-box,
+      linear-gradient(black, black);
+    mask: linear-gradient(black, black), linear-gradient(black, black);
+    -webkit-mask-clip: content-box, border-box;
+    mask-clip: content-box, border-box;
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: spin 5s linear infinite;
+  }
+
+  @supports not (background: paint(something)) {
+    .shimmer::before {
+      background-image: conic-gradient(
+        var(--color-zinc-800) 80%,
+        var(--color-zinc-700) 88%,
+        var(--color-zinc-700) 92%,
+        var(--color-zinc-800) 100%
+      );
+    }
+  }
+
+  @property --angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0turn;
+  }
+
+  @keyframes spin {
+    to {
+      --angle: 1turn;
+    }
+  }
+</style>

@@ -1,0 +1,106 @@
+---
+import { getTranslation } from "@/i18n/translation";
+
+const t = getTranslation("blog");
+---
+
+<div
+  id="copy-tooltip"
+  data-copy-text={t.copy()}
+  data-copied-text={t.copied()}
+  class="absolute top-0 left-0 z-50 w-max rounded-md border border-zinc-800 bg-zinc-900 px-2.5 py-1 text-sm text-zinc-400 opacity-0 shadow-sm transition-opacity duration-300"
+>
+  {t.copy()}
+</div>
+<script>
+  import { computePosition, flip, offset, shift } from "@floating-ui/dom";
+
+  const copyButtons = document.getElementsByClassName("copy");
+  const tooltip = document.getElementById("copy-tooltip");
+
+  // Set transition for opacity, transform, and filter for blur
+  if (tooltip) {
+    tooltip.style.transition =
+      "opacity 300ms cubic-bezier(0.25,0.46,0.45,0.94), transform 300ms cubic-bezier(0.25,0.46,0.45,0.94), filter 300ms cubic-bezier(0.25,0.46,0.45,0.94)";
+    tooltip.style.transform = "translateY(10px)";
+    tooltip.style.filter = "blur(2px)";
+  }
+
+  const updatePosition = (button: Element) => {
+    computePosition(button, tooltip!, {
+      placement: "top",
+      middleware: [offset(6), flip(), shift({ padding: 5 })],
+    }).then(({ x, y }) => {
+      Object.assign(tooltip!.style, {
+        left: `${x}px`,
+        top: `${y}px`,
+      });
+    });
+  };
+
+  const showTooltip = (button: Element) => {
+    tooltip!.style.opacity = "1";
+    tooltip!.style.transform = "translateY(0)";
+    tooltip!.style.filter = "blur(0)";
+    updatePosition(button);
+  };
+
+  const hideTooltip = () => {
+    tooltip!.style.opacity = "0";
+    tooltip!.style.transform = "translateY(10px)";
+    tooltip!.style.filter = "blur(2px)";
+  };
+
+  const onButtonClick = (button: Element) => {
+    const { copyText, copiedText } = tooltip!.dataset;
+
+    if (tooltip) {
+      // Apply blur before showing Copied text
+      tooltip.style.filter = "blur(4px)";
+      setTimeout(() => {
+        tooltip.innerText = copiedText ?? "Copied!";
+        updatePosition(button);
+        tooltip.style.filter = "blur(0)";
+      }, 100);
+
+      setTimeout(() => {
+        // Apply blur before resetting text
+        tooltip.style.filter = "blur(4px)";
+        setTimeout(() => {
+          tooltip.innerText = copyText ?? "Copy";
+          updatePosition(button);
+          tooltip.style.filter = "blur(0)";
+        }, 100);
+      }, 3000);
+    }
+  };
+
+  const registerTooltips = () => {
+    if (!tooltip || !copyButtons.length) {
+      return;
+    }
+
+    Array.from(copyButtons).forEach((button) => {
+      // Remove the title from the button since we're using a custom tooltip
+      button.getElementsByTagName("button").item(0)?.removeAttribute("title");
+
+      button.addEventListener("mouseenter", () => showTooltip(button));
+      button.addEventListener("mouseleave", hideTooltip);
+      button.addEventListener("focus", () => showTooltip(button));
+      button.addEventListener("blur", hideTooltip);
+      button.addEventListener("click", () => onButtonClick(button));
+    });
+  };
+
+  registerTooltips();
+</script>
+<style is:global>
+  /* Hide the default "on copied" tooltip */
+  .expressive-code .feedback {
+    display: none !important;
+  }
+  /* Adjust the default button styles */
+  .expressive-code button {
+    border-radius: 0.5rem !important;
+  }
+</style>

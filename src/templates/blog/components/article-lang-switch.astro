@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+
+import { removeLocaleFromPath } from "@/lib/routing";
+import Link from "@/components/link.astro";
+import { $lang, getTranslation } from "@/i18n/translation";
+
+interface Props {
+  id: string;
+}
+
+const t = getTranslation("blog");
+const locale = $lang.get();
+const reversedLang = locale === "en" ? "de" : "en";
+
+// Get all blog posts from the content collection
+const allBlogPosts = await getCollection("blog");
+
+// Find the current blog post object by its ID
+const currentLanguagePost = allBlogPosts.find((p) => p.id === Astro.props.id);
+
+const translatedPost = allBlogPosts.find(
+  (post) =>
+    post.id.startsWith(reversedLang) &&
+    post.data.reference === currentLanguagePost?.data.reference,
+);
+
+// Error if no translation exists
+if (!translatedPost) {
+  throw new Error(`Translated post not found for ${Astro.url.pathname}`);
+}
+
+// Construct URL for the translated post
+// Format: /{language}/blog/{post-slug}
+const href = `/${reversedLang}/blog/${removeLocaleFromPath(translatedPost?.id)}`;
+---
+
+<div class="w-full max-w-2xl">
+  <p class="font-mono">
+    <span>{t.autoTranslated("")}</span>
+    <Link
+      href={href}
+      class="p-0 text-base text-zinc-400 underline underline-offset-2"
+    >
+      {locale === "de" ? t.english() : t.german()}
+    </Link>
+  </p>
+</div>

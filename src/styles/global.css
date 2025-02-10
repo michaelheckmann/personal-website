@@ -1,36 +1,44 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist Sans", "sans-serif";
+  --font-mono: "Inconsolata", "monospace";
+}
 
 @layer base {
   *::selection {
-    color: var(--zinc-50);
-    background-color: var(--zinc-950);
+    color: var(--color-zinc-50);
+    background-color: var(--color-zinc-600);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-@layer components {
-  .styled-underline {
-    position: relative;
-  }
+.styled-underline {
+  position: relative;
+}
 
-  .styled-underline:after {
-    display: block;
-    height: 1.5px;
-    border-radius: 2px;
-    background: var(--zinc-300);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    color: transparent;
-    transition: background 0.3s ease;
-  }
+.styled-underline:after {
+  display: block;
+  height: 1.5px;
+  border-radius: 2px;
+  background: var(--color-zinc-300);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: transparent;
+  transition: background 0.3s ease;
+}
 
-  a:hover .styled-underline:after {
-    background: var(--zinc-100);
-  }
+a:hover .styled-underline:after {
+  background: var(--color-zinc-100);
+}
 
-  a.styled-underline:hover:after {
-    background: var(--zinc-100);
-  }
+a.styled-underline:hover:after {
+  background: var(--color-zinc-100);
 }

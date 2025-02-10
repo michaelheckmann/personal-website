@@ -1,6 +1,7 @@
 ---
-import Section from "@/components/ui/section.astro";
+import Section from "@/components/section.astro";
 import { getTranslation } from "@/i18n/translation";
+import { getLocalHref } from "@/lib/routing";
 import GridItem from "./grid-item.astro";
 
 const t = getTranslation("home");
@@ -20,13 +21,13 @@ const t = getTranslation("home");
           href="https://github.com/michaelheckmann"
           class={`after:content-['Github']`}
         />
-        <!-- <GridItem
+        <GridItem
           title="Blog"
           description={t.building.blog()}
           href={getLocalHref("/blog")}
           openInNewTab={false}
           class={`after:content-['Blog']`}
-        /> -->
+        />
       </div>
     </div>
 

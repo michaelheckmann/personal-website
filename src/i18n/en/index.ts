@@ -2,6 +2,11 @@ import type { BaseTranslation } from "../i18n-types";
 
 const en = {
   images: {},
+  layout: {
+    back: "Back",
+    click: "Click",
+    tap: "Tap",
+  },
   home: {
     metaTitle: "Michael Heckmann",
     metaDescription:
@@ -30,8 +35,14 @@ const en = {
     metaTitle: "Blog | Michael Heckmann",
     metaDescription:
       "I write about technology, design, and the intersection of the two. My goal is to share knowledge and spark conversations.",
-    back: "Back",
     viewAll: "View all posts",
+    copy: "Copy",
+    copied: "Copied",
+    newContent: "Want to know when I publish new content?",
+    subscribe: "{0} this box to join my free newsletter",
+    autoTranslated: "AI translation from {0}",
+    english: "English",
+    german: "German",
   },
 } satisfies BaseTranslation;
 

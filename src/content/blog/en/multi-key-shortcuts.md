@@ -1,25 +1,29 @@
 ---
 title: "Building a custom multi-key shortcut system with skhd and Raycast"
-description: "A walkthrough of building a multi-key shortcut system on macOS that lets you trigger different actions based on keyboard modes. We'll use skhd for the shortcuts, create two Raycast extensions for visual feedback and documentation, and write a TypeScript generator for type-safe configuration of shortcuts and modes."
-pubDate: "Feb 07 2025"
-heroImage: "/blog-placeholder-3.jpg"
+description: "Build a multi-key shortcut system that lets you trigger different actions based on keyboard modes. We'll use skhd for the shortcuts, create two Raycast extensions and write a TypeScript generator for type-safe configuration of shortcuts and modes."
+pubDate: "Feb 10 2025"
+cover: "../assets/multi-key-shortcuts/hero.webp"
+coverAlt: "Multi-key shortcuts"
+colors: ["#B23523","#2400ff"]
 tags: ["macos", "productivity", "raycast"]
-reference: "key-chord-shortcuts-on-mac"
+reference: "multi-key-shortcuts"
 ---
+
+# Building a custom multi-key shortcut system with skhd and Raycast
 
 ## The problem with traditional shortcuts
 
 Setting up a comprehensive hotkey system on macOS was a frustrating experience for me. With only so many key combinations available, I kept running into conflicts with existing application shortcuts. For example, I wanted to map my clipboard history to <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>, but discovered that Arc browser already used this combination for copying URLs. While I could have changed Arc's shortcut, I realized I needed a more systematic approach that would get rid of these conflicts altogether rather than constantly shuffling shortcuts around. This led me to explore alternative approaches.
 
-I was pleasantly surprised to discover Max Stoiber's solution in his interview on the Raycast Youtube Channel (https://youtu.be/m5MDv9qwhU8?t=156). His approach uses Karabiner Elements to create 'layers' (imagine different sets of shortcuts that become available after pressing a specific key combination). For example, pressing a leader key followed by 'f' could activate a 'finder layer' with file management shortcuts at your fingertips.
+I was pleasantly surprised to discover Max Stoiber's solution in his [interview on the Raycast Youtube Channel](https://youtu.be/m5MDv9qwhU8?t=156). His approach uses Karabiner Elements to create 'layers' (imagine different sets of shortcuts that become available after pressing a specific key combination). For example, pressing a leader key followed by 'f' could activate a 'finder layer' with file management shortcuts at your fingertips.
 
 While trying to replicate his setup, I encountered issues with Karabiner. It would reset my keyboard mapping, causing the keys I pressed on my physical keyboard to produce different characters on screen. I wanted a simpler solution with visual feedback on the active mode. This led me to create my own system. It combines skhd (a lightweight keyboard shortcut manager) and Raycast (a powerful application launcher and productivity tool).
 
 ### What we'll build
 
-In this project, we'll recreate this custom multi-key shortcut system. This setup will allow you to use the same key to trigger different actions depending on the active mode or layer. We'll set up skhd, a lightweight keyboard shortcut manager, to handle key events. We will integrate it with two Raycast extensions. One extension will provide a menu bar command for visual feedback of the active mode. The other will generate a searchable list, serving as always up-to-date documentation of your shortcuts. Additionally, we'll build a TypeScript-based configuration generator for easy, type-safe setup of your shortcuts. The final result is a highly customizable, efficient, and maintainable way to trigger applications, scripts, and system actions with just a few key presses.
+In this project, we'll recreate this custom multi-key shortcut system. This setup will allow you to use the same key to trigger different actions depending on the active mode or layer. We'll set up skhd to handle key events. We will integrate it with two Raycast extensions. One extension will provide a menu bar command for visual feedback of the active mode. The other will generate a searchable list, serving as always up-to-date documentation of your shortcuts. Additionally, we'll build a TypeScript-based configuration generator for easy, type-safe setup of your shortcuts. The final result is a highly customizable, efficient, and maintainable way to trigger applications, scripts, and system actions with just a few key presses.
 
-You can find the entire project on GitHub: [Multi-Key Shortcuts](XX).
+You can find the entire project on GitHub: [Multi-Key Shortcuts](https://github.com/michaelheckmann/personal-website/tree/main/code/multi-key-shortcuts).
 
 ## Multi-key shortcuts
 
@@ -33,10 +37,10 @@ The core concept of my system revolves around modes. These modes describe differ
 
 The beauty of this approach is that the same key can trigger different actions depending on the active mode. For example:
 
-- In Launcher Mode, pressing 'C' might open Chrome
-- In Shortcut Mode, pressing 'C' might open the clipboard history
-- Similarly, in Launcher Mode, pressing 'S' might open Spotify
-- While in Shortcut Mode, pressing 'S' might activate the screenshot tool
+- In Launcher Mode, pressing <kbd>C</kbd> might open Chrome
+- In Shortcut Mode, pressing <kbd>C</kbd> might open the clipboard history
+- Similarly, in Launcher Mode, pressing <kbd>S</kbd> might open Spotify
+- While in Shortcut Mode, pressing <kbd>S</kbd> might activate the screenshot tool
 
 This approach suits my workflow, but you can create many different modes for a wide range of use cases.
 
@@ -46,7 +50,7 @@ Each mode is activated by a specific hotkey combination:
 
 - <kbd>Cmd</kbd> + <kbd>Space</kbd>: Toggle Shortcut Mode
 - <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>Space</kbd>: Toggle Launcher Mode
-- ⁠<kbd>ESC</kbd>: Return to Default Mode
+- ⁠<kbd>Esc</kbd>: Return to Default Mode
 
 The visual feedback on which mode is active is crucial. Without any indicators, it would be easy to lose track of which mode you're in and trigger unintended actions. I've implemented this through a Raycast menu bar extension that indicates the active mode.
 
@@ -62,7 +66,7 @@ Before we begin, you'll need Homebrew installed on your Mac. If you haven't inst
 
 Installing and starting skhd is straightforward:
 
-```bash
+```bash cn-show-copy
 brew install skhd
 skhd --start-service
 ```
@@ -86,11 +90,12 @@ The TypeScript-based generator consists of these components:
 
 ```
 ├── src/
-│   ├── config.ts     # Main configuration file defining modes and shortcuts
-│   ├── constants.ts  # System-wide constants and defaults
-│   ├── types.ts      # Type definitions for the configuration
-│   ├── utils.ts      # Utility functions for generating commands
-│   └── index.ts      # Entry point that generates the skhd configuration
+│ ├── config.ts # Main configuration file defining modes and shortcuts
+│ ├── constants.ts # System-wide constants and defaults
+│ ├── types.ts # Type definitions for the configuration
+│ ├── utils.ts # Utility functions for generating commands
+│ └── index.ts # Entry point that generates the skhd configuration
+
 ```
 
 #### Type system
@@ -112,7 +117,7 @@ type Mode = {
 };
 ```
 
-I took the available modifiers and key literals from the skhd repository https://github.com/koekeishiya/skhd/issues/1.
+I took the available modifiers and key literals from this issue on the skhd repository: [Key names and modifiers](https://github.com/koekeishiya/skhd/issues/1).
 
 With these types in place, I am sure that my configuration is correct and can be validated before being loaded into skhd.
 
@@ -177,7 +182,7 @@ Let's go through the configuration of the shortcuts:
 
 **Implementation Deep Dive: OmitModifierAllowed**
 
-With the ⁠omitModifierAllowed flag enabled, you can execute a command even without holding the modifier key. For example, in shortcut mode (activated via Command + Space), you can execute commands by keeping your thumb on the Command key (Command + C) or by simply pressing the letter key alone (just C).
+With the ⁠omitModifierAllowed flag enabled, you can execute a command even without holding the modifier key. For example, in shortcut mode (activated via <kbd>Cmd</kbd> + <kbd>Space</kbd>), you can execute commands by keeping your thumb on the Command key (<kbd>Cmd</kbd> + <kbd>C</kbd>) or by simply pressing the letter key alone (just <kbd>C</kbd>).
 
 I found it tedious to have to decide to always lift the thumb off the modifier, or to purposefully force the thumb to stay on the modifier key. This makes the interaction more natural and forgiving. The only limitation is that you can only set up one "modifier-free" shortcut per letter in each mode. It's best to reserve this option for your most frequent commands.
 
@@ -276,7 +281,7 @@ const executeKeypress = (keyCombo: { key: Key; modifiers?: Modifier[] }) => {
 
 The TypeScript generator creates a skhd configuration file that implements our shortcut system. The generated file contains three main sections: mode definitions, mode switching commands, and the actual shortcuts. Here's an example:
 
-```bash
+```bash frame="none"
 # Define modes and their visual indicators
 :: default : open -g 'raycast://extensions/michaelheckmann/menu-bar-manager/change-icon?launchType=background&arguments=%7B%22icon%22%3A%22default%22%7D'
 :: shortcut @ : open -g 'raycast://extensions/michaelheckmann/menu-bar-manager/change-icon?launchType=background&arguments=%7B%22icon%22%3A%22shortcut%22%7D'
@@ -309,12 +314,15 @@ launcher < k : open -a 'Calendar'; skhd -k 'cmd + shift - space'
 Let's examine each section of the configuration:
 
 **Mode Definitions**
+
 Each mode is defined with its visual indicator command that updates the menu bar icon through our Raycast extension. The `@` symbol after mode names (for example, `shortcut @`) serves an important purpose in preventing confusion. Without it, pressing an undefined key in a mode would silently fail and not return to the default mode. This could be confusing: you might press an unconfigured key, unknowingly remain in the mode, and later trigger unexpected shortcuts because you forgot the active mode. By capturing all key presses with `@`, the system maintains its state until explicitly told to change, making the behavior more predictable and transparent.
 
 **Mode Switching**
-The configuration defines clear paths for transitioning between modes. Using <kbd>Cmd</kbd> + <kbd>Space</kbd> toggles between Default and Shortcut modes, while <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>Space</kbd> handles transitions between Default and Launcher modes. To ensure users can always reset the system, <kbd>ESC</kbd> is configured to return to Default mode from any other mode. This consistent escape hatch helps prevent users from getting stuck in a mode.
+
+The configuration defines clear paths for transitioning between modes. Using <kbd>Cmd</kbd> + <kbd>Space</kbd> toggles between Default and Shortcut modes, while <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>Space</kbd> handles transitions between Default and Launcher modes. To ensure users can always reset the system, <kbd>Esc</kbd> is configured to return to Default mode from any other mode. This consistent escape hatch helps prevent users from getting stuck in a mode.
 
 **Shortcuts**
+
 The final section contains the actual shortcut definitions, each associated with a specific mode. When a shortcut has the `omitModifierAllowed` flag enabled, the generator creates two entries: one with the modifier (for example, <kbd>Cmd</kbd> + <kbd>a</kbd>) and one without (<kbd>a</kbd>). This flexibility makes the shortcuts more convenient to use. After executing any command, the system automatically returns to Default mode by simulating the appropriate mode-switch key combination.
 
 #### Interesting patterns
@@ -341,12 +349,12 @@ const shortcut = {
 
 This generates the following skhd command:
 
-```bash
+```bash frame="none"
 ## Shortcut: Search AI Chat Presets
 shortcut < cmd + shift - p : open -g 'raycast://extensions/raycast/raycast-ai/search-ai-chat-presets?' && open -a 'Raycast'; skhd -k 'cmd - space'
 ```
 
-##### Executing no-wiew Raycast commands
+##### Executing no-view Raycast commands
 
 A particular challenge arose with certain Raycast extensions that don't create a new view but instead work with inline input. Take the `Quick Add Reminder` command from the `apple-reminders` extension as an example. When using these commands normally in Raycast, you type the command name and then enter your input inline, right in the Raycast window.
 
@@ -371,7 +379,7 @@ const shortcut = {
 
 This generates the following skhd commands:
 
-```bash
+```bash frame="none"
 ## Shortcut: Create a Reminder
 shortcut < cmd - r : skhd -k 'cmd - space'; skhd -k 'hyper - 0x0A'
 shortcut < r : skhd -k 'cmd - space'; skhd -k 'hyper - 0x0A'
@@ -606,3 +614,4 @@ An interesting alternative to this custom setup is [LeaderKey](https://github.co
 - Native macOS app experience
 
 LeaderKey might be worth considering if you want a more turnkey solution that doesn't require maintaining custom code. I am currently exploring LeaderKey as a potential replacement for my custom setup, and I'm impressed with its implementation so far. Its polished user experience and thoughtful design make it a promising alternative that might eventually replace my current system.
+ 

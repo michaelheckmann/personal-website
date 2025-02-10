@@ -1,0 +1,224 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { headings: allHeadings } = await render(post);
+const headings = allHeadings.filter((h) => h.depth > 1 && h.depth <= 3);
+
+const computeRectWidth = (depth: number): number => {
+  switch (depth) {
+    case 2:
+      return 54;
+    case 3:
+      return 43;
+    case 4:
+      return 32;
+    default:
+      return 16;
+  }
+};
+---
+
+<style>
+  /* If the viewport is smaller thna 940px, hide the toc-container */
+  @media (max-width: 940px) {
+    .toc-container {
+      display: none;
+    }
+  }
+
+  /* Main container stays fixed as before */
+  .toc-container {
+    z-index: 0;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 50%;
+    transition:
+      opacity 0.5s,
+      width 0.3s;
+    /* Start hidden */
+    opacity: 0;
+    width: auto;
+  }
+  .toc-container.visible {
+    /* When visible, fade in */
+    opacity: 1;
+  }
+  /* Hide small rectangles when panel is active */
+  .toc-container:hover .toc-rectangles {
+    opacity: 0;
+  }
+  .toc-rectangles {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%; /* occupy full container height */
+    justify-content: center; /* vertically center the rectangles */
+    transition: opacity 0.3s;
+  }
+  /* Existing rectangle styles */
+  .toc-rect {
+    height: 3px;
+    margin-left: 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  .toc-rect.inactive {
+    background-color: var(--color-zinc-800);
+  }
+  .toc-rect.active {
+    background-color: var(--color-zinc-400);
+  }
+  /* Detailed panel, hidden by default */
+  .toc-panel {
+    position: absolute;
+    top: 50%; /* vertically center */
+    left: 20px; /* offset from left */
+    transform: translateY(-50%);
+    width: 16rem;
+    background-color: var(--color-zinc-900);
+    color: var(--color-zinc-600);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    opacity: 0;
+    pointer-events: none; /* hidden -> not clickable */
+    transition: opacity 0.3s;
+    border-radius: 1rem; /* equivalent to rounded-2xl */
+  }
+  /* Panel becomes visible only when both (a) toc is scrolled into view (visible class) AND (b) the container is hovered */
+  .toc-container.visible:hover .toc-panel {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* Each panel item appearance */
+  .toc-panel-item {
+    display: block;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    transition: color 0.3s;
+    cursor: pointer;
+    font-size: 0.75rem; /* text-xs */
+  }
+  .toc-panel-item.active {
+    color: var(--color-zinc-400);
+  }
+  .toc-panel-item:hover {
+    color: var(--color-zinc-300);
+  }
+</style>
+
+<div class="toc-container hidden md:block">
+  <div class="toc-rectangles">
+    {
+      // Small rectangle view – shown by default and hidden on hover.
+      headings.map((heading) => (
+        <div
+          id={`toc-${heading.slug}`}
+          data-heading-slug={heading.slug}
+          class="toc-rect inactive"
+          style={`width: ${computeRectWidth(heading.depth)}px;`}
+        />
+      ))
+    }
+  </div>
+  <div class="toc-panel">
+    {
+      // Detailed panel view with heading text.
+      headings.map((heading) => (
+        <a
+          href={`#${heading.slug}`}
+          data-heading-slug={heading.slug}
+          class="toc-panel-item inactive"
+          style={`margin-left: ${(heading.depth - 2) * 1.5}rem;`}
+          onclick={`event.preventDefault(); const targetElement = document.getElementById('${heading.slug}'); if(targetElement){ const targetY = targetElement.getBoundingClientRect().top + window.pageYOffset - 20; window.scrollTo({top: targetY, behavior: 'smooth'}); }`}
+        >
+          {heading.text || heading.slug}
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  (() => {
+    // Update active state for both small rectangles and panel items.
+    const updateActiveRectangle = (activeSlug: string) => {
+      // Update small rectangles.
+      const rectItems = Array.from(
+        document.querySelectorAll(".toc-rect[data-heading-slug]"),
+      );
+      rectItems.forEach((item) => {
+        const itemSlug = item.getAttribute("data-heading-slug");
+        if (itemSlug === activeSlug) {
+          item.classList.add("active");
+          item.classList.remove("inactive");
+        } else {
+          item.classList.remove("active");
+          item.classList.add("inactive");
+        }
+      });
+      // Update panel items.
+      const panelItems = Array.from(
+        document.querySelectorAll(".toc-panel-item[data-heading-slug]"),
+      );
+      panelItems.forEach((item) => {
+        const itemSlug = item.getAttribute("data-heading-slug");
+        if (itemSlug === activeSlug) {
+          item.classList.add("active");
+          item.classList.remove("inactive");
+        } else {
+          item.classList.remove("active");
+          item.classList.add("inactive");
+        }
+      });
+    };
+
+    // Existing logic to set active heading based on scroll.
+    const headingElements = Array.from(
+      document.querySelectorAll("article h2, article h2, article h3"),
+    );
+    const updateActiveHeadingOnScroll = () => {
+      const midViewport = window.innerHeight / 2;
+      let activeHeading = null;
+      for (const heading of headingElements) {
+        if (heading.getBoundingClientRect().top <= midViewport) {
+          activeHeading = heading;
+        } else {
+          break;
+        }
+      }
+      if (activeHeading) {
+        const activeHeadingId = activeHeading.getAttribute("id");
+        if (activeHeadingId) updateActiveRectangle(activeHeadingId);
+      }
+    };
+    window.addEventListener("scroll", updateActiveHeadingOnScroll);
+    updateActiveHeadingOnScroll();
+
+    // Replace IntersectionObserver with scroll-based visibility for toc.
+    const tocContainer = document.querySelector(".toc-container");
+    const h1Element = document.querySelector("article h1");
+    const updateTocVisibility = () => {
+      if (h1Element && tocContainer) {
+        const h1Rect = h1Element.getBoundingClientRect();
+        // When the bottom of h1 is above half the viewport, show toc.
+        if (h1Rect.bottom < window.innerHeight / 2) {
+          tocContainer.classList.add("visible");
+        } else {
+          tocContainer.classList.remove("visible");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", updateTocVisibility);
+    updateTocVisibility();
+  })();
+</script>

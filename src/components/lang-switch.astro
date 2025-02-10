@@ -1,12 +1,14 @@
 ---
-import { $lang } from "@/i18n/translation";
+import { getCollection } from "astro:content";
+
 import {
   getPostIdFromPath,
   isBlogPost,
   removeLocaleFromPath,
 } from "@/lib/routing";
-import { getCollection } from "astro:content";
-import Section from "../ui/section.astro";
+import { $lang } from "@/i18n/translation";
+
+import Link from "./link.astro";
 
 const text = $lang.value === "en" ? "Deutsch" : "English";
 const reversedLang = $lang.value === "en" ? "de" : "en";
@@ -36,7 +38,7 @@ if (isBlogPost(Astro.url.pathname)) {
 
   // Error if no translation exists
   if (!translatedPost) {
-    throw new Error(`!!Translation not found for ${Astro.url.pathname}`);
+    throw new Error(`Translated post not found for ${Astro.url.pathname}`);
   }
 
   // Construct URL for the translated post
@@ -48,18 +50,4 @@ if (isBlogPost(Astro.url.pathname)) {
 }
 ---
 
-<Section
-  _title="lang-switch"
-  class="absolute top-0 left-1/2 -translate-x-1/2 w-full flex justify-end pt-4 px-4"
->
-  <a
-    href={href}
-    class:list={[
-      "text-sm text-zinc-700 font-mono px-2 py-1 rounded",
-      "transition-colors duration-300 hover:text-zinc-500",
-      "outline-none focus-visible:ring-1 ring-zinc-200 focus-visible:text-zinc-200",
-    ]}
-  >
-    {text}
-  </a>
-</Section>
+<Link href={href}>{text}</Link>

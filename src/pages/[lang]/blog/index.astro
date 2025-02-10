@@ -1,8 +1,8 @@
 ---
-import BaseLayout from "@/components/layout/base-layout.astro";
+import type { SiteConfig } from "@/lib/types";
+import Layout from "@/components/layout/layout.astro";
 import { locales } from "@/i18n/i18n-util";
 import { ensureLang, getTranslation, setLanguage } from "@/i18n/translation";
-import type { SiteConfig } from "@/lib/types";
 import BlogTemplate from "@/templates/blog/index.astro";
 
 const lang = ensureLang(Astro.params.lang);
@@ -20,6 +20,6 @@ const config: SiteConfig = {
 };
 ---
 
-<BaseLayout {...config}>
+<Layout {...config}>
   <BlogTemplate />
-</BaseLayout>
+</Layout>

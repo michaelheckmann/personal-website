@@ -1,0 +1,20 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+  href: string;
+  class?: string;
+}
+---
+
+<a
+  href={Astro.props.href}
+  class={cn(
+    "rounded px-2 py-1 font-mono text-sm text-zinc-500",
+    "transition-colors duration-300 hover:text-zinc-300",
+    "ring-zinc-200 outline-none focus-visible:text-zinc-200 focus-visible:ring-1",
+    Astro.props.class,
+  )}
+>
+  <slot />
+</a>

@@ -6,28 +6,36 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
+    "preview": "astro build && wrangler pages dev",
+    "deploy": "astro build && wrangler pages deploy",
+    "cf-typegen": "wrangler types",
     "i18n": "typesafe-i18n --no-watch",
-    "vale": "bun scripts/vale.ts"
+    "vale": "bun helpers/scripts/vale.ts",
+    "astro": "astro",
+    "wrangler": "wrangler"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.0.3",
-    "@astrojs/rss": "^4.0.10",
+    "@astrojs/cloudflare": "^12.2.1",
+    "@astrojs/mdx": "4.0.8",
+    "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/tailwind": "^5.1.4",
+    "@floating-ui/dom": "^1.6.13",
     "@fontsource/geist-sans": "^5.1.0",
     "@fontsource/inconsolata": "^5.1.0",
-    "astro": "^5.1.1",
+    "@tailwindcss/vite": "^4.0.4",
+    "astro": "5.2.5",
+    "astro-expressive-code": "^0.40.1",
+    "butteruptoasts": "^2.0.1",
     "clsx": "^2.1.1",
     "lodash.get": "^4.4.2",
     "nanostores": "^0.11.3",
     "tailwind-merge": "^2.5.5",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4.0.4",
     "typesafe-i18n": "^5.26.2"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.15",
+    "@cloudflare/workers-types": "^4.20250204.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
     "@types/bun": "^1.1.14",
     "@types/lodash": "4.17.0",
     "@types/lodash.get": "^4.4.9",
@@ -36,6 +44,8 @@
     "eslint-plugin-astro": "^1.3.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "prettier": "^3.4.2",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "wrangler": "^3.107.3"
   }
 }
