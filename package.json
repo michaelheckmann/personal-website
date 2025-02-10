@@ -29,6 +29,7 @@
     "clsx": "^2.1.1",
     "lodash.get": "^4.4.2",
     "nanostores": "^0.11.3",
+    "rehype-external-links": "^3.0.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss": "^4.0.4",
     "typesafe-i18n": "^5.26.2"

@@ -3,8 +3,8 @@ title: "Benutzerdefinierten Multi-Key Shortcut Systems mit skhd und Raycast"
 description: "Wir erstellen ein Multi-Key Shortcut-System, mit dem du je nach Tastaturmodus verschiedene Aktionen auslösen kannst. Wir verwenden skhd für die Shortcuts, erstellen zwei Raycast-Extensions und schreiben einen TypeScript Generator für eine typesafe Konfiguration von Shortcuts und Modi."
 pubDate: "Feb 10 2025"
 cover: "../assets/multi-key-shortcuts/hero.webp"
-coverAlt: "Multi-key shortcuts"
-colors: ["#B23523","#2400ff"]
+coverAlt: "Eine Hand, die sich gegen einen dunklen Himmel streckt, wobei orangefarbenes Licht von den Fingerspitzen ausgeht und eine mystische Atmosphäre erzeugt"
+colors: ["#B23523", "#2400ff"]
 tags: ["macos", "productivity", "raycast"]
 translated: true
 reference: "multi-key-shortcuts"
@@ -32,16 +32,16 @@ Du findest das gesamte Projekt auf GitHub: [Multi-Key Shortcuts](https://github.
 
 Das Kernkonzept meines Systems dreht sich um Modi. Diese Modi beschreiben verschiedene Zustände, in denen sich deine Tastatur befinden kann – jeder mit seinem eigenen Satz an Shortcuts. Ich verwende drei Hauptmodi:
 
--  Default Mode: Der normale Zustand, in dem die Tasten wie erwartet funktionieren
--  Launcher Mode: Dediziert zum Öffnen von Anwendungen
--  Shortcut Mode: Zum Ausführen von Skripten und anderen Aktionen
+- Default Mode: Der normale Zustand, in dem die Tasten wie erwartet funktionieren
+- Launcher Mode: Dediziert zum Öffnen von Anwendungen
+- Shortcut Mode: Zum Ausführen von Skripten und anderen Aktionen
 
 Der Clou an diesem Ansatz ist, dass dieselbe Taste je nach aktivem Modus unterschiedliche Aktionen auslösen kann. Zum Beispiel:
 
--  Im Launcher Mode könnte das Drücken von <kbd>C</kbd> Chrome öffnen.
--  Im Shortcut Mode könnte das Drücken von <kbd>C</kbd> die Clipboard-History anzeigen.
--  Ebenso könnte im Launcher Mode das Drücken von <kbd>S</kbd> Spotify öffnen.
--  Während im Shortcut Mode das Drücken von <kbd>S</kbd> das Screenshot-Tool aktivieren könnte.
+- Im Launcher Mode könnte das Drücken von <kbd>C</kbd> Chrome öffnen.
+- Im Shortcut Mode könnte das Drücken von <kbd>C</kbd> die Clipboard-History anzeigen.
+- Ebenso könnte im Launcher Mode das Drücken von <kbd>S</kbd> Spotify öffnen.
+- Während im Shortcut Mode das Drücken von <kbd>S</kbd> das Screenshot-Tool aktivieren könnte.
 
 Dieser Ansatz passt zu meinem Workflow, aber du kannst viele verschiedene Modi für eine Vielzahl von Anwendungsfällen erstellen.
 
@@ -49,9 +49,9 @@ Dieser Ansatz passt zu meinem Workflow, aber du kannst viele verschiedene Modi f
 
 Jeder Modus wird durch eine spezifische Hotkey-Kombination aktiviert:
 
--  <kbd>Cmd</kbd> + <kbd>Space</kbd>: Schaltet in den Shortcut Mode
--  <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>Space</kbd>: Schaltet in den Launcher Mode
--  <kbd>Esc</kbd>: Kehrt in den Default Mode zurück
+- <kbd>Cmd</kbd> + <kbd>Space</kbd>: Schaltet in den Shortcut Mode
+- <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>Space</kbd>: Schaltet in den Launcher Mode
+- <kbd>Esc</kbd>: Kehrt in den Default Mode zurück
 
 Das visuelle Feedback, welcher Modus aktiv ist, ist entscheidend. Ohne Indikatoren würde es leicht passieren, dass man den Überblick verliert, in welchem Modus man sich befindet, was zu unerwünschten Aktionen führen könnte. Dies habe ich mit einer Raycast Menüleisten-Extension umgesetzt, die den aktiven Modus anzeigt.
 
@@ -80,10 +80,10 @@ Anstatt die skhd-Konfiguration direkt zu schreiben, habe ich einen TypeScript-ba
 
 Der Generator erfüllt folgende Aufgaben:
 
--  Typensichere Konfiguration von Shortcuts und Modi
--  Validierung, um Konflikte zu vermeiden
--  Hilfsfunktionen für gängige Operationen
--  Single source of truth für alle Shortcuts
+- Typensichere Konfiguration von Shortcuts und Modi
+- Validierung, um Konflikte zu vermeiden
+- Hilfsfunktionen für gängige Operationen
+- Single source of truth für alle Shortcuts
 
 #### Projektstruktur
 
@@ -396,6 +396,8 @@ Raycast erfüllt in diesem Setup zwei zentrale Funktionen: Es bietet visuelles F
 
 Die Menüleisten-Manager-Extension liefert visuelles Feedback, indem sie je nach aktivem Modus unterschiedliche Icons anzeigt. Obwohl das Konzept einfach ist, ist diese visuelle Rückmeldung essenziell, um zu wissen, welcher Modus gerade aktiv ist.
 
+![Drei macOS-Menüleisten-Variationen, die verschiedene Modi zeigen: Default Mode, Launcher Mode und Shortcut Mode, jeweils mit unterschiedlichen Symbolen.](../assets/multi-key-shortcuts/modes.webp)
+
 Die Datei `package.json` konfiguriert die Extension:
 
 ```json
@@ -470,6 +472,8 @@ Diese Icons werden über die skhd-Konfiguration aktualisiert, die den passenden 
 ### Shortcuts Dokumentations-Extension
 
 Um das Shortcut-System leichter zugänglich und benutzbar zu machen, habe ich eine Extension entwickelt, die die `skhdrc`-Datei automatisch parst und die Shortcuts in einer durchsuchbaren Liste präsentiert. Mit dieser Extension hast du immer eine aktuelle Dokumentation der verfügbaren Shortcuts zur Hand.
+
+![Raycast Oberfläche, die verschiedene Mac-Anwendungen wie Arc, Kalender, Erinnerungen, Finder, Mail, Spotify, Terminal und Visual Studio Code mit ihren entsprechenden Tastaturkürzeln zeigt](../assets/multi-key-shortcuts/raycast.webp)
 
 Die Parsing-Logik in `parse-skhdrc.ts` extrahiert die Shortcut-Informationen aus der Konfigurationsdatei:
 
@@ -556,9 +560,9 @@ const parseSkhdrc = () => {
 
 Der Parser extrahiert Informationen, indem er bestimmte Muster identifiziert:
 
--  Beschreibungslinien, die mit `## Shortcut:` beginnen
--  Modus-Definitionen unter Verwendung des `<`-Trennzeichens
--  Befehle, die nach dem `:`-Trennzeichen folgen
+- Beschreibungslinien, die mit `## Shortcut:` beginnen
+- Modus-Definitionen unter Verwendung des `<`-Trennzeichens
+- Befehle, die nach dem `:`-Trennzeichen folgen
 
 Die extrahierten Shortcuts werden dann übersichtlich in einer Liste dargestellt – durch `list-shortcuts.tsx`:
 
@@ -588,20 +592,20 @@ export default function Command() {
 
 Dies erstellt eine durchsuchbare Oberfläche, in der die Shortcuts:
 
--  Nach Befehls-Typen gruppiert sind,
--  Mit ihren Beschreibungen angezeigt werden,
--  Die erforderlichen Tastenkombinationen zeigen,
--  Und Tooltips mit den vollständigen Befehlen enthalten.
+- Nach Befehls-Typen gruppiert sind,
+- Mit ihren Beschreibungen angezeigt werden,
+- Die erforderlichen Tastenkombinationen zeigen,
+- Und Tooltips mit den vollständigen Befehlen enthalten.
 
 ## Fazit
 
 Dieses benutzerdefinierte Shortcut-System hat sich in meinem Workflow als äußerst effektiv erwiesen. Seine Hauptvorteile umfassen:
 
--  Schnellen Zugriff auf eine Vielzahl von Aktionen mittels intuitiver Tastenkombinationen
--  Klare visuelle Rückmeldungen über das Menüleisten-Icon, die versehentliche Befehle verhindern
--  Typensichere Konfiguration durch den TypeScript-Generator
--  Geringe Latenz sowie zuverlässige Performance
--  Einfache Wartbarkeit und Erweiterbarkeit
+- Schnellen Zugriff auf eine Vielzahl von Aktionen mittels intuitiver Tastenkombinationen
+- Klare visuelle Rückmeldungen über das Menüleisten-Icon, die versehentliche Befehle verhindern
+- Typensichere Konfiguration durch den TypeScript-Generator
+- Geringe Latenz sowie zuverlässige Performance
+- Einfache Wartbarkeit und Erweiterbarkeit
 
 Obwohl ich gelegentlich kleinere Probleme erlebe (wie das gelegentliche Nicht-Aktualisieren des Menüleisten-Icons), hat sich das System als stabil und nützlich erwiesen. Dieses Projekt war zudem eine hervorragende Lernerfahrung. Ich habe nun deutlich mehr darüber gelernt, wie man Konfigurationsgeneratoren entwickelt, Raycast-Menüleisten-Befehle implementiert und Multi-Key Hotkey-Setups gestaltet.
 
@@ -609,9 +613,9 @@ Obwohl ich gelegentlich kleinere Probleme erlebe (wie das gelegentliche Nicht-Ak
 
 Eine interessante Alternative zu diesem individuellen Setup ist [LeaderKey](https://github.com/mikker/LeaderKey.app). Das Projekt lässt sich ebenfalls von derselben Quelle (Max Stoibers Multi-Key Setup) inspirieren, bietet jedoch eine ausgefeiltere, verpackte Lösung mit überzeugenden Features:
 
--  Nested Multi-Key Shortcuts
--  Integriertes visuelles Feedback
--  Keine Notwendigkeit, eigene Konfigurationsgeneratoren zu pflegen
--  Native macOS-App-Erfahrung
+- Nested Multi-Key Shortcuts
+- Integriertes visuelles Feedback
+- Keine Notwendigkeit, eigene Konfigurationsgeneratoren zu pflegen
+- Native macOS-App-Erfahrung
 
 LeaderKey könnte eine Überlegung wert sein, wenn du eine schlüsselfertige Lösung möchtest, die keinen eigenen Code erfordert. Ich prüfe LeaderKey derzeit als möglichen Ersatz für mein individuelles Setup und bin von dessen Umsetzung beeindruckt. Die ausgefeilte Benutzererfahrung und das durchdachte Design machen es zu einer vielversprechenden Alternative, die mein aktuelles System eventuell ersetzen könnte.

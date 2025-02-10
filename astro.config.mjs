@@ -5,6 +5,7 @@ import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import rehypeExternalLinks from "rehype-external-links";
 
 import { addClassnamesPlugin } from "./helpers/markdown/expressive-code-plugins";
 import shikiTheme from "./helpers/markdown/shiki.json";
@@ -40,7 +41,11 @@ export default defineConfig({
           inlineButtonBackground: "#18181b", // zinc-900
           inlineButtonBorder: "#52525b", // zinc-600
           inlineButtonForeground: "#a1a1aa", // zinc-400
+          editorTabBorderRadius: "0.5em",
+          frameBoxShadowCssValue:
+            "0px 5.5px 3.6px rgba(0, 0, 0, 0.024), 0px 15.2px 10px rgba(0, 0, 0, 0.035), 0px 36.5px 24.1px rgba(0, 0, 0, 0.046), 0px 121px 80px rgba(0, 0, 0, 0.07)",
         },
+        borderRadius: "0.5rem",
       },
     }),
     mdx(),
@@ -55,4 +60,5 @@ export default defineConfig({
     fallback: { de: "en" },
   },
   vite: { plugins: [tailwindcss()] },
+  markdown: { rehypePlugins: [[rehypeExternalLinks, { target: "_blank" }]] },
 });

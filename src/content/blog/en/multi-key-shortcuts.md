@@ -3,8 +3,8 @@ title: "Building a custom multi-key shortcut system with skhd and Raycast"
 description: "Build a multi-key shortcut system that lets you trigger different actions based on keyboard modes. We'll use skhd for the shortcuts, create two Raycast extensions and write a TypeScript generator for type-safe configuration of shortcuts and modes."
 pubDate: "Feb 10 2025"
 cover: "../assets/multi-key-shortcuts/hero.webp"
-coverAlt: "Multi-key shortcuts"
-colors: ["#B23523","#2400ff"]
+coverAlt: "A hand reaching upward against a dark sky, with glowing orange light emanating from the fingertips, creating a mystical atmosphere"
+colors: ["#B23523", "#2400ff"]
 tags: ["macos", "productivity", "raycast"]
 reference: "multi-key-shortcuts"
 ---
@@ -395,6 +395,8 @@ Raycast serves two crucial functions in this setup: providing visual feedback fo
 
 The Menu Bar Manager extension provides visual feedback by displaying different icons based on the active mode. While simple in concept, this visual indicator is essential for understanding which mode is currently active.
 
+![Three macOS menu bar variations showing different modes: Default Mode, Launcher Mode, and Shortcut Mode, each with distinct icons.](../assets/multi-key-shortcuts/modes.webp)
+
 The `package.json` file configures the extension:
 
 ```json
@@ -469,6 +471,8 @@ These icons are updated through the skhd configuration, which passes the appropr
 ### Shortcuts documentation extension
 
 To make the shortcut system more discoverable and easier to use, I created an extension that automatically parses the `skhdrc` file and presents the shortcuts in a searchable list. This extension ensures that users always have access to up-to-date documentation of available shortcuts.
+
+![Raycast interface showing various Mac applications like Arc, Calendar, Reminders, Finder, Mail, Spotify, Terminal, and Visual Studio Code, with their corresponding keyboard shortcuts](../assets/multi-key-shortcuts/raycast.webp)
 
 The parsing logic in `parse-skhdrc.ts` extracts shortcut information from the configuration file:
 
@@ -614,4 +618,3 @@ An interesting alternative to this custom setup is [LeaderKey](https://github.co
 - Native macOS app experience
 
 LeaderKey might be worth considering if you want a more turnkey solution that doesn't require maintaining custom code. I am currently exploring LeaderKey as a potential replacement for my custom setup, and I'm impressed with its implementation so far. Its polished user experience and thoughtful design make it a promising alternative that might eventually replace my current system.
- 
