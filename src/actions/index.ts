@@ -10,13 +10,6 @@ export const server = {
     }),
     handler: async ({ email }, ctx) => {
       const { env } = ctx.locals.runtime;
-
-      const ipAddress = ctx.request.headers.get("cf-connecting-ip") || "";
-      const { success } = await env.RATE_LIMITER.limit({ key: ipAddress });
-      if (!success) {
-        throw new Error("Rate limit exceeded");
-      }
-
       if (!validate(email)) {
         throw new Error("Disposable email not allowed");
       }

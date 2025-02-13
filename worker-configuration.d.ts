@@ -3,5 +3,4 @@
 interface Env {
 	BEEHIIV_PUB_ID: string;
 	BEEHIIV_API_KEY: string;
-	RATE_LIMITER: RateLimit;
 }
