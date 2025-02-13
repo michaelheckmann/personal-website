@@ -22,6 +22,9 @@ const t = getTranslation("blog");
     />
   </form>
 </astro-newsletter-form>
+<!-- Make sure size-5 is in the generated CSS. Important for the notification icons -->
+<div class="hidden size-5"></div>
+
 <script>
   import { actions, isInputError } from "astro:actions";
 
@@ -30,6 +33,7 @@ const t = getTranslation("blog");
   import { createToast } from "../toast";
 
   const form = document.querySelector("form");
+  const submitButton = form?.querySelector("button[type=submit]");
   const aurora = document.getElementById("aurora");
 
   class AstroNewsletterForm extends HTMLElement {
@@ -43,8 +47,54 @@ const t = getTranslation("blog");
 
       form?.addEventListener("submit", async (event) => {
         event.preventDefault();
+        if (submitButton) {
+          submitButton.setAttribute("disabled", "true");
+          // Loading spinner
+          submitButton.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="stroke-zinc-500">
+                                        <style>
+                                            .spinner_V8m1 {
+                                                transform-origin: center;
+                                                animation: spinner_zKoa 2s linear infinite;
+                                            }
+                                            .spinner_V8m1 circle {
+                                                stroke-linecap: round;
+                                                animation: spinner_YpZS 1.5s ease-in-out infinite;
+                                            }
+                                            @keyframes spinner_zKoa {
+                                                100% {
+                                                    transform: rotate(360deg);
+                                                }
+                                            }
+                                            @keyframes spinner_YpZS {
+                                                0% {
+                                                    stroke-dasharray: 0 150;
+                                                    stroke-dashoffset: 0;
+                                                }
+                                                47.5% {
+                                                    stroke-dasharray: 42 150;
+                                                    stroke-dashoffset: -16;
+                                                }
+                                                95%,
+                                                100% {
+                                                    stroke-dasharray: 42 150;
+                                                    stroke-dashoffset: -59;
+                                                }
+                                            }
+                                        </style>
+                                        <g class="spinner_V8m1"><circle cx="12" cy="12" r="9.5" fill="none" stroke-width="1.5"></circle></g></svg>`;
+        }
+
         const formData = new FormData(form);
-        const { data, error } = await actions.subscribeNewsletter(formData);
+        const { error } = await actions.subscribeNewsletter(formData);
+
+        if (submitButton) {
+          submitButton.removeAttribute("disabled");
+          // Restore the submit button content
+          submitButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                    </svg>`;
+        }
+
         if (isInputError(error)) {
           // Handle input errors.
           if (error.fields.email) {
@@ -86,6 +136,7 @@ const t = getTranslation("blog");
             </div>`,
           { timeout: 5000 },
         );
+
         // Disable the button and inputs inside the form
         form?.querySelectorAll("input, button").forEach((element) => {
           element.setAttribute("disabled", "true");
