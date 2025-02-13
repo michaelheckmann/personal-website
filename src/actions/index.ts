@@ -14,6 +14,9 @@ export const server = {
         throw new Error("Disposable email not allowed");
       }
 
+      // await sleep(5000);
+      // return true;
+
       const url = `https://api.beehiiv.com/v2/publications/${env.BEEHIIV_PUB_ID}/subscriptions`;
       const res = await fetch(url, {
         method: "POST",
