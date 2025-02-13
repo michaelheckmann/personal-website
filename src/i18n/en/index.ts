@@ -38,11 +38,13 @@ const en = {
     viewAll: "View all posts",
     copy: "Copy",
     copied: "Copied",
-    newContent: "Want to know when I publish new content?",
-    subscribe: "{0} this box to join my free newsletter",
     autoTranslated: "AI translation from {0}",
     english: "English",
     german: "German",
+    newsletter:
+      "Want to know when I publish new content? Enter your email to join my free newsletter.",
+    enterEmail: "Enter your email",
+    newsletterSuccess: "You're now subscribed to the newsletter!",
   },
 } satisfies BaseTranslation;
 

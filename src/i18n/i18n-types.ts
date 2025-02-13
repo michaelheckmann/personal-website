@@ -118,15 +118,6 @@ type RootTranslation = {
 		 */
 		copied: string
 		/**
-		 * W​a​n​t​ ​t​o​ ​k​n​o​w​ ​w​h​e​n​ ​I​ ​p​u​b​l​i​s​h​ ​n​e​w​ ​c​o​n​t​e​n​t​?
-		 */
-		newContent: string
-		/**
-		 * {​0​}​ ​t​h​i​s​ ​b​o​x​ ​t​o​ ​j​o​i​n​ ​m​y​ ​f​r​e​e​ ​n​e​w​s​l​e​t​t​e​r
-		 * @param {unknown} 0
-		 */
-		subscribe: RequiredParams<'0'>
-		/**
 		 * A​I​ ​t​r​a​n​s​l​a​t​i​o​n​ ​f​r​o​m​ ​{​0​}
 		 * @param {unknown} 0
 		 */
@@ -139,6 +130,18 @@ type RootTranslation = {
 		 * G​e​r​m​a​n
 		 */
 		german: string
+		/**
+		 * W​a​n​t​ ​t​o​ ​k​n​o​w​ ​w​h​e​n​ ​I​ ​p​u​b​l​i​s​h​ ​n​e​w​ ​c​o​n​t​e​n​t​?​ ​E​n​t​e​r​ ​y​o​u​r​ ​e​m​a​i​l​ ​t​o​ ​j​o​i​n​ ​m​y​ ​f​r​e​e​ ​n​e​w​s​l​e​t​t​e​r​.
+		 */
+		newsletter: string
+		/**
+		 * E​n​t​e​r​ ​y​o​u​r​ ​e​m​a​i​l
+		 */
+		enterEmail: string
+		/**
+		 * Y​o​u​'​r​e​ ​n​o​w​ ​s​u​b​s​c​r​i​b​e​d​ ​t​o​ ​t​h​e​ ​n​e​w​s​l​e​t​t​e​r​!
+		 */
+		newsletterSuccess: string
 	}
 }
 
@@ -245,14 +248,6 @@ export type TranslationFunctions = {
 		 */
 		copied: () => LocalizedString
 		/**
-		 * Want to know when I publish new content?
-		 */
-		newContent: () => LocalizedString
-		/**
-		 * {0} this box to join my free newsletter
-		 */
-		subscribe: (arg0: unknown) => LocalizedString
-		/**
 		 * AI translation from {0}
 		 */
 		autoTranslated: (arg0: unknown) => LocalizedString
@@ -264,6 +259,18 @@ export type TranslationFunctions = {
 		 * German
 		 */
 		german: () => LocalizedString
+		/**
+		 * Want to know when I publish new content? Enter your email to join my free newsletter.
+		 */
+		newsletter: () => LocalizedString
+		/**
+		 * Enter your email
+		 */
+		enterEmail: () => LocalizedString
+		/**
+		 * You're now subscribed to the newsletter!
+		 */
+		newsletterSuccess: () => LocalizedString
 	}
 }
 

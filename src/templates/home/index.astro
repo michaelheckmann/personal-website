@@ -1,8 +1,11 @@
 ---
 import Header from "@/components/header.astro";
+import { getTranslation } from "@/i18n/translation";
 
 import Grid from "./grid.astro";
 import Hero from "./hero.astro";
+
+const t = getTranslation("blog");
 ---
 
 <Header hideLogo />

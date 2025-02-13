@@ -74,6 +74,8 @@ const { Content } = await render(post);
       text-underline-offset: 0.125em;
       text-decoration-color: var(--color-zinc-400);
       font-weight: 500;
+      outline: none;
+      border-radius: 0.25rem;
       transition:
         color 0.3s ease,
         text-decoration-color 0.3s ease;
@@ -81,6 +83,12 @@ const { Content } = await render(post);
     :where(a):hover {
       color: var(--color-zinc-100);
       text-decoration-color: var(--color-zinc-300);
+    }
+    :where(a):focus-visible {
+      color: var(--color-zinc-200);
+      outline: none;
+      padding: 0.25em 0.5em;
+      box-shadow: 0 0 0 calc(1px + 0px) oklch(0.92 0.004 286.32);
     }
     :where(strong) {
       color: var(--tw-prose-bold);
@@ -308,6 +316,10 @@ const { Content } = await render(post);
       padding-inline-end: 1.1428571em;
       padding-bottom: 0.8571429em;
       padding-inline-start: 1.1428571em;
+    }
+    :where(pre):focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 calc(1px + 0px) oklch(0.92 0.004 286.32);
     }
     :where(pre code) {
       background-color: transparent;

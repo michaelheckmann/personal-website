@@ -31,7 +31,7 @@ const computeRectWidth = (depth: number): number => {
 
   /* Main container stays fixed as before */
   .toc-container {
-    z-index: 0;
+    z-index: 60;
     position: fixed;
     left: 0;
     top: 50%;
@@ -47,6 +47,10 @@ const computeRectWidth = (depth: number): number => {
   .toc-container.visible {
     /* When visible, fade in */
     opacity: 1;
+  }
+  .toc-container.visible:focus-within .toc-panel {
+    opacity: 1;
+    pointer-events: auto;
   }
   /* Hide small rectangles when panel is active */
   .toc-container:hover .toc-rectangles {
@@ -93,6 +97,12 @@ const computeRectWidth = (depth: number): number => {
   .toc-container.visible:hover .toc-panel {
     opacity: 1;
     pointer-events: auto;
+  }
+  .toc-panel-item:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 calc(1px + 0px) oklch(0.92 0.004 286.32);
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
   }
   /* Each panel item appearance */
   .toc-panel-item {
@@ -220,5 +230,17 @@ const computeRectWidth = (depth: number): number => {
 
     window.addEventListener("scroll", updateTocVisibility);
     updateTocVisibility();
+
+    // Remove old container focus listener
+    // tocContainer?.addEventListener("focusin", () => {
+    //   tocContainer.classList.add("visible");
+    // });
+
+    // Add focus listeners on each panel link
+    document.querySelectorAll(".toc-panel-item").forEach((panelLink) => {
+      panelLink.addEventListener("focus", () => {
+        tocContainer?.classList.add("visible");
+      });
+    });
   })();
 </script>

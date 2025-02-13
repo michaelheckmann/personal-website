@@ -1,0 +1,108 @@
+---
+import { getTranslation } from "@/i18n/translation";
+
+import SubmitInput from "./submit-input.astro";
+
+const t = getTranslation("blog");
+---
+
+<astro-newsletter-form
+  class="w-full grow"
+  data-success-text={t.newsletterSuccess()}
+>
+  <form class="w-full">
+    <SubmitInput
+      label="Email"
+      id="email"
+      name="email"
+      type="email"
+      required
+      placeholder={t.enterEmail()}
+      fadeColor="#0D0C0F"
+    />
+  </form>
+</astro-newsletter-form>
+<script>
+  import { actions, isInputError } from "astro:actions";
+
+  import { sleep } from "@/lib/utils";
+
+  import { createToast } from "../toast";
+
+  const form = document.querySelector("form");
+  const aurora = document.getElementById("aurora");
+
+  class AstroNewsletterForm extends HTMLElement {
+    connectedCallback() {
+      // Read the message from the data attribute.
+      const { successText } = this.dataset;
+      if (!successText) {
+        console.error("Toast: Missing required data attributes.");
+        return;
+      }
+
+      form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const { data, error } = await actions.subscribeNewsletter(formData);
+        if (isInputError(error)) {
+          // Handle input errors.
+          if (error.fields.email) {
+            const message = error.fields.email[0];
+            createToast(
+              `<div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                    </svg>
+                    <p>${message}</p>
+                </div>`,
+              { timeout: 5000 },
+            );
+            return;
+          }
+        }
+
+        if (error) {
+          // Handle other errors.
+          createToast(
+            `<div class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                </svg>
+                <p>${error}</p>
+            </div>`,
+            { timeout: 5000 },
+          );
+          return;
+        }
+
+        // Handle success.
+        createToast(
+          `<div class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                <p>${successText}</p>
+            </div>`,
+          { timeout: 5000 },
+        );
+        // Disable the button and inputs inside the form
+        form?.querySelectorAll("input, button").forEach((element) => {
+          element.setAttribute("disabled", "true");
+        });
+
+        if (aurora) {
+          aurora.style.display = "block";
+          await sleep(50);
+          aurora.style.opacity = "1";
+          await sleep(10_000);
+          aurora.style.opacity = "0";
+          await sleep(5000);
+          aurora.style.display = "none";
+        }
+      });
+    }
+  }
+
+  customElements.define("astro-newsletter-form", AstroNewsletterForm);
+</script>

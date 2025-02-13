@@ -1,29 +1,30 @@
 ---
 import { getTranslation } from "@/i18n/translation";
 
-import ClickText from "./click-text.astro";
-import Noise from "./layout/noise.astro";
+import Noise from "../layout/noise.astro";
+import NewsletterForm from "./newsletter-form.astro";
 
 const t = getTranslation("blog");
 ---
 
 <div class="relative">
-  <a
-    href="https://michaelheckmann.beehiiv.com/subscribe"
-    target="_blank"
-    class="shimmer relative z-0 flex h-28 w-full flex-col items-center justify-center rounded-xl bg-transparent p-4 text-center text-balance transition-colors duration-500 hover:bg-zinc-900 hover:text-zinc-300"
+  <div
+    class:list={[
+      "shimmer relative z-0 flex w-full items-center justify-between rounded-xl bg-transparent text-center text-balance",
+      "flex-col gap-4 px-4 py-4",
+      "md:h-28 md:flex-row md:gap-12 md:px-8",
+    ]}
   >
-    <span>
-      {t.newContent()}
-    </span>
-    <span>
-      <ClickText />{t.subscribe("")}
-    </span>
-  </a>
+    <p class="w-full text-left text-balance md:max-w-xl">
+      {t.newsletter()}
+    </p>
+    <NewsletterForm />
+  </div>
   <div class="pointer-events-none absolute inset-0 z-10">
     <Noise opacity="0.1" />
   </div>
 </div>
+
 <style>
   .shimmer {
     --border-width: 1px;

@@ -1,0 +1,40 @@
+<div
+  id="aurora"
+  class="pointer-events-none fixed top-0 left-0 z-50 hidden h-screen w-screen overflow-hidden opacity-0 transition-opacity duration-[5000ms]"
+>
+  <div
+    class:list={[
+      "absolute -inset-[10px]",
+      "[background-image:var(--white-gradient),var(--aurora)]",
+      "[background-size:300%,_200%] [background-position:50%_50%,50%_50%] opacity-50",
+      "blur-[10px] invert filter will-change-transform",
+      "[--aurora:repeating-linear-gradient(100deg,var(--color-blue-500)_10%,var(--color-indigo-300)_15%,var(--color-blue-300)_20%,var(--color-violet-200)_25%,var(--color-blue-400)_30%)]",
+      "[--dark-gradient:repeating-linear-gradient(100deg,black_0%,black_7%,transparent_10%,transparent_12%,black_16%)]",
+      "[--white-gradient:repeating-linear-gradient(100deg,white_0%,white_7%,transparent_10%,transparent_12%,white_16%)]",
+      "after:absolute after:inset-0",
+      "after:[background-image:var(--white-gradient),var(--aurora)]",
+      "after:[background-size:200%,_100%] after:[background-attachment:fixed]",
+      "after:mix-blend-difference after:content-['']",
+      "dark:[background-image:var(--dark-gradient),var(--aurora)] dark:invert-0",
+      "after:dark:[background-image:var(--dark-gradient),var(--aurora)]",
+      "[mask-image:radial-gradient(100%_100%_ellipse_at_50%_0%,black_0%,transparent_50%_50%)]",
+      "[animation:aurora_60s_linear_infinite]",
+    ]}
+  >
+  </div>
+</div>
+<style>
+  /* Add an animation targeting the .aurora element shifting bg position from 50% 50%,50% 50% to 350% 50%, 350% 50%   */
+  @keyframes aurora {
+    0% {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    100% {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+</style>

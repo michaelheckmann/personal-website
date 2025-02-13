@@ -38,13 +38,13 @@ const de = {
     viewAll: "Alle Beiträge anzeigen",
     copy: "In Zwischenablage kopieren",
     copied: "Kopiert!",
-    newContent:
-      "Möchtest du informiert werden, wenn ich neue Inhalte veröffentliche?",
-    subscribe:
-      "{0} dieses Feld, um meinen kostenlosen Newsletter zu abonnieren",
     autoTranslated: "KI Übersetzung aus dem {0}",
     english: "Englischen",
     german: "Deutschen",
+    newsletter:
+      "Möchtest du informiert werden, wenn ich neue Inhalte veröffentliche? Gib deine Email ein, um meinen kostenlosen Newsletter zu abonnieren.",
+    enterEmail: "Email eingeben",
+    newsletterSuccess: "Du bist jetzt für den Newsletter angemeldet!",
   },
 } satisfies Translation;
 

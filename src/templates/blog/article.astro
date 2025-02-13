@@ -1,12 +1,13 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 
-import { getLocalHref, removeLocaleFromPath } from "@/lib/routing";
+import { getLocalHref } from "@/lib/routing";
 import Header from "@/components/header.astro";
-import Newsletter from "@/components/newsletter.astro";
+import Newsletter from "@/components/newsletter/newsletter.astro";
+import ScrollTopButton from "@/components/scroll-top-button.astro";
 import Section from "@/components/section.astro";
-import { $lang, getTranslation } from "@/i18n/translation";
+import { getTranslation } from "@/i18n/translation";
 
 import ArticleContent from "./components/article-content.astro";
 import ArticleLangSwitch from "./components/article-lang-switch.astro";
@@ -16,29 +17,6 @@ type Props = CollectionEntry<"blog">;
 
 const { id, data } = Astro.props;
 const t = getTranslation("blog");
-const locale = $lang.get();
-const reversedLang = locale === "en" ? "de" : "en";
-
-// Get all blog posts from the content collection
-const allBlogPosts = await getCollection("blog");
-
-// Find the current blog post object by its ID
-const currentLanguagePost = allBlogPosts.find((p) => p.id === id);
-
-const translatedPost = allBlogPosts.find(
-  (post) =>
-    post.id.startsWith(reversedLang) &&
-    post.data.reference === currentLanguagePost?.data.reference,
-);
-
-// Error if no translation exists
-if (!translatedPost) {
-  throw new Error(`Translated post not found for ${Astro.url.pathname}`);
-}
-
-// Construct URL for the translated post
-// Format: /{language}/blog/{post-slug}
-const href = `/${reversedLang}/blog/${removeLocaleFromPath(translatedPost?.id)}`;
 ---
 
 <Header back={{ href: getLocalHref("/blog"), text: t.viewAll() }} />
@@ -70,3 +48,4 @@ const href = `/${reversedLang}/blog/${removeLocaleFromPath(translatedPost?.id)}`
 <Section _title="newsletter" class="pb-32">
   <Newsletter />
 </Section>
+<ScrollTopButton />
