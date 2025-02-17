@@ -1,0 +1,33 @@
+---
+import ServerIsland from "./server-island.astro";
+---
+
+<main class="container">
+  <article>
+    <p>This is just some static content</p>
+  </article>
+  <article>
+    <header>Click the button to trigger a server action</header>
+    <button class="outline">Increment count</button>
+  </article>
+  <article>
+    <header>Server Island</header>
+    <ServerIsland server:defer />
+  </article>
+</main>
+
+<script>
+  import { actions } from "astro:actions";
+
+  const button = document.querySelector("button");
+  button?.addEventListener("click", async () => {
+    // Show alert pop-up with count increment response
+    const { data, error } = await actions.incrementCount({ amount: 1 });
+    if (error) {
+      console.error("Error incrementing count:", error);
+      alert("Failed to increment count. Please try again.");
+    } else {
+      alert(data);
+    }
+  });
+</script>

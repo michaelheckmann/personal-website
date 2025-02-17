@@ -51,7 +51,9 @@ const t = getTranslation("layout");
             >
               <path d="m15 18-6-6 6-6" />
             </svg>
-            <span>{back.text ?? t.back()}</span>
+            <span class="hidden sm:inline">{back.text ?? t.back()}</span>
+            {/* Always back on mobile */}
+            <span class="inline sm:hidden">{t.back()}</span>
           </Link>
         ) : (
           <div class="z-10" />

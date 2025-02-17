@@ -1,0 +1,22 @@
+{
+  "name": "my-astro-app",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro build && wrangler pages dev",
+    "astro": "astro",
+    "deploy": "astro build && wrangler pages deploy",
+    "cf-typegen": "wrangler types",
+    "wrangler": "wrangler"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.2.1",
+    "astro": "^5.3.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250204.0",
+    "wrangler": "^3.109.0"
+  }
+}

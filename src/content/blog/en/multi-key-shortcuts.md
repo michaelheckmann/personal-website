@@ -5,7 +5,7 @@ pubDate: "Feb 10 2025"
 cover: "../assets/multi-key-shortcuts/hero.webp"
 coverAlt: "A hand reaching upward against a dark sky, with glowing orange light emanating from the fingertips, creating a mystical atmosphere"
 colors: ["#B23523", "#2400ff"]
-tags: ["macos", "productivity", "raycast"]
+tags: ["MacOS", "Productivity", "Raycast"]
 reference: "multi-key-shortcuts"
 ---
 

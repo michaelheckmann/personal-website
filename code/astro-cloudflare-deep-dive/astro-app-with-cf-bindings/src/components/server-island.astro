@@ -1,0 +1,12 @@
+---
+const countryCode = Astro.request.headers.get("cf-ipcountry");
+// Wait for 5 seconds before incrementing the count
+await new Promise((resolve) => setTimeout(resolve, 5000));
+const count = await Astro.locals.runtime.env.KV.get("count");
+---
+
+<div>
+  <h1>Server Island</h1>
+  <p>Country Code: {countryCode}</p>
+  <p>Count: {count ?? "0"}</p>
+</div>

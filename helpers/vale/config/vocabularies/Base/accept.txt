@@ -8,3 +8,11 @@ Spotify
 tooltips?
 keypress
 prefill.*
+Astro
+Cloudflare
+Cloudflare Pages
+TypeScript
+Zod
+dev
+SVGs?
+serverless

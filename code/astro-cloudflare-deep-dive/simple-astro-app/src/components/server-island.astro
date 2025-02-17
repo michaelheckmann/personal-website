@@ -1,0 +1,22 @@
+---
+// Wait for 5 seconds to simulate a slow server
+await new Promise((resolve) => setTimeout(resolve, 5000));
+const host = Astro.request.headers.get("host");
+---
+<div>
+  <h1>Server Island</h1>
+  <p>Host: {host}</p>
+</div>
+<div>
+  <button>Get Greeting</button>
+</div>
+<script>
+  import { actions } from "astro:actions";
+
+  const button = document.querySelector("button");
+  button?.addEventListener("click", async () => {
+    // Show alert pop-up with greeting from action
+    const { data, error } = await actions.getGreeting({ name: "Michael" });
+    if (!error) alert(data);
+  });
+</script>

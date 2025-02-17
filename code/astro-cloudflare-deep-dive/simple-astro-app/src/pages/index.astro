@@ -1,0 +1,10 @@
+---
+import ServerIsland from '../components/server-island.astro';
+import Welcome from '../components/Welcome.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<ServerIsland server:defer />
+	<Welcome />
+</Layout>

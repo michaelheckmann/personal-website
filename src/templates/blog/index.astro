@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 
 import { getLocalHref, removeLocaleFromPath } from "@/lib/routing";
 import Header from "@/components/header.astro";
+import Newsletter from "@/components/newsletter/newsletter.astro";
 import Section from "@/components/section.astro";
 import { $lang } from "@/i18n/translation";
 
@@ -18,8 +19,8 @@ const posts = (await getCollection("blog"))
   <div class="flex h-32 w-full justify-center">
     <h1 class="font-mono text-sm text-zinc-100">Blog</h1>
   </div>
-  <div>
-    <ul class="space-y-12 md:space-y-4">
+  <div class="w-full">
+    <ul class="space-y-24">
       {
         posts.map(({ id, data }) => (
           <li>
@@ -33,6 +34,6 @@ const posts = (await getCollection("blog"))
     </ul>
   </div>
 </Section>
-<!-- <Section _title="newsletter" class="pt-32 pb-32">
+<Section _title="newsletter" class="pb-32">
   <Newsletter />
-</Section> -->
+</Section>

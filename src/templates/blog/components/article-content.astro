@@ -26,8 +26,10 @@ const { Content } = await render(post);
   }
 
   /* Only show the "copy" button when the code block is marked with "cn-show-copy" */
-  figure.frame.cn-show-copy .copy {
-    display: block !important;
+  @media (min-width: 640px) {
+    figure.frame.cn-show-copy .copy {
+      display: block !important;
+    }
   }
 </style>
 

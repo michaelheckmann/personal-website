@@ -16,11 +16,20 @@ const checkIfValeInstalled = (): boolean => {
   }
 };
 
-const runValeOnPath = (targetPath: string): void => {
+const runValeOnPath = (blogPostName: string): void => {
+  // Check if --pretty flag is present
+  const isPrettyOutput: boolean = process.argv.includes("--pretty");
+
   if (!checkIfValeInstalled()) {
     console.log("Vale is not installed.");
     return;
   }
+  const targetPath = `src/content/blog/en/${blogPostName}.md`;
+  if (!fs.existsSync(targetPath)) {
+    console.log(`File ${targetPath} does not exist.`);
+    return;
+  }
+
   const { stdout } = Bun.spawnSync(["vale", "--output=JSON", targetPath]);
   const results = JSON.parse(stdout.toString()) as ValeOutput;
 
@@ -37,11 +46,27 @@ const runValeOnPath = (targetPath: string): void => {
       linesMap[lineIndex].push(alert.Message);
     });
 
+    let editCounter = 1;
     Object.entries(linesMap).forEach(([lineNumber, messages]) => {
-      const lineContent = fileContent[Number(lineNumber)];
-      analysis.push(`${Number(lineNumber) + 1}: ${lineContent}`);
-      messages.forEach((m) => analysis.push(m));
-      analysis.push("");
+      const lineIndex = Number(lineNumber);
+      const lineContent = fileContent[lineIndex];
+      if (isPrettyOutput) {
+        analysis.push(`### Edit ${editCounter}`);
+        analysis.push(lineContent);
+        analysis.push("");
+        analysis.push(`**Suggestions**`);
+        messages.forEach((message: string) => {
+          analysis.push(`- ${message}`);
+        });
+        analysis.push("");
+        editCounter++;
+      } else {
+        analysis.push(`${lineIndex + 1}: ${lineContent}`);
+        messages.forEach((message: string) => {
+          analysis.push(message);
+        });
+        analysis.push("");
+      }
     });
   });
 
@@ -49,7 +74,7 @@ const runValeOnPath = (targetPath: string): void => {
 };
 
 if (process.argv.length < 3) {
-  console.log("Please provide a file path.");
+  console.log("Please provide the name of a blog post.");
   process.exit(1);
 }
 

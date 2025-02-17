@@ -13,6 +13,7 @@
     "**/node_modules": true,
     "**/dist": true,
     ".cache": true,
-    ".astro": true
+    ".astro": true,
+    ".wrangler": true
   }
 }

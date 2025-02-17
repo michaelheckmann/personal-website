@@ -1,0 +1,12 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "cf-astro-actions-islands"
+compatibility_date = "2025-02-04"
+compatibility_flags = [ "nodejs_compat" ]
+pages_build_output_dir = "./dist"
+
+[observability]
+enabled = true
+
+[[kv_namespaces]]
+binding = "KV"
+id = "8aa91a35e33c4c2c9baee99c350945d3"

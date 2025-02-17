@@ -103,4 +103,8 @@ const t = getTranslation("blog");
   .expressive-code button {
     border-radius: 0.5rem !important;
   }
+  /* Adjust the vertical position of the copy button if the window is a terminal */
+  .expressive-code .is-terminal .copy {
+    inset-block-start: calc(-4.5px + var(--button-spacing)) !important;
+  }
 </style>

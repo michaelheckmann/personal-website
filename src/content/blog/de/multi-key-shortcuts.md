@@ -5,7 +5,7 @@ pubDate: "Feb 10 2025"
 cover: "../assets/multi-key-shortcuts/hero.webp"
 coverAlt: "Eine Hand, die sich gegen einen dunklen Himmel streckt, wobei orangefarbenes Licht von den Fingerspitzen ausgeht und eine mystische Atmosphäre erzeugt"
 colors: ["#B23523", "#2400ff"]
-tags: ["macos", "productivity", "raycast"]
+tags: ["MacOS", "Produktivität", "Raycast"]
 translated: true
 reference: "multi-key-shortcuts"
 ---
