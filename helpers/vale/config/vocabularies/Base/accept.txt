@@ -16,3 +16,5 @@ Zod
 dev
 SVGs?
 serverless
+wishlist
+rebrand.*
