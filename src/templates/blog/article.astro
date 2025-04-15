@@ -37,7 +37,11 @@ const t = getTranslation("blog");
     <Image
       src={data.cover}
       alt={data.coverAlt}
-      class="absolute inset-0 z-10 size-full rounded-4xl object-cover shadow-xl"
+      class="absolute inset-0 z-10 size-full rounded-4xl bg-radial from-red-500 object-cover shadow-xl"
+      style={{
+        "--tw-gradient-from": `${data.colors[0]}20`,
+        "--tw-gradient-to": `${data.colors[1]}20`,
+      }}
     />
   </div>
   <div class="flex w-full flex-col items-center gap-4">

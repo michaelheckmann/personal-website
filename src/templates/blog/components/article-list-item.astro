@@ -40,7 +40,11 @@ const locale = $lang.get();
         <Image
           src={cover}
           alt={coverAlt}
-          class="absolute inset-0 size-full rounded-xl object-cover shadow-lg"
+          class="absolute inset-0 size-full rounded-xl bg-radial from-red-500 object-cover shadow-lg"
+          style={{
+            "--tw-gradient-from": `${colors[0]}20`,
+            "--tw-gradient-to": `${colors[1]}20`,
+          }}
         />
       </div>
       <div class="mx-auto space-y-4">

@@ -14,7 +14,15 @@ const t = getTranslation("home");
     <Image
       src={michael}
       alt="Michael"
-      class="size-24 rounded-full bg-[#DCDBD5]"
+      class="size-24 rounded-full inset-shadow-sm"
+      style={{
+        backgroundColor: "hsla(50,9%,87%,1)",
+        backgroundImage: `
+          radial-gradient(at 1% 28%, #ECDBBE 0px, transparent 70%),
+          radial-gradient(at 95% 31%, hsla(50,9%,87%,1) 0px, transparent 70%),
+          radial-gradient(at 54% 70%, hsla(195,33%,58%,1) 0px, transparent 100%);
+      `,
+      }}
       {...getResponsiveImageProps(michael)}
     />
     <h1 class="text-lg text-zinc-100">Michael Heckmann</h1>
@@ -25,7 +33,8 @@ const t = getTranslation("home");
       <p
         set:html={t.work(
           {
-            href: "a",
+            href: "https://www.personio.com",
+            openInTab: true,
             text: "Personio",
             class: [
               "styled-underline hover:text-zinc-100 transition-colors duration-300",
@@ -34,7 +43,8 @@ const t = getTranslation("home");
             ],
           },
           {
-            href: "b",
+            href: "https://www.celonis.com",
+            openInTab: true,
             text: "Celonis",
             class: [
               "styled-underline hover:text-zinc-100 transition-colors duration-300",

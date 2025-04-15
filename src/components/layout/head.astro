@@ -1,4 +1,7 @@
 ---
+import geistSans400 from "@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff2";
+import inconsolata400 from "@fontsource/inconsolata/files/inconsolata-latin-400-normal.woff2";
+
 interface Props {
   title: string;
   description: string;
@@ -54,6 +57,22 @@ const translationLinks = Astro.props.translationLinks ?? [
     <link rel="alternate" href={href} hreflang={lang} />
   ))
 }
+
+<!-- Preload Fonts -->
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href={geistSans400}
+  crossorigin="anonymous"
+/>
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href={inconsolata400}
+  crossorigin="anonymous"
+/>
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
