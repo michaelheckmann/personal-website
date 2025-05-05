@@ -69,6 +69,10 @@ type RootTranslation = {
 			 */
 			title: string
 			/**
+			 * F​i​n​d​ ​a​g​a​i​n​ ​w​h​a​t​ ​y​o​u​ ​d​i​d​n​'​t​ ​s​a​v​e​.
+			 */
+			orbit: string
+			/**
 			 * P​r​e​v​e​n​t​i​n​g​ ​m​e​n​t​a​l​ ​h​e​a​l​t​h​ ​i​s​s​u​e​s​ ​t​h​r​o​u​g​h​ ​A​I​.
 			 */
 			amay: string
@@ -198,6 +202,10 @@ export type TranslationFunctions = {
 			 * Projects
 			 */
 			title: () => LocalizedString
+			/**
+			 * Find again what you didn't save.
+			 */
+			orbit: () => LocalizedString
 			/**
 			 * Preventing mental health issues through AI.
 			 */

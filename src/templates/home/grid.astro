@@ -1,7 +1,8 @@
 ---
+import { getLocalHref } from "@/lib/routing";
 import Section from "@/components/section.astro";
 import { getTranslation } from "@/i18n/translation";
-import { getLocalHref } from "@/lib/routing";
+
 import GridItem from "./grid-item.astro";
 
 const t = getTranslation("home");
@@ -11,7 +12,7 @@ const t = getTranslation("home");
   <div class="grid gap-16 md:grid-cols-3">
     <!-- Building -->
     <div class="space-y-4">
-      <h2 class="text-xs tracking-widest uppercase text-zinc-400">
+      <h2 class="text-xs tracking-widest text-zinc-400 uppercase">
         {t.building.title()}
       </h2>
       <div class="space-y-8">
@@ -33,10 +34,16 @@ const t = getTranslation("home");
 
     <!-- Projects -->
     <div class="space-y-4">
-      <h2 class="text-xs tracking-widest uppercase text-zinc-400">
+      <h2 class="text-xs tracking-widest text-zinc-400 uppercase">
         {t.projects.title()}
       </h2>
       <div class="space-y-8">
+        <GridItem
+          title="Orbit"
+          description={t.projects.orbit()}
+          href="https://orbit.heckmann.app/"
+          class="after:content-['Orbit']"
+        />
         <GridItem
           title="Amay Health"
           description={t.projects.amay()}
@@ -54,7 +61,7 @@ const t = getTranslation("home");
 
     <!-- Connect -->
     <div class="space-y-4">
-      <h2 class="text-xs tracking-widest uppercase text-zinc-400">
+      <h2 class="text-xs tracking-widest text-zinc-400 uppercase">
         {t.connect.title()}
       </h2>
       <div class="space-y-8">

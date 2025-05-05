@@ -21,6 +21,7 @@ const en = {
     },
     projects: {
       title: "Projects",
+      orbit: "Find again what you didn't save.",
       amay: "Preventing mental health issues through AI.",
       qart: "Making e-commerce accessible for everyone.",
     },
