@@ -10,11 +10,11 @@ const headings = allHeadings.filter((h) => h.depth > 1 && h.depth <= 3);
 const computeRectWidth = (depth: number): number => {
   switch (depth) {
     case 2:
-      return 54;
-    case 3:
-      return 43;
-    case 4:
       return 32;
+    case 3:
+      return 24;
+    case 4:
+      return 16;
     default:
       return 16;
   }
@@ -86,7 +86,7 @@ const computeRectWidth = (depth: number): number => {
     width: 16rem;
     background-color: var(--color-zinc-900);
     color: var(--color-zinc-600);
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); */
     padding: 1rem;
     opacity: 0;
     pointer-events: none; /* hidden -> not clickable */
