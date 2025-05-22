@@ -15,7 +15,7 @@ I love tools that make me more productive. Software like [Raycast](https://www.r
 
 So, you can imagine my frustration when I learned that the Rewind team, now rebranded as [Limitless](https://www.limitless.ai/), had decided to shift their focus away from Rewind. While Rewind remains available, and screen recording is on the roadmap for the Limitless product, I worry that Rewind won't receive the attention it deserves. It's still missing some crucial features that I've wanted for a long time. For instance, I've often wished for more sophisticated ways to filter and search my recordings. I've also encountered occasional performance issues, and with the project's reduced priority, I’m not optimistic about these shortcomings being addressed. This drove me to explore building my own alternative.
 
-![Dark background with two gray triangular rewind icons centered at the top, suggesting a rewind function.](../assets/my-rewind-alternative/illustration.webp)
+![Dark background with two gray triangular rewind icons centered at the top, suggesting a rewind function.](../assets/my-rewind-alternative/mockup.webp)
 
 ## My wishlist for a new Rewind
 
