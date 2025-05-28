@@ -44,7 +44,7 @@ type RootTranslation = {
 		 */
 		description: string
 		/**
-		 *  ​P​r​e​v​i​o​u​s​l​y​ ​w​o​r​k​e​d​ ​o​n​ ​a​n​a​l​y​t​i​c​s​ ​a​n​d​ ​a​u​t​o​m​a​t​i​o​n​ ​a​t​ ​{​0​|​a​t​a​g​}​ ​a​n​d​ ​{​1​|​a​t​a​g​}​.​ ​C​u​r​r​e​n​t​l​y​ ​w​o​r​k​i​n​g​ ​o​n​ ​i​n​d​e​p​e​n​d​e​n​t​ ​p​r​o​j​e​c​t​s​ ​a​n​d​ ​c​r​a​f​t​i​n​g​ ​w​e​b​s​i​t​e​s​ ​f​o​r​ ​s​e​l​e​c​t​ ​c​l​i​e​n​t​s​.​ ​I​n​t​e​r​e​s​t​e​d​ ​i​n​ ​e​x​p​l​o​r​i​n​g​ ​h​o​w​ ​t​e​c​h​n​o​l​o​g​y​ ​c​a​n​ ​s​i​m​p​l​i​f​y​ ​t​a​s​k​s​ ​a​n​d​ ​c​r​e​a​t​e​ ​m​e​a​n​i​n​g​f​u​l​ ​d​i​g​i​t​a​l​ ​e​x​p​e​r​i​e​n​c​e​s​.
+		 *  ​P​r​e​v​i​o​u​s​l​y​ ​w​o​r​k​e​d​ ​o​n​ ​a​n​a​l​y​t​i​c​s​ ​a​n​d​ ​a​u​t​o​m​a​t​i​o​n​ ​a​t​ ​{​0​|​a​t​a​g​}​ ​a​n​d​ ​{​1​|​a​t​a​g​}​.​ ​C​u​r​r​e​n​t​l​y​ ​w​o​r​k​i​n​g​ ​o​n​ ​i​n​d​e​p​e​n​d​e​n​t​ ​p​r​o​j​e​c​t​s​ ​a​n​d​ ​c​r​a​f​t​i​n​g​ ​w​e​b​s​i​t​e​s​ ​a​n​d​ ​w​e​b​ ​a​p​p​s​ ​f​o​r​ ​s​e​l​e​c​t​ ​c​l​i​e​n​t​s​.​ ​I​n​t​e​r​e​s​t​e​d​ ​i​n​ ​e​x​p​l​o​r​i​n​g​ ​h​o​w​ ​t​e​c​h​n​o​l​o​g​y​ ​c​a​n​ ​s​i​m​p​l​i​f​y​ ​t​a​s​k​s​ ​a​n​d​ ​c​r​e​a​t​e​ ​m​e​a​n​i​n​g​f​u​l​ ​d​i​g​i​t​a​l​ ​e​x​p​e​r​i​e​n​c​e​s​.
 		 * @param {unknown} 0
 		 * @param {unknown} 1
 		 */
@@ -180,7 +180,7 @@ export type TranslationFunctions = {
 		 */
 		description: () => LocalizedString
 		/**
-		 *  Previously worked on analytics and automation at {0|atag} and {1|atag}. Currently working on independent projects and crafting websites for select clients. Interested in exploring how technology can simplify tasks and create meaningful digital experiences.
+		 *  Previously worked on analytics and automation at {0|atag} and {1|atag}. Currently working on independent projects and crafting websites and web apps for select clients. Interested in exploring how technology can simplify tasks and create meaningful digital experiences.
 		 */
 		work: (arg0: unknown, arg1: unknown) => LocalizedString
 		building: {

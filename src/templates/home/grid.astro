@@ -66,6 +66,13 @@ const t = getTranslation("home");
       </h2>
       <div class="space-y-8">
         <GridItem
+          title="Email"
+          description={t.connect.email()}
+          href="mailto:hello@heckmann.app"
+          openInNewTab={false}
+          class="after:content-['Email']"
+        />
+        <GridItem
           title="LinkedIn"
           description={t.connect.linkedIn()}
           href="https://linkedin.com/in/heckmannmichael"
@@ -76,13 +83,6 @@ const t = getTranslation("home");
           description={t.connect.twitter()}
           href="https://x.com/mt_heckmann"
           class="after:content-['Twitter']"
-        />
-        <GridItem
-          title="Email"
-          description={t.connect.email()}
-          href="mailto:hello@heckmann.app"
-          openInNewTab={false}
-          class="after:content-['Email']"
         />
       </div>
     </div>
