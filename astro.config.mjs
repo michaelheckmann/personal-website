@@ -61,4 +61,7 @@ export default defineConfig({
   },
   vite: { plugins: [tailwindcss()] },
   markdown: { rehypePlugins: [[rehypeExternalLinks, { target: "_blank" }]] },
+  build: {
+    assetsPrefix: "https://heckmann-app.b-cdn.net",
+  },
 });
