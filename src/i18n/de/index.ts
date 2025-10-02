@@ -21,7 +21,10 @@ const de = {
     },
     projects: {
       title: "Projekte",
-      orbit: "Finde wieder, was du nicht gespeichert hast.",
+      orbit:
+        "Automatische Bildschirmaufnahme. Finde alles wieder, was du gesehen hast.",
+      stanford:
+        "Studien ohne technische Vorkenntnisse erstellen und verwalten.",
       amay: "Psychische Gesundheit durch KI unterstützen.",
       qart: "E-Commerce einfacher zugänglich machen.",
     },

@@ -69,9 +69,13 @@ type RootTranslation = {
 			 */
 			title: string
 			/**
-			 * F​i​n​d​ ​a​g​a​i​n​ ​w​h​a​t​ ​y​o​u​ ​d​i​d​n​'​t​ ​s​a​v​e​.
+			 * R​e​c​o​r​d​ ​y​o​u​r​ ​s​c​r​e​e​n​ ​a​n​d​ ​r​e​v​i​s​i​t​ ​a​n​y​t​h​i​n​g​ ​y​o​u​'​v​e​ ​s​e​e​n​.
 			 */
 			orbit: string
+			/**
+			 * S​e​t​ ​u​p​ ​a​n​d​ ​m​a​n​a​g​e​ ​s​t​u​d​i​e​s​ ​w​i​t​h​o​u​t​ ​t​e​c​h​n​i​c​a​l​ ​e​x​p​e​r​t​i​s​e​.
+			 */
+			stanford: string
 			/**
 			 * P​r​e​v​e​n​t​i​n​g​ ​m​e​n​t​a​l​ ​h​e​a​l​t​h​ ​i​s​s​u​e​s​ ​t​h​r​o​u​g​h​ ​A​I​.
 			 */
@@ -203,9 +207,13 @@ export type TranslationFunctions = {
 			 */
 			title: () => LocalizedString
 			/**
-			 * Find again what you didn't save.
+			 * Record your screen and revisit anything you've seen.
 			 */
 			orbit: () => LocalizedString
+			/**
+			 * Set up and manage studies without technical expertise.
+			 */
+			stanford: () => LocalizedString
 			/**
 			 * Preventing mental health issues through AI.
 			 */
