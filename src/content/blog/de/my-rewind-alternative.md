@@ -5,7 +5,7 @@ pubDate: "Feb 28 2025"
 cover: "../assets/my-rewind-alternative/hero.webp"
 coverAlt: "Ein symmetrischer Korridor, gesäumt von hohen, gewölbten Säulen, die in warmen Orange- und Rottönen getaucht sind und zu einem hell erleuchteten Ende führen. Der reflektierende Boden verstärkt die lebendigen Farben und schafft eine surreale, traumhafte Atmosphäre."
 colors: ["#AA291D", "#E8733C"]
-tags: ["MacOS", "Productivity", "Rewind"]
+tags: ["MacOS", "Produktivität", "Rewind"]
 translated: true
 reference: "my-rewind-alternative"
 ---

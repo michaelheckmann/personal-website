@@ -13,7 +13,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const siteThemeColor = "#18181b";
 
 const { title, description } = Astro.props;
-const image = Astro.props.image ?? "/og-image.jpeg";
+const image = Astro.props.image ?? "/og-image.jpg";
 
 const { origin, pathname } = canonicalURL;
 const rawPathname = pathname.split("/").filter(Boolean).slice(1).join("/");

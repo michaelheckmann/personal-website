@@ -1,11 +1,81 @@
 <div
+  id="vertical-fade"
   aria-hidden="true"
-  class="vertical-fade pointer-events-none fixed bottom-0 left-0 z-30 h-24 w-full will-change-transform select-none"
+  class="vertical-fade pointer-events-none fixed bottom-0 left-0 z-30 h-24 w-full opacity-100 will-change-transform select-none"
+  style="transition: none;"
 >
 </div>
+
+<script>
+  let isInitialLoad = true;
+
+  function updateFadeVisibility() {
+    const fade = document.getElementById("vertical-fade");
+    if (!fade) return;
+
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    // Check if page is scrollable
+    const isScrollable = documentHeight > windowHeight;
+
+    // Calculate distance from bottom with a larger threshold for smoother transition
+    const distanceFromBottom = documentHeight - (scrollTop + windowHeight);
+    const fadeThreshold = 200; // Start fading out earlier
+
+    // Show fade only if page is scrollable
+    if (isScrollable) {
+      // Gradually fade based on distance from bottom
+      if (distanceFromBottom > fadeThreshold) {
+        fade.style.opacity = "1";
+      } else if (distanceFromBottom > 0) {
+        // Smooth gradient fade as we approach the bottom
+        const fadeAmount = distanceFromBottom / fadeThreshold;
+        fade.style.opacity = String(fadeAmount);
+      } else {
+        fade.style.opacity = "0";
+      }
+    } else {
+      fade.style.opacity = "0";
+    }
+
+    // Re-enable transition after initial load
+    if (isInitialLoad) {
+      // Use requestAnimationFrame to ensure the opacity change happens before transition is re-enabled
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          fade.style.transition = "opacity 1200ms cubic-bezier(0.4, 0, 0.2, 1)";
+          isInitialLoad = false;
+        });
+      });
+    }
+  }
+
+  // Run immediately, before DOMContentLoaded
+  updateFadeVisibility();
+
+  // Also check on load for safety
+  document.addEventListener("DOMContentLoaded", updateFadeVisibility);
+
+  // Check on scroll
+  window.addEventListener("scroll", updateFadeVisibility, { passive: true });
+
+  // Check on resize (in case content changes or window is resized)
+  window.addEventListener("resize", updateFadeVisibility, { passive: true });
+
+  // Optional: Check when content might change (e.g., dynamic content loading)
+  const observer = new MutationObserver(updateFadeVisibility);
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: false,
+  });
+</script>
+
 <style>
   .vertical-fade {
-    background: linear-gradient(to bottom, transparent, #161616);
-    mask-image: linear-gradient(to top, #161616 25%, transparent);
+    background: linear-gradient(to bottom, transparent, #0f0f0f);
+    mask-image: linear-gradient(to top, #0f0f0f 25%, transparent);
   }
 </style>

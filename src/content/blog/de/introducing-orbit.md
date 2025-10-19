@@ -5,7 +5,7 @@ pubDate: "May 8 2025"
 cover: "../assets/introducing-orbit/hero.webp"
 coverAlt: "Ein silhouettierter Astronaut steht vor einem riesigen, leuchtenden Himmelskörper, umgeben von einer lebhaften roten und orangefarbenen Atmosphäre, die ein Gefühl von Staunen und Erkundung hervorruft."
 colors: ["#9C0913", "#570D16"]
-tags: ["MacOS", "Productivity", "Orbit"]
+tags: ["MacOS", "Produktivität", "Orbit"]
 translated: true
 reference: "introducing-orbit"
 ---
