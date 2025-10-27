@@ -12,7 +12,7 @@ const de = {
     metaDescription:
       "Ich entwickle digitale Lösungen, die funktionieren und sich gut anfühlen.",
     description:
-      "Ich entwickle digitale Lösungen, die funktionieren und sich gut anfühlen. Mein Hintergrund liegt in der Full-Stack-Entwicklung, mit besonderem Interesse daran, neue und interessante Wege der Mensch-KI-Interaktion zu gestalten.",
+      "Ich entwickle digitale Lösungen, die funktionieren und sich gut anfühlen. Mein Hintergrund liegt in der Full-Stack-Entwicklung, mit besonderem Interesse daran, neue und interessante Wege der Mensch-<span style='font-feature-settings: \"ss05\"'>KI</span>-Interaktion zu gestalten.",
     work: "Ich habe zuvor bei {0|atag} und {1|atag} in den Bereichen Datenanalyse and Automatisierung gearbeitet. Aktuell widme ich mich eigenen Projekten und entwickle Websites und Webapps für ausgewählte Kunden. Mich fasziniert besonders, wie Technologie Prozesse vereinfachen und neuartige Erlebnisse schaffen kann.",
     building: {
       title: "Entwicklung",

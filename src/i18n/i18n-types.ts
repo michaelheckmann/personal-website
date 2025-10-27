@@ -40,7 +40,7 @@ type RootTranslation = {
 		 */
 		metaDescription: string
 		/**
-		 * I​ ​b​u​i​l​d​ ​d​i​g​i​t​a​l​ ​t​h​i​n​g​s​ ​t​h​a​t​ ​w​o​r​k​ ​w​e​l​l​ ​a​n​d​ ​f​e​e​l​ ​r​i​g​h​t​.​ ​M​y​ ​b​a​c​k​g​r​o​u​n​d​ ​i​s​ ​i​n​ ​f​u​l​l​-​s​t​a​c​k​ ​d​e​v​e​l​o​p​m​e​n​t​,​ ​w​i​t​h​ ​a​ ​p​a​r​t​i​c​u​l​a​r​ ​i​n​t​e​r​e​s​t​ ​i​n​ ​e​x​p​l​o​r​i​n​g​ ​n​e​w​ ​w​a​y​s​ ​t​o​ ​i​n​t​e​r​a​c​t​ ​w​i​t​h​ ​A​I​.
+		 * I​ ​b​u​i​l​d​ ​d​i​g​i​t​a​l​ ​t​h​i​n​g​s​ ​t​h​a​t​ ​w​o​r​k​ ​w​e​l​l​ ​a​n​d​ ​f​e​e​l​ ​r​i​g​h​t​.​ ​M​y​ ​b​a​c​k​g​r​o​u​n​d​ ​i​s​ ​i​n​ ​f​u​l​l​-​s​t​a​c​k​ ​d​e​v​e​l​o​p​m​e​n​t​,​ ​w​i​t​h​ ​a​ ​p​a​r​t​i​c​u​l​a​r​ ​i​n​t​e​r​e​s​t​ ​i​n​ ​e​x​p​l​o​r​i​n​g​ ​n​e​w​ ​w​a​y​s​ ​t​o​ ​i​n​t​e​r​a​c​t​ ​w​i​t​h​ ​<​s​p​a​n​ ​s​t​y​l​e​=​'​f​o​n​t​-​f​e​a​t​u​r​e​-​s​e​t​t​i​n​g​s​:​ ​"​s​s​0​5​"​'​>​A​I​<​/​s​p​a​n​>​.
 		 */
 		description: string
 		/**
@@ -180,7 +180,7 @@ export type TranslationFunctions = {
 		 */
 		metaDescription: () => LocalizedString
 		/**
-		 * I build digital things that work well and feel right. My background is in full-stack development, with a particular interest in exploring new ways to interact with AI.
+		 * I build digital things that work well and feel right. My background is in full-stack development, with a particular interest in exploring new ways to interact with <span style='font-feature-settings: "ss05"'>AI</span>.
 		 */
 		description: () => LocalizedString
 		/**

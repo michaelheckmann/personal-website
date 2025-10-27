@@ -12,7 +12,7 @@ const en = {
     metaDescription:
       "I build digital things that work well and feel right. My background is in full-stack development, with a particular interest in exploring new ways to interact with AI.",
     description:
-      "I build digital things that work well and feel right. My background is in full-stack development, with a particular interest in exploring new ways to interact with AI.",
+      "I build digital things that work well and feel right. My background is in full-stack development, with a particular interest in exploring new ways to interact with <span style='font-feature-settings: \"ss05\"'>AI</span>.",
     work: " Previously worked on analytics and automation at {0|atag} and {1|atag}. Currently working on independent projects and crafting websites and web apps for select clients. Interested in exploring how technology can simplify tasks and create meaningful digital experiences.",
     building: {
       title: "Building",

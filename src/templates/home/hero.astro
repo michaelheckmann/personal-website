@@ -27,9 +27,7 @@ const t = getTranslation("home");
     />
     <h1 class="text-lg text-zinc-100">Michael Heckmann</h1>
     <div class="space-y-4">
-      <p>
-        {t.description()}
-      </p>
+      <p set:html={t.description()} />
       <p
         set:html={t.work(
           {

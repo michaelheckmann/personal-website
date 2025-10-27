@@ -15,6 +15,15 @@ const { Content } = await render(post);
 </article>
 
 <style is:global>
+  .expressive-code .frame .header {
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .expressive-code .frame .title {
+    --tab-border-radius: calc(var(--header-border-radius));
+    background-color: rgba(255, 255, 255, 0.04) !important;
+  }
+
   /* Hide the default "on copied" tooltip */
   .expressive-code .feedback {
     display: none !important;
