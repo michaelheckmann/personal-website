@@ -13,7 +13,7 @@ reference: "introducing-orbit"
 
 I'm excited to announce that the preview release of my new app, Orbit, is now available for early access. Orbit is a Mac app that privately records your screen activity in the background, so you can easily search and revisit anything you've ever seen. It's like a time machine for your screen.
 
-You can read more about how I developed this idea in my posts on creating a [Rewind alternative](my-rewind-alternative) and building the [app's moodboard](orbit-moodboard).
+You can read more about how I developed this idea in my posts on creating a [Rewind alternative](./my-rewind-alternative) and building the [app's moodboard](./orbit-moodboard).
 
 Before jumping into how you can get access, I want to share a bit about the its origins, its current state, and my vision for its future. I hope this gives you a clearer picture of what Orbit is and why I’m so passionate about it.
 
@@ -53,7 +53,7 @@ To achieve this, I’ve placed special attention on lots of different optimizati
 
 Orbit is currently in early alpha. This means it's fully functional: you can already record your screen activities, perform full text searches, and quickly scroll through your visual history to revisit past moments. Every week, new features, stability improvements, and optimizations are rolled out based on early user feedback.
 
-Right now, I'm looking for passionate early adopters willing to try Orbit and actively shape its direction with their feedback. If you're interested, joining is straightforward: Just head over to [orbit.heckmann.app](https://orbit.heckmann.app) and sign up for the waitlist.
+Right now, I'm looking for passionate early adopters willing to try Orbit and actively shape its direction with their feedback. If you're interested, joining is straightforward: Just head over to [reachorbit.app](https://reachorbit.app) and sign up for the waitlist.
 
 ## The future of Orbit
 

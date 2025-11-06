@@ -12,9 +12,9 @@ reference: "orbit-website-details"
 
 # Design-Details der neuen Orbit-Website
 
-Ich habe kürzlich eine [neue Marketing-Website](https://reachorbit.app/) für meine macOS-App [Orbit](/de/blog/introducing-orbit/) veröffentlicht. Ich habe viel Zeit in die Details gesteckt, damit alles konsistent zur Produkt-UI passt und die Stimmung und den Stil trifft, die ich mit diesem Projekt verfolge.
+Ich habe kürzlich eine [neue Marketing-Website](https://reachorbit.app/) für meine macOS-App [Orbit](./introducing-orbit/) veröffentlicht. Ich habe viel Zeit in die Details gesteckt, damit alles konsistent zur Produkt-UI passt und die Stimmung und den Stil trifft, die ich mit diesem Projekt verfolge.
 
-Wenn du tiefer in die Konzepte und Themen hinter Orbit eintauchen möchtest, kann ich dir [diesen Blogpost](/de/blog/orbit-moodboard/) empfehlen.
+Wenn du tiefer in die Konzepte und Themen hinter Orbit eintauchen möchtest, kann ich dir [diesen Blogpost](./orbit-moodboard/) empfehlen.
 
 In diesem Beitrag zeige ich dir meine Lieblingsdetails der Website. Dinge, an denen ich besonders gern gearbeitet habe und die aus meiner Sicht erwähnenswert sind.
 
