@@ -11,9 +11,9 @@ reference: "orbit-website-details"
 
 # Design details from the new Orbit website
 
-I recently released a [new marketing website](https://reachorbit.app/) for my macOS app [Orbit](./introducing-orbit/). I spent a lot of time on the details, making sure everything felt consistent with the product UI and accurately reflected the mood and style I'm going for with this project.
+I recently released a [new marketing website](https://reachorbit.app/) for my macOS app [Orbit](/en/blog/introducing-orbit/). I spent a lot of time on the details, making sure everything felt consistent with the product UI and accurately reflected the mood and style I'm going for with this project.
 
-If you want a deep dive into the concepts and themes behind Orbit, I encourage you to check out [this blog post](./orbit-moodboard/).
+If you want a deep dive into the concepts and themes behind Orbit, I encourage you to check out [this blog post](/en/blog/orbit-moodboard/).
 
 In this post, I’ll walk you through my favorite details on the website, the kind of stuff I really enjoyed working on and think is worth mentioning.
 

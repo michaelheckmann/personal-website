@@ -14,7 +14,7 @@ reference: "introducing-orbit"
 
 Ich freue mich riesig, endlich bekannt zu geben, dass mein neues Projekt Orbit ab sofort als frühe Preview Version zum Testen verfügbar ist! Orbit ist eine Mac-App, die im Hintergrund privat deine Bildschirmaktivitäten aufzeichnet, damit du alles, was du einmal gesehen hast, später bequem suchen und erneut abrufen kannst. Ein bisschen wie eine Zeitmaschine für deinen Screen.
 
-Mehr zur Entstehung der Idee findest du übrigens in meinen Beiträgen über die [Entwicklung einer Rewind-Alternative](./my-rewind-alternative) und zum Erstellen des [Moodboards für die App](./orbit-moodboard).
+Mehr zur Entstehung der Idee findest du übrigens in meinen Beiträgen über die [Entwicklung einer Rewind-Alternative](/de/blog/my-rewind-alternative) und zum Erstellen des [Moodboards für die App](/de/blog/orbit-moodboard).
 
 Bevor ich näher darauf eingehe, wie du dir einen early access sichern kannst, möchte ich kurz erzählen, wie Orbit entstanden ist, wo die App aktuell steht und welche Zukunft ich mir für sie wünsche. So bekommst du hoffentlich ein klares Bild davon, was Orbit überhaupt ist – und warum mir dieses Projekt so sehr am Herzen liegt.
 
