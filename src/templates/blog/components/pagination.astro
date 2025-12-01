@@ -1,0 +1,108 @@
+---
+import type { Page } from "astro";
+
+import { cn } from "@/lib/utils";
+import { getTranslation } from "@/i18n/translation";
+
+interface Props {
+  page: Page;
+}
+
+const { page } = Astro.props;
+const { currentPage, lastPage, url } = page;
+
+const t = getTranslation("blog");
+
+const baseButtonStyles = cn(
+  "flex items-center gap-1 rounded px-3 py-2",
+  "font-mono text-sm text-zinc-500",
+  "transition-colors duration-300",
+  "ring-zinc-200 outline-none focus-visible:ring-1",
+  "scroll-mb-[25vh]",
+);
+
+const activeButtonStyles = cn(
+  "hover:text-zinc-300",
+  "focus-visible:text-zinc-200",
+);
+
+const disabledButtonStyles = cn(
+  "opacity-40 cursor-not-allowed",
+  "pointer-events-none",
+);
+
+// Only show pagination if there's more than one page
+const showPagination = lastPage > 1;
+---
+
+{
+  showPagination && (
+    <nav
+      aria-label={t.pagination()}
+      class="flex items-center justify-center gap-2"
+    >
+      {/* Previous Button */}
+      <a
+        href={url.prev ?? "#"}
+        class:list={[
+          baseButtonStyles,
+          url.prev ? activeButtonStyles : disabledButtonStyles,
+        ]}
+        aria-disabled={!url.prev}
+        aria-label={t.previousPage()}
+        tabindex={url.prev ? 0 : -1}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="size-4 translate-x-0.5"
+          aria-hidden="true"
+        >
+          <path d="m15 18-6-6 6-6" />
+        </svg>
+        <span class="hidden sm:inline">{t.previous()}</span>
+      </a>
+
+      {/* Page Indicator */}
+      <span class="px-3 py-2 font-mono text-sm text-zinc-400">
+        {currentPage} / {lastPage}
+      </span>
+
+      {/* Next Button */}
+      <a
+        href={url.next ?? "#"}
+        class:list={[
+          baseButtonStyles,
+          url.next ? activeButtonStyles : disabledButtonStyles,
+        ]}
+        aria-disabled={!url.next}
+        aria-label={t.nextPage()}
+        tabindex={url.next ? 0 : -1}
+      >
+        <span class="hidden sm:inline">{t.next()}</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="size-4 -translate-x-0.5"
+          aria-hidden="true"
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      </a>
+    </nav>
+  )
+}

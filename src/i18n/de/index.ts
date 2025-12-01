@@ -49,6 +49,11 @@ const de = {
       "Möchtest du informiert werden, wenn ich neue Inhalte veröffentliche? Gib deine Email ein, um meinen kostenlosen Newsletter zu abonnieren.",
     enterEmail: "Email eingeben",
     newsletterSuccess: "Du bist jetzt für den Newsletter angemeldet!",
+    pagination: "Seitennavigation",
+    previous: "Zurück",
+    next: "Weiter",
+    previousPage: "Zur vorherigen Seite",
+    nextPage: "Zur nächsten Seite",
   },
 } satisfies Translation;
 

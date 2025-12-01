@@ -39,6 +39,11 @@ const config: SiteConfig = {
     const path = `/${lang}/blog/${removeLocaleFromPath(ref.id)}`;
     return { lang, href: `${new URL(path, canonicalURL.origin)}` };
   }),
+  blogPost: {
+    pubDate: Astro.props.data.pubDate,
+    updatedDate: Astro.props.data.updatedDate,
+    tags: Astro.props.data.tags,
+  },
 };
 setLanguage(config.lang);
 ---

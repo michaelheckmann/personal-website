@@ -11,9 +11,13 @@
     "**/.classpath": true,
     "**/.factorypath": true,
     "**/node_modules": true,
-    "**/dist": true,
+    // "**/dist": true,
     ".cache": true,
     ".astro": true,
     ".wrangler": true
-  }
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "tailwindCSS.classFunctions": ["cva", "cn"]
 }

@@ -6,4 +6,11 @@ export type SiteConfig = {
   description: string;
   image?: string;
   translationLinks?: { lang: string; href: string }[];
+  // Blog post specific metadata for JSON-LD
+  blogPost?: {
+    pubDate: Date;
+    updatedDate?: Date;
+    tags?: string[];
+  };
+  isIndex?: boolean;
 };

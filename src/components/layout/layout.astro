@@ -17,18 +17,28 @@ interface Props {
   description: string;
   image?: string;
   translationLinks?: { lang: string; href: string }[];
+  blogPost?: {
+    pubDate: Date;
+    updatedDate?: Date;
+    tags?: string[];
+  };
+  isIndex?: boolean;
 }
-const { lang, title, description, image, translationLinks } = Astro.props;
+const { lang, title, description, image, translationLinks, blogPost, isIndex } =
+  Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang} class="bg-zinc-900">
   <head>
     <Head
+      lang={lang}
       title={title}
       description={description}
       image={image}
       translationLinks={translationLinks}
+      blogPost={blogPost}
+      isIndex={isIndex}
     />
   </head>
   <body

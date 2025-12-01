@@ -47,6 +47,11 @@ const en = {
       "Want to know when I publish new content? Enter your email to join my free newsletter.",
     enterEmail: "Enter your email",
     newsletterSuccess: "You're now subscribed to the newsletter!",
+    pagination: "Pagination",
+    previous: "Previous",
+    next: "Next",
+    previousPage: "Go to previous page",
+    nextPage: "Go to next page",
   },
 } satisfies BaseTranslation;
 

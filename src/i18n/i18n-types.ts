@@ -150,6 +150,26 @@ type RootTranslation = {
 		 * Y​o​u​'​r​e​ ​n​o​w​ ​s​u​b​s​c​r​i​b​e​d​ ​t​o​ ​t​h​e​ ​n​e​w​s​l​e​t​t​e​r​!
 		 */
 		newsletterSuccess: string
+		/**
+		 * P​a​g​i​n​a​t​i​o​n
+		 */
+		pagination: string
+		/**
+		 * P​r​e​v​i​o​u​s
+		 */
+		previous: string
+		/**
+		 * N​e​x​t
+		 */
+		next: string
+		/**
+		 * G​o​ ​t​o​ ​p​r​e​v​i​o​u​s​ ​p​a​g​e
+		 */
+		previousPage: string
+		/**
+		 * G​o​ ​t​o​ ​n​e​x​t​ ​p​a​g​e
+		 */
+		nextPage: string
 	}
 }
 
@@ -287,6 +307,26 @@ export type TranslationFunctions = {
 		 * You're now subscribed to the newsletter!
 		 */
 		newsletterSuccess: () => LocalizedString
+		/**
+		 * Pagination
+		 */
+		pagination: () => LocalizedString
+		/**
+		 * Previous
+		 */
+		previous: () => LocalizedString
+		/**
+		 * Next
+		 */
+		next: () => LocalizedString
+		/**
+		 * Go to previous page
+		 */
+		previousPage: () => LocalizedString
+		/**
+		 * Go to next page
+		 */
+		nextPage: () => LocalizedString
 	}
 }
 

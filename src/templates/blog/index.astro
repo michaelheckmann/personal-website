@@ -1,17 +1,22 @@
 ---
-import { getCollection } from "astro:content";
+import type { Page } from "astro";
+import type { InferEntrySchema } from "astro:content";
 
 import { getLocalHref, removeLocaleFromPath } from "@/lib/routing";
 import Header from "@/components/header.astro";
 import Newsletter from "@/components/newsletter/newsletter.astro";
 import Section from "@/components/section.astro";
-import { $lang } from "@/i18n/translation";
 
 import ArticleListItem from "./components/article-list-item.astro";
+import Pagination from "./components/pagination.astro";
 
-const posts = (await getCollection("blog"))
-  .filter(({ id }) => id.startsWith(`${$lang.value}/`))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+type Props = Page<{
+  id: string;
+  data: InferEntrySchema<"blog">;
+}>;
+
+const page = Astro.props;
+const posts = page.data;
 ---
 
 <Header back={{ href: getLocalHref("/") }} />
@@ -32,6 +37,9 @@ const posts = (await getCollection("blog"))
         ))
       }
     </ul>
+    <div class="pt-16">
+      <Pagination page={page} />
+    </div>
   </div>
 </Section>
 <Section _title="newsletter" class="pb-32">

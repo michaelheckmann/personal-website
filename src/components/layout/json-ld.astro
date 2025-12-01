@@ -1,0 +1,134 @@
+---
+import type { ImageMetadata } from "astro";
+
+import type { Locales } from "@/i18n/i18n-types";
+
+// Schema.org type definitions
+type WithContext<T> = T & { "@context": "https://schema.org" };
+
+type Person = {
+  "@type": "Person";
+  name: string;
+  url: string;
+  sameAs?: string[];
+};
+
+type WebSite = {
+  "@type": "WebSite";
+  name: string;
+  url: string;
+  description: string;
+  inLanguage: string[];
+  author: Person;
+};
+
+type BlogPosting = {
+  "@type": "BlogPosting";
+  headline: string;
+  description: string;
+  image: string;
+  datePublished: string;
+  dateModified?: string;
+  author: Person;
+  publisher: Person;
+  mainEntityOfPage: {
+    "@type": "WebPage";
+    "@id": string;
+  };
+  inLanguage: string;
+  keywords?: string[];
+};
+
+type JsonLdSchema = WithContext<WebSite | BlogPosting>;
+
+// Author/Publisher info - used across all schemas
+const author: Person = {
+  "@type": "Person",
+  name: "Michael Heckmann",
+  url: "https://heckmann.app",
+  sameAs: [
+    "https://github.com/michaelheckmann",
+    "https://linkedin.com/in/heckmannmichael",
+    "https://x.com/mt_heckmann",
+  ],
+};
+
+interface Props {
+  type: "website" | "blog-post";
+  lang: Locales;
+  // Blog post specific props
+  title?: string;
+  description: string;
+  image?: string | ImageMetadata;
+  pubDate?: Date;
+  updatedDate?: Date;
+  tags?: string[];
+  url?: string;
+}
+
+const {
+  type,
+  lang,
+  title,
+  description,
+  image,
+  pubDate,
+  updatedDate,
+  tags,
+  url,
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString() ?? "https://heckmann.app";
+
+function buildSchema(): JsonLdSchema {
+  if (type === "website") {
+    return {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Michael Heckmann",
+      url: siteUrl,
+      description: description,
+      inLanguage: ["en", "de"],
+      author,
+    };
+  }
+
+  // Blog post schema
+  const imageUrl =
+    typeof image === "string"
+      ? new URL(image, siteUrl).toString()
+      : image
+        ? new URL(image.src, siteUrl).toString()
+        : new URL("/og-image.jpg", siteUrl).toString();
+
+  const blogPosting: WithContext<BlogPosting> = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title ?? "",
+    description: description ?? "",
+    image: imageUrl,
+    datePublished: pubDate?.toISOString() ?? new Date().toISOString(),
+    author,
+    publisher: author,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url ?? siteUrl,
+    },
+    inLanguage: lang,
+  };
+
+  if (updatedDate) {
+    blogPosting.dateModified = updatedDate.toISOString();
+  }
+
+  if (tags && tags.length > 0) {
+    blogPosting.keywords = tags;
+  }
+
+  return blogPosting;
+}
+
+const schema = buildSchema();
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

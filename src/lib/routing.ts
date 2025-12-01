@@ -77,18 +77,26 @@ export const extractLocaleFromPath = (path: string) => {
  * The pattern should match: /locale/blog/post-slug
  * where:
  * - locale is a 2-letter language code
- * - post-slug is an alphanumeric string with hyphens
+ * - post-slug is an alphanumeric string with hyphens (but not purely numeric, as that indicates pagination)
  *
  * @param pathname - The URL pathname to check
  * @returns True if the pathname matches the blog post pattern, false otherwise
  *
  * @example
  * isBlogPost('/en/blog/my-first-post') // returns true
+ * isBlogPost('/en/blog/post-123') // returns true
+ * isBlogPost('/en/blog/2') // returns false (pagination)
  * isBlogPost('/en/about') // returns false
  */
 export const isBlogPost = (pathname: string) => {
   // Match this format /locale/blog/post-slug
-  return /^\/[a-z]{2}\/blog\/[a-z0-9-]+\/?$/.test(pathname);
+  // Exclude purely numeric slugs (pagination pages like /en/blog/2)
+  const basicMatch = /^\/[a-z]{2}\/blog\/[a-z0-9-]+\/?$/.test(pathname);
+  if (!basicMatch) return false;
+
+  // Extract the slug and check it's not purely numeric
+  const slug = pathname.replace(/\/$/, "").split("/").pop();
+  return slug ? !/^\d+$/.test(slug) : false;
 };
 
 /**
