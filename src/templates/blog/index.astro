@@ -5,6 +5,7 @@ import type { InferEntrySchema } from "astro:content";
 import { getLocalHref, removeLocaleFromPath } from "@/lib/routing";
 import Header from "@/components/header.astro";
 import Newsletter from "@/components/newsletter/newsletter.astro";
+import ScrollTopButton from "@/components/scroll-top-button.astro";
 import Section from "@/components/section.astro";
 
 import ArticleListItem from "./components/article-list-item.astro";
@@ -45,3 +46,4 @@ const posts = page.data;
 <Section _title="newsletter" class="pb-32">
   <Newsletter />
 </Section>
+<ScrollTopButton />

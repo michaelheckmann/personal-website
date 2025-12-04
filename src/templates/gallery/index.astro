@@ -1,6 +1,7 @@
 ---
 import { getLocalHref } from "@/lib/routing";
 import Header from "@/components/header.astro";
+import ScrollTopButton from "@/components/scroll-top-button.astro";
 import Section from "@/components/section.astro";
 import { getTranslation } from "@/i18n/translation";
 
@@ -19,3 +20,4 @@ const t = getTranslation("gallery");
   </div>
   <GalleryGrid />
 </Section>
+<ScrollTopButton />
