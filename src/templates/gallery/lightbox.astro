@@ -1,0 +1,328 @@
+---
+interface GalleryItem {
+  id: string;
+  title: string;
+  width: number;
+  height: number;
+  description: string;
+  provider: string;
+  image_url: string;
+  thumbhash: string;
+}
+
+interface Props {
+  items: GalleryItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div
+  id="lightbox"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-zinc-950/95 backdrop-blur-sm outline-none"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image lightbox"
+  tabindex="-1"
+>
+  <!-- Close button -->
+  <button
+    type="button"
+    id="lightbox-close"
+    class="absolute top-4 right-4 z-10 rounded-full p-2 text-zinc-400 backdrop-blur-md transition-colors hover:bg-zinc-800 hover:text-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+    aria-label="Close lightbox"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M18 6 6 18"></path>
+      <path d="m6 6 12 12"></path>
+    </svg>
+  </button>
+
+  <!-- Previous button -->
+  <button
+    type="button"
+    id="lightbox-prev"
+    class="absolute top-1/2 left-6 z-10 -translate-y-1/2 rounded-full p-2 text-zinc-200 backdrop-blur-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 lg:text-zinc-400"
+    aria-label="Previous image"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="m15 18-6-6 6-6"></path>
+    </svg>
+  </button>
+
+  <!-- Next button -->
+  <button
+    type="button"
+    id="lightbox-next"
+    class="absolute top-1/2 right-6 z-10 -translate-y-1/2 rounded-full p-2 text-zinc-200 backdrop-blur-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 lg:text-zinc-400"
+    aria-label="Next image"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="m9 18 6-6-6-6"></path>
+    </svg>
+  </button>
+
+  <!-- Content container - clicking empty space closes lightbox -->
+  <div
+    id="lightbox-content"
+    class="flex h-full w-full flex-col items-center justify-center p-4 md:p-8"
+  >
+    <!-- Image container -->
+    <div
+      id="lightbox-image-container"
+      class="relative flex max-h-[70vh] w-full max-w-5xl items-center justify-center"
+    >
+      <img
+        id="lightbox-image"
+        src=""
+        alt=""
+        class="max-h-[70vh] max-w-full rounded-lg object-contain"
+      />
+    </div>
+
+    <!-- Info panel - text remains selectable -->
+    <div
+      id="lightbox-info"
+      class="mt-4 w-full max-w-5xl space-y-2 pb-4 text-center select-text"
+    >
+      <h2
+        id="lightbox-title"
+        class="text-lg font-medium text-zinc-100"
+        aria-live="polite"
+      >
+      </h2>
+      <p
+        id="lightbox-description"
+        class="mx-auto max-w-prose text-sm leading-relaxed text-pretty text-zinc-400"
+        aria-live="polite"
+      >
+      </p>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ items }}>
+  const galleryItems = items;
+
+  function initLightbox() {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxTitle = document.getElementById("lightbox-title");
+    const lightboxDescription = document.getElementById("lightbox-description");
+    const closeBtn = document.getElementById("lightbox-close");
+    const prevBtn = document.getElementById("lightbox-prev");
+    const nextBtn = document.getElementById("lightbox-next");
+    const contentContainer = document.getElementById("lightbox-content");
+
+    if (!lightbox || !lightboxImage || !lightboxTitle || !lightboxDescription)
+      return;
+
+    let currentIndex = 0;
+    let isOpen = false;
+
+    // Focusable elements for focus trap (in visual order: prev, close, next)
+    const focusableElements = [prevBtn, closeBtn, nextBtn].filter(Boolean);
+
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightboxContent();
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+      isOpen = true;
+      document.body.style.overflow = "hidden";
+      // Don't auto-focus any button to avoid focus ring showing unexpectedly
+      // User can Tab to navigate or use arrow keys for image navigation
+      lightbox.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add("hidden");
+      lightbox.classList.remove("flex");
+      isOpen = false;
+      document.body.style.overflow = "";
+      // Return focus to the gallery item
+      const galleryItem = document.querySelector(
+        `[data-index="${currentIndex}"]`,
+      );
+      if (galleryItem instanceof HTMLElement) {
+        galleryItem.focus();
+      }
+    }
+
+    function updateLightboxContent() {
+      const item = galleryItems[currentIndex];
+      if (!item) return;
+
+      lightboxImage.src = item.image_url;
+      lightboxImage.alt = item.title;
+      lightboxTitle.textContent = item.title;
+      lightboxDescription.textContent = item.description || "";
+    }
+
+    function showPrevious() {
+      currentIndex =
+        (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      updateLightboxContent();
+      nudgeButton(prevBtn, "left");
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      updateLightboxContent();
+      nudgeButton(nextBtn, "right");
+    }
+
+    function nudgeButton(button, direction) {
+      if (!button) return;
+      const offset = direction === "left" ? "-4px" : "4px";
+      // Quick snap outward
+      button.style.transition = "transform 60ms ease-out";
+      button.style.transform = `translateX(${offset})`;
+      setTimeout(() => {
+        // Slower, smoother return
+        button.style.transition = "transform 180ms ease-in-out";
+        button.style.transform = "translateX(0)";
+      }, 60);
+    }
+
+    function handleFocusTrap(e) {
+      if (!isOpen || e.key !== "Tab") return;
+
+      // Always prevent default and manually control focus
+      e.preventDefault();
+
+      // Debug: log focusable elements
+      //   console.log("focusableElements:", focusableElements);
+      //   console.log("document.activeElement:", document.activeElement);
+
+      const currentlyFocusedIndex = focusableElements.indexOf(
+        document.activeElement,
+      );
+      //   console.log("currentlyFocusedIndex:", currentlyFocusedIndex);
+
+      let nextIndex;
+      if (e.shiftKey) {
+        // Shift + Tab: going backwards
+        if (currentlyFocusedIndex <= 0) {
+          nextIndex = focusableElements.length - 1;
+        } else {
+          nextIndex = currentlyFocusedIndex - 1;
+        }
+      } else {
+        // Tab: going forwards
+        if (
+          currentlyFocusedIndex === -1 ||
+          currentlyFocusedIndex >= focusableElements.length - 1
+        ) {
+          nextIndex = 0;
+        } else {
+          nextIndex = currentlyFocusedIndex + 1;
+        }
+      }
+
+      focusableElements[nextIndex]?.focus();
+    }
+
+    // Gallery item click handlers
+    const galleryItemButtons = document.querySelectorAll("[data-gallery-item]");
+    galleryItemButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const index = parseInt(button.getAttribute("data-index") || "0", 10);
+        openLightbox(index);
+      });
+    });
+
+    // Close button
+    closeBtn?.addEventListener("click", closeLightbox);
+
+    // Navigation buttons
+    prevBtn?.addEventListener("click", showPrevious);
+    nextBtn?.addEventListener("click", showNext);
+
+    // Click anywhere to close, except on interactive elements or content area
+    lightbox.addEventListener("click", (e) => {
+      const target = e.target;
+
+      // Don't close if clicking on buttons
+      if (target === closeBtn || target === prevBtn || target === nextBtn)
+        return;
+      if (
+        closeBtn?.contains(target) ||
+        prevBtn?.contains(target) ||
+        nextBtn?.contains(target)
+      )
+        return;
+
+      // Don't close if clicking on the image
+      if (target === lightboxImage) return;
+
+      // Don't close if clicking anywhere in the info panel area
+      const infoPanel = document.getElementById("lightbox-info");
+      if (infoPanel?.contains(target) || target === infoPanel) return;
+
+      // Close for all other clicks (backdrop, empty content areas, image container padding)
+      closeLightbox();
+    });
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      if (!isOpen) return;
+
+      switch (e.key) {
+        case "Escape":
+          closeLightbox();
+          break;
+        case "ArrowLeft":
+          e.preventDefault();
+          showPrevious();
+          break;
+        case "ArrowRight":
+          e.preventDefault();
+          showNext();
+          break;
+        case "Tab":
+          handleFocusTrap(e);
+          break;
+      }
+    });
+
+    // DEBUG: Uncomment to auto-open lightbox on page load
+    // openLightbox(1);
+  }
+
+  // Initialize on page load
+  initLightbox();
+
+  // Re-initialize on view transitions
+  document.addEventListener("astro:after-swap", initLightbox);
+</script>

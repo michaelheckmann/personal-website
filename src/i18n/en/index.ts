@@ -18,6 +18,7 @@ const en = {
       title: "Building",
       github: "Open source work and experiments.",
       blog: "Articles on technology and design.",
+      gallery: "AI-generated images and visual experiments.",
     },
     projects: {
       title: "Projects",
@@ -32,6 +33,12 @@ const en = {
       twitter: "Thoughts, ideas, and updates.",
       email: "Direct inquiries and collaborations.",
     },
+  },
+  gallery: {
+    metaTitle: "Gallery | Michael Heckmann",
+    metaDescription:
+      "A collection of AI-generated images and visual experiments.",
+    title: "Gallery",
   },
   blog: {
     metaTitle: "Blog | Michael Heckmann",

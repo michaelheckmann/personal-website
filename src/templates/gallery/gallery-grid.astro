@@ -1,0 +1,27 @@
+---
+import galleryData from "@/assets/gallery.json";
+
+import GalleryItem from "./gallery-item.astro";
+import Lightbox from "./lightbox.astro";
+---
+
+<div class="w-full">
+  <div class="columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3">
+    {
+      galleryData.map((item, index) => (
+        <GalleryItem
+          id={item.id}
+          title={item.title}
+          imageUrl={item.image_url}
+          thumbhash={item.thumbhash}
+          width={item.width}
+          height={item.height}
+          description={item.description ?? ""}
+          index={index}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<Lightbox items={galleryData} />

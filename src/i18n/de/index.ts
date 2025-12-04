@@ -18,6 +18,7 @@ const de = {
       title: "Entwicklung",
       github: "Open-Source-Projekte und Experimente.",
       blog: "Artikel über Technologie und Design.",
+      gallery: "KI-generierte Bilder und visuelle Experimente.",
     },
     projects: {
       title: "Projekte",
@@ -34,6 +35,12 @@ const de = {
       twitter: "Gedanken, Ideen und Updates.",
       email: "Direkte Anfragen und Zusammenarbeit.",
     },
+  },
+  gallery: {
+    metaTitle: "Galerie | Michael Heckmann",
+    metaDescription:
+      "Eine Sammlung von KI-generierten Bildern und visuellen Experimenten.",
+    title: "Galerie",
   },
   blog: {
     metaTitle: "Blog | Michael Heckmann",

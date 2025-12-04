@@ -62,6 +62,10 @@ type RootTranslation = {
 			 * A​r​t​i​c​l​e​s​ ​o​n​ ​t​e​c​h​n​o​l​o​g​y​ ​a​n​d​ ​d​e​s​i​g​n​.
 			 */
 			blog: string
+			/**
+			 * A​I​-​g​e​n​e​r​a​t​e​d​ ​i​m​a​g​e​s​ ​a​n​d​ ​v​i​s​u​a​l​ ​e​x​p​e​r​i​m​e​n​t​s​.
+			 */
+			gallery: string
 		}
 		projects: {
 			/**
@@ -103,6 +107,20 @@ type RootTranslation = {
 			 */
 			email: string
 		}
+	}
+	gallery: {
+		/**
+		 * G​a​l​l​e​r​y​ ​|​ ​M​i​c​h​a​e​l​ ​H​e​c​k​m​a​n​n
+		 */
+		metaTitle: string
+		/**
+		 * A​ ​c​o​l​l​e​c​t​i​o​n​ ​o​f​ ​A​I​-​g​e​n​e​r​a​t​e​d​ ​i​m​a​g​e​s​ ​a​n​d​ ​v​i​s​u​a​l​ ​e​x​p​e​r​i​m​e​n​t​s​.
+		 */
+		metaDescription: string
+		/**
+		 * G​a​l​l​e​r​y
+		 */
+		title: string
 	}
 	blog: {
 		/**
@@ -220,6 +238,10 @@ export type TranslationFunctions = {
 			 * Articles on technology and design.
 			 */
 			blog: () => LocalizedString
+			/**
+			 * AI-generated images and visual experiments.
+			 */
+			gallery: () => LocalizedString
 		}
 		projects: {
 			/**
@@ -261,6 +283,20 @@ export type TranslationFunctions = {
 			 */
 			email: () => LocalizedString
 		}
+	}
+	gallery: {
+		/**
+		 * Gallery | Michael Heckmann
+		 */
+		metaTitle: () => LocalizedString
+		/**
+		 * A collection of AI-generated images and visual experiments.
+		 */
+		metaDescription: () => LocalizedString
+		/**
+		 * Gallery
+		 */
+		title: () => LocalizedString
 	}
 	blog: {
 		/**

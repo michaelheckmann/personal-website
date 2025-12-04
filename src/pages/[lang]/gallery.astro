@@ -1,0 +1,25 @@
+---
+import type { SiteConfig } from "@/lib/types";
+import Layout from "@/components/layout/layout.astro";
+import { locales } from "@/i18n/i18n-util";
+import { ensureLang, getTranslation, setLanguage } from "@/i18n/translation";
+import GalleryTemplate from "@/templates/gallery/index.astro";
+
+const lang = ensureLang(Astro.params.lang);
+setLanguage(lang);
+
+export async function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const t = getTranslation("gallery");
+const config: SiteConfig = {
+  lang,
+  title: t.metaTitle(),
+  description: t.metaDescription(),
+};
+---
+
+<Layout {...config}>
+  <GalleryTemplate />
+</Layout>

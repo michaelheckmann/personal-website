@@ -1,0 +1,134 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  imageUrl: string;
+  thumbhash: string;
+  width: number;
+  height: number;
+  description?: string;
+  index: number;
+}
+
+const { title, imageUrl, thumbhash, width, height, description, index } =
+  Astro.props;
+
+const aspectRatio = width / height;
+---
+
+<button
+  type="button"
+  class="group relative block w-full cursor-zoom-in break-inside-avoid overflow-hidden rounded-lg bg-zinc-800/50 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+  style={{ aspectRatio }}
+  data-gallery-item
+  data-thumbhash={thumbhash}
+  data-index={index}
+  aria-label={`View ${title}`}
+>
+  <!-- Thumbhash placeholder -->
+  <canvas
+    class="absolute inset-0 h-full w-full object-cover transition-opacity duration-500"
+    data-placeholder
+    width="32"
+    height="32"></canvas>
+
+  <!-- Actual image -->
+  <img
+    src={imageUrl}
+    alt={title}
+    width={width}
+    height={height}
+    loading="lazy"
+    decoding="async"
+    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500"
+    data-image
+  />
+
+  <!-- Hover overlay with title -->
+  <div
+    class="absolute inset-0 flex items-end bg-gradient-to-t from-zinc-950 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+  >
+    <div class="space-y-1">
+      <h3 class="text-sm font-medium text-zinc-100">{title}</h3>
+      {
+        description && (
+          <p class="line-clamp-2 text-xs text-zinc-300">{description}</p>
+        )
+      }
+    </div>
+  </div>
+</button>
+
+<script>
+  import { thumbHashToDataURL } from "thumbhash";
+
+  function base64ToUint8Array(base64: string): Uint8Array {
+    const binaryString = atob(base64);
+    const bytes = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+      bytes[i] = binaryString.charCodeAt(i);
+    }
+    return bytes;
+  }
+
+  function initGalleryItems() {
+    const items = document.querySelectorAll("[data-gallery-item]");
+
+    items.forEach((item) => {
+      const thumbhash = item.getAttribute("data-thumbhash");
+      const placeholder = item.querySelector(
+        "[data-placeholder]",
+      ) as HTMLCanvasElement | null;
+      const image = item.querySelector(
+        "[data-image]",
+      ) as HTMLImageElement | null;
+
+      if (!thumbhash || !placeholder || !image) return;
+
+      // Generate thumbhash placeholder
+      try {
+        const thumbhashBytes = base64ToUint8Array(thumbhash);
+        const dataUrl = thumbHashToDataURL(thumbhashBytes);
+
+        // Draw the thumbhash to the canvas
+        const ctx = placeholder.getContext("2d");
+        if (ctx) {
+          const img = new Image();
+          img.onload = () => {
+            ctx.drawImage(img, 0, 0, placeholder.width, placeholder.height);
+          };
+          img.src = dataUrl;
+        }
+      } catch (e) {
+        console.error("Failed to generate thumbhash:", e);
+      }
+
+      // Handle image load
+      if (image.complete) {
+        handleImageLoad(image, placeholder);
+      } else {
+        image.addEventListener("load", () =>
+          handleImageLoad(image, placeholder),
+        );
+      }
+    });
+  }
+
+  function handleImageLoad(
+    image: HTMLImageElement,
+    placeholder: HTMLCanvasElement,
+  ) {
+    // Show the image
+    image.style.opacity = "1";
+    // Hide the placeholder after transition
+    setTimeout(() => {
+      placeholder.style.opacity = "0";
+    }, 100);
+  }
+
+  // Initialize on page load
+  initGalleryItems();
+
+  // Re-initialize on view transitions
+  document.addEventListener("astro:after-swap", initGalleryItems);
+</script>

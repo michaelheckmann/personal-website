@@ -1,0 +1,21 @@
+---
+import { getLocalHref } from "@/lib/routing";
+import Header from "@/components/header.astro";
+import Section from "@/components/section.astro";
+import { getTranslation } from "@/i18n/translation";
+
+import GalleryGrid from "./gallery-grid.astro";
+
+const t = getTranslation("gallery");
+---
+
+<Header back={{ href: getLocalHref("/") }} />
+<Section
+  _title="gallery"
+  class="flex flex-col items-center justify-center pb-32"
+>
+  <div class="flex h-32 w-full justify-center">
+    <h1 class="font-mono text-sm text-zinc-100">{t.title()}</h1>
+  </div>
+  <GalleryGrid />
+</Section>

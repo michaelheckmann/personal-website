@@ -27,5 +27,8 @@ pnpm-debug.log*
 .dev.vars
 .wrangler
 
+# cache
+.cache/
+
 # other
 vale-analysis.md

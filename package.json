@@ -11,6 +11,7 @@
     "cf-typegen": "wrangler types",
     "i18n": "typesafe-i18n --no-watch",
     "vale": "bun helpers/scripts/vale.ts",
+    "gallery": "bun helpers/scripts/process-gallery.ts",
     "astro": "astro",
     "wrangler": "wrangler"
   },
@@ -30,9 +31,12 @@
     "lodash.get": "^4.4.2",
     "nanostores": "^0.11.3",
     "rehype-external-links": "^3.0.0",
+    "sharp": "^0.34.5",
     "tailwind-merge": "^2.5.5",
     "tailwindcss": "^4.0.4",
-    "typesafe-i18n": "^5.26.2"
+    "thumbhash": "^0.1.1",
+    "typesafe-i18n": "^5.26.2",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250204.0",

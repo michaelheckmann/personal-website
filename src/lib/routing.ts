@@ -1,7 +1,7 @@
 import { locales } from "@/i18n/i18n-util";
 import { $lang } from "@/i18n/translation";
 
-type Href = "" | "blog" | `blog/${string}`;
+type Href = "" | "blog" | "gallery" | `blog/${string}`;
 
 /**
  * Prepends the current locale to a given href path.
