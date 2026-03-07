@@ -71,6 +71,7 @@ const { Content } = await render(post);
     :where(p) {
       margin-top: 1.25em;
       margin-bottom: 1.25em;
+      text-wrap: pretty;
     }
     :where([class~="lead"]) {
       color: var(--tw-prose-lead);
@@ -397,7 +398,11 @@ const { Content } = await render(post);
       color: var(--tw-prose-captions);
       font-size: 0.875em;
       line-height: 1.4285714;
-      margin-top: 0.8571429em;
+      text-align: center;
+      max-width: 42em;
+      margin-top: -1.5em;
+      margin-inline: auto;
+      margin-bottom: 2em;
     }
     :where(picture > img) {
       margin-top: 0;
