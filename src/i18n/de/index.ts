@@ -55,7 +55,8 @@ const de = {
     newsletter:
       "Möchtest du informiert werden, wenn ich neue Inhalte veröffentliche? Gib deine Email ein, um meinen kostenlosen Newsletter zu abonnieren.",
     enterEmail: "Email eingeben",
-    newsletterSuccess: "Du bist jetzt für den Newsletter angemeldet!",
+    newsletterSuccess:
+      "Klicke auf den Link in deiner Email, um dein Abonnement zu bestätigen",
     pagination: "Seitennavigation",
     previous: "Zurück",
     next: "Weiter",

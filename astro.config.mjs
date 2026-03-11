@@ -19,9 +19,7 @@ const sitemapLocales = Object.fromEntries(
 export default defineConfig({
   site: "https://heckmann.app",
   adapter: cloudflare({
-    platformProxy: {
-      enabled: true,
-    },
+    imageService: "compile",
   }),
   integrations: [
     sitemap({
@@ -55,13 +53,15 @@ export default defineConfig({
     defaultLocale: baseLocale,
     routing: {
       prefixDefaultLocale: true,
-      redirectToDefaultLocale: true,
     },
     fallback: { de: "en" },
+  },
+  redirects: {
+    "/": "/en/",
   },
   vite: { plugins: [tailwindcss()] },
   markdown: { rehypePlugins: [[rehypeExternalLinks, { target: "_blank" }]] },
   build: {
-    assetsPrefix: "https://heckmann-app.b-cdn.net",
+    // assetsPrefix: "https://heckmann-app.b-cdn.net",
   },
 });

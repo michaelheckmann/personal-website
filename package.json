@@ -5,10 +5,10 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro build && wrangler pages dev",
-    "deploy": "astro build && wrangler pages deploy",
-    "cf-typegen": "wrangler types",
+    "build": "wrangler types && astro check && astro build",
+    "preview": "astro build && astro preview",
+    "deploy": "wrangler types && astro check && astro build && wrangler deploy",
+    "generate-types": "wrangler types",
     "i18n": "typesafe-i18n --no-watch",
     "vale": "bun helpers/scripts/vale.ts",
     "gallery": "bun helpers/scripts/process-gallery.ts",
@@ -17,13 +17,13 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.7",
-    "@astrojs/cloudflare": "^12.2.1",
-    "@astrojs/mdx": "4.0.8",
+    "@astrojs/cloudflare": "^13.0.2",
+    "@astrojs/mdx": "5.0.0",
     "@floating-ui/dom": "^1.6.13",
     "@fontsource/geist-sans": "^5.1.0",
     "@fontsource/inconsolata": "^5.1.0",
     "@tailwindcss/vite": "^4.0.4",
-    "astro": "5.2.5",
+    "astro": "^6.0.2",
     "clsx": "^2.1.1",
     "disposable-email": "^0.2.3",
     "lodash.get": "^4.4.2",
@@ -36,9 +36,9 @@
   },
   "devDependencies": {
     "@ai-sdk/openai": "^3.0.41",
-    "@astrojs/rss": "4.0.11",
-    "@astrojs/sitemap": "^3.2.1",
-    "@cloudflare/workers-types": "^4.20250204.0",
+    "@astrojs/rss": "4.0.17",
+    "@astrojs/sitemap": "3.7.1",
+    "@cloudflare/workers-types": "^4.20260310.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
     "@types/bun": "^1.1.14",
     "@types/disposable-email": "^0.2.2",
@@ -56,6 +56,6 @@
     "rehype-external-links": "^3.0.0",
     "sharp": "^0.34.5",
     "thumbhash": "^0.1.1",
-    "wrangler": "^3.107.3"
+    "wrangler": "^4.72.0"
   }
 }

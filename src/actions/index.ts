@@ -1,15 +1,15 @@
 import { defineAction } from "astro:actions";
-import { z } from "astro:schema";
+import { z } from "astro/zod";
+import { env } from "cloudflare:workers";
 import { validate } from "disposable-email";
 
 export const server = {
   subscribeNewsletter: defineAction({
     accept: "form",
     input: z.object({
-      email: z.string().email(),
+      email: z.email(),
     }),
-    handler: async ({ email }, ctx) => {
-      const { env } = ctx.locals.runtime;
+    handler: async ({ email }) => {
       if (!validate(email)) {
         throw new Error("Disposable email not allowed");
       }
@@ -34,8 +34,13 @@ export const server = {
         throw new Error("Failed to subscribe to newsletter");
       }
 
-      const { data } = await res.json();
-      if (!data?.id) {
+      const response = (await res.json()) as {
+        data?: {
+          id?: string;
+        };
+      };
+
+      if (!response.data?.id) {
         throw new Error("Failed to subscribe to newsletter");
       }
 

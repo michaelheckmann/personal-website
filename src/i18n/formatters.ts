@@ -9,18 +9,26 @@ type AtagParams = {
   class?: string | string[];
 };
 
+const isAtagParams = (value: unknown): value is AtagParams => {
+  return typeof value === "object" && value !== null && "href" in value && "text" in value;
+};
+
 export const initFormatters: FormattersInitializer<Locales, Formatters> = (
-  locale: Locales,
+  _locale: Locales,
 ) => {
   const formatters: Formatters = {
     // add your formatter functions here
-    atag: (params: AtagParams) => {
-      const target = params.openInTab ? 'target="_blank"' : "";
-      const classString = Array.isArray(params.class)
-        ? params.class.join(" ")
-        : params.class;
-      const className = params.class ? `class="${classString}"` : "";
-      return `<a href="${params.href}" ${target} ${className}>${params.text}</a>`;
+    atag: (value: unknown) => {
+      if (!isAtagParams(value)) {
+        return "";
+      }
+
+      const target = value.openInTab ? 'target="_blank"' : "";
+      const classString = Array.isArray(value.class)
+        ? value.class.join(" ")
+        : value.class;
+      const className = value.class ? `class="${classString}"` : "";
+      return `<a href="${value.href}" ${target} ${className}>${value.text}</a>`;
     },
   };
 
