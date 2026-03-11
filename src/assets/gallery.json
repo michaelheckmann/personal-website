@@ -1,57 +1,7 @@
 [
   {
-    "id": "de089398-3266-415c-8b88-e08d21ebecae",
-    "title": "Abandoned Conservatory",
-    "width": 1376,
-    "height": 768,
-    "description": "Arri Alexa 35 with Master Anamorphic 50mm T1.9: Interior of decrepit conservatory at blue hour, broken glass roof panels missing, wild vines reclaiming the space, hundreds of white moths have gathered and cover every surface—walls, remaining glass, hanging plants—creating undulating living wallpaper. One work table in mid-ground still has scattered tools and open journals getting damp from evening dew, small lantern provides warm practical light. Anamorphic flares from lantern, deep teal and amber color palette, fog rolling in through broken panels.\n",
-    "provider": "k1",
-    "image_url": "https://gen.krea.ai/images/871b61f9-12c3-42ed-9815-ebd70982f713.png",
-    "thumbhash": "jdcNDIIKhYiMdXeJdom1c08/xw=="
-  },
-  {
-    "id": "37338336-b954-4919-9526-59f946cd171d",
-    "title": "Magazine in Water",
-    "width": 1264,
-    "height": 848,
-    "description": "Open magazine partially submerged in clear water with sunlight reflections, floating slightly below the surface, creating a serene and artistic scene with visible jewelry images.",
-    "provider": "nano-banana-2",
-    "image_url": "https://app-uploads.krea.ai/public/1376a2e3-7af3-4b77-84e8-175000e4ff6c-image.jpeg",
-    "thumbhash": "HOgNFYIGh4epV4dweomHePiH/F6J"
-  },
-  {
-    "id": "76a0b96d-2777-4417-a54a-de0fcbf357a8",
-    "title": "Animatronic Installation",
-    "width": 1376,
-    "height": 768,
-    "description": "Film still of a animatronic installation as taken from a David Lynch movie. Mysterious and eery atmosphere that feels off and uncanny.",
-    "provider": "nano-banana-2",
-    "image_url": "https://app-uploads.krea.ai/public/cbd85eb5-dd16-4e54-bd4a-396f597cd28d-image.jpeg",
-    "thumbhash": "yCgGFIQEO7qmV4plmXkEllZwaQ=="
-  },
-  {
-    "id": "82757e37-8695-475a-bc6c-cf10e024ec2d",
-    "title": "Reflection in Water",
-    "width": 1376,
-    "height": 768,
-    "description": "Long lens from low position, camera almost touching still water surface in dark room containing several sculptures and easels. Frame is split naturally—bottom half is the perfect mirror reflection, top half is the actual scene, but you can't immediately tell which is which. A single light source in the distance (possibly window or doorway). Compressed perspective makes near and far feel wrong. Cool monochromatic blue-grey grade. Photo shot as if taken with an Arri Alexa Mini LF with Signature Prime 125mm T2.8",
-    "provider": "nano-banana-2",
-    "image_url": "https://app-uploads.krea.ai/public/226c077a-fa71-4626-9dc0-835885db48dc.png",
-    "thumbhash": "S9cJDIInqTd/h3d4eoj4gYYfZw=="
-  },
-  {
-    "id": "0f2bbe1e-679c-4833-826e-8c8f83bcced8",
-    "title": "Beach Fisheye Shot",
-    "width": 1264,
-    "height": 848,
-    "description": "Circular fisheye 8mm, positioned at wet sand/water interface: Lens nearly touching the sand where retreating waves leave glossy surface. The curved horizon shows incoming wave or distant water meeting sky. The wet sand's reflective quality mirrors the sky, creating spatial confusion. Shot during blue hour when sky and water share similar tonality. The fisheye makes the beach curve like a miniature planet.",
-    "provider": "nano-banana-2",
-    "image_url": "https://app-uploads.krea.ai/public/eac2e1c8-3549-4705-b505-1b7d7b68760c-image.jpeg",
-    "thumbhash": "loUNHYZKVmePdod1hmd4h5igjAm5"
-  },
-  {
     "id": "4686e2a9-8083-4b0b-b55d-e93451e06ab6",
-    "title": "Cave Water Droplet",
+    "title": "Droplet of Morning Light",
     "width": 1376,
     "height": 768,
     "description": "Panavision DXL2 with Ultra Panavision glass 65mm: A water droplet faling from the top of a cave through a shaft of volumetric light in a cave opening, the droplet positioned where it catches maximum luminosity, glowing from within. Behind it, the cave mouth frames a view of misty mountains at dawn, blue atmospheric layers receding into distance. The cave interior is almost black except for this single light beam. Dust particles and moisture in the air make the light shaft visible. Shot from inside the cave looking out, the droplet suspended in the light column. Cinematic wide aspect ratio, warm key light, cool ambient, high production value atmospheric effects.",
@@ -60,38 +10,8 @@
     "thumbhash": "jecVFIIIp4iJdoiEeob3fXnfqA=="
   },
   {
-    "id": "e1da6cc7-9333-415d-b5d9-16b435d7ba10",
-    "title": "Geode Cave Interior",
-    "width": 1376,
-    "height": 768,
-    "description": "ARRI Alexa 35 with Signature Prime 65mm: Interior of a geode cave where massive quartz crystals catch filtered light from an unseen opening, creating prismatic refractions across the crystalline walls. Deep shadows preserve the cave's mystery while sharp highlights reveal the geometric precision of mineral formations. Anamorphic framing, crushed blacks with luminous detail retention.",
-    "provider": "k1",
-    "image_url": "https://gen.krea.ai/images/826778ee-ed79-4f8d-9673-fc1151fd41fb.png",
-    "thumbhash": "DQgODIAJhoeYWJd1eHkHhUQHZg=="
-  },
-  {
-    "id": "24efafb8-3798-416e-b048-5d84a55c21d1",
-    "title": "Dandelion Seeds Dispersing",
-    "width": 1376,
-    "height": 768,
-    "description": "Sony Venice 2 with Cooke Anamorphic/i 65mm Macro: Extreme close-up of a dandelion seed head against black void, backlit so each seed glows like a small star, captured at the moment a wind gust hits—seeds just beginning to separate from the head, some already airborne, some still attached, creating a constellation of floating points of light extending into darkness. Shot with high-speed camera at 1000fps, motion frozen showing the dispersal pattern. The seed head itself is in perfect focus, the departing seeds trailing into bokeh. Silver-white seeds against pure black, single warm backlight creating rim lighting on each filament. Anamorphic oval bokeh for departing seeds.",
-    "provider": "k1",
-    "image_url": "https://gen.krea.ai/images/f780413b-e78b-418c-99d3-47591ddb50e9.png",
-    "thumbhash": "DPgJDIBvZIlDqmgzdolvUbYFmw=="
-  },
-  {
-    "id": "2d92815c-51e6-468a-ab2a-3f69b892ecc6",
-    "title": "Ball Bearings in Mercury",
-    "width": 1376,
-    "height": 768,
-    "description": "Canon EOS R5 with 100mm macro: A collection of steel ball bearings perpetually circling in a shallow dish of mercury, captured with high-speed flash freezing their orbital paths, creating corona patterns in the liquid metal surface. Multiple exposure composite showing motion trails as ghost images. Shot from directly above, harsh overhead lighting creating high contrast reflections. Clean white background visible through clear glass dish, precise focus on leading sphere with trailing blur.",
-    "provider": "k1",
-    "image_url": "https://gen.krea.ai/images/3b1a352e-3dcd-44bf-9716-807d5f98a8f8.png",
-    "thumbhash": "9AcOBID3SYeId4iMdHf4iTZgWA=="
-  },
-  {
     "id": "ae1b841c-bdbc-4dae-9dca-740b2ecbf1bb",
-    "title": "Mineral Column Abyss",
+    "title": "Cathedral of Layered Light",
     "width": 1376,
     "height": 768,
     "description": "RED Komodo 6K with Laowa 24mm Probe: Looking down into deep cylindrical chamber carved through layers of different colored mineral deposits—rose quartz, jade, obsidian, amber—each layer perfectly stratified, with single beam of daylight penetrating from far above, illuminating suspended dust particles and creating god rays through the geological column. Camera positioned looking straight down into the abyss, extreme depth, edges fading to black.",
@@ -100,28 +20,224 @@
     "thumbhash": "CAgODIIIt2h6lml3iHgIeoSAOA=="
   },
   {
-    "id": "5eb57e67-9829-4489-be63-4b6472ca8163",
-    "title": "Astronaut Watching Starbirth",
-    "width": 832,
-    "height": 1248,
-    "description": "cinematic shot of an astronaut watching the creation of a star. Shot in the style of Denis Villeneuve with wide camera lens, hyper-realistic, raw cinematic shot, medium high angle shot. Smoky and misty. particles flying.",
-    "provider": "k1",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/acd212cc-3f56-43ea-9a23-c00be91cacaf.png",
-    "thumbhash": "WBgSDQJ/Z3WJN4h3iWmHaDl3gIMI"
-  },
-  {
-    "id": "03aa6ba9-4774-4a84-bf59-47166083b72e",
-    "title": "Submerged Magazine",
+    "id": "724f0645-3b5b-4c0e-9ea0-4d0f02fc6091",
+    "title": "Study of White Gills",
     "width": 1248,
     "height": 832,
-    "description": "Leica SL3 with 90mm APO: Open magazine submerged in clear water with sunlight reflections, floating slightly below the surface, creating a serene and artistic scene with visible jewelry images. Pages are wet from the water starting to come apart. Hyper realistic",
+    "description": "macro texture of white mushoom gils, texture, minimalist",
     "provider": "k1",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/4665ea61-f031-4153-8c0a-05d11356c72e.png",
-    "thumbhash": "UxgODYI9eXhgeHhyeneHh49g+DZW"
+    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/40c100fe-2db4-4be6-8ed6-fdd4efe6330f.png",
+    "thumbhash": "nBgOBYBviId1eIdkiWiIaB7AsQMc"
+  },
+  {
+    "id": "0a399f5e-3830-4da0-aa0b-3fd562ca6466",
+    "title": "Apparition in Steel Blue",
+    "width": 1248,
+    "height": 832,
+    "description": "RED Komodo with Canon FD 200mm f/2.8 vintage telephoto: A solitary large tree standing in a flat grass field, engulfed in dense pre-dawn fog. Shot from far away so the telephoto stacks the fog into near-opaque planes of blue-gray. The tree is barely a dark suggestion — you can sense its size and shape but cannot see a single branch. Ground and sky have dissolved into each other. Almost monochromatic, shifting from dove gray to steel blue",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/e2c7c10e-3b9c-4ef3-8a75-bfeec30f7e64.png",
+    "thumbhash": "Z/cVDYCIZ4h/h3h0hpiIdkiKf/do"
+  },
+  {
+    "id": "4cd02144-224a-4850-aeac-09728cd800de",
+    "title": "Tintype Vortex",
+    "width": 1024,
+    "height": 768,
+    "description": "Chamonix 4x5 large format camera with Dallmeyer 3B Petzval lens, actual wet plate collodion process: The pinboard shot as a one-of-a-kind tintype — hand-poured silver emulsion on a black aluminum plate. The Petzval's signature rendering holds the center of the board in ethereal, creamy sharpness while the edges spiral into swirling, concentric bokeh that pulls the pinned items into a slow vortex. The collodion chemistry shifts all colour to monochrome silver and deep black, but with that unmistakable wet plate quality — chemical runs frozen at the plate's edges where the emulsion was poured unevenly, dark voids where it didn't coat, a faint iridescent sheen. The tonal range is compressed and luminous. Long exposure means anything that moved — a curling paper edge — ghosts slightly",
+    "provider": "qwen-2512",
+    "image_url": "https://gen.krea.ai/images/d04b6246-78fb-4b9b-8666-42fe07f413bd.png",
+    "thumbhash": "D/gNBYAHl4d4h3hyi3eHeAh6gKcG"
+  },
+
+  {
+    "id": "9cb8a6ac-3e1a-454d-bad1-5160e08fec23",
+    "title": "Gold in the Gloom",
+    "width": 1248,
+    "height": 832,
+    "description": "Panavision Millennium XL2 with C-Series Anamorphic 50mm at T2: A tall, dark library room — dense floor-to-ceiling shelves — with a single shaft of late-afternoon light entering from a high unseen window. It falls diagonally, catching a small cluster of spines in warm gold while everything above and below sinks into deep shadow. Low angle looking up so the lit section sits in the upper third of the frame. The anamorphic glass stretches the light source into a long horizontal flare. Dust suspended in the beam",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/c17d25d4-9794-4318-8c97-b70ca3616486.png",
+    "thumbhash": "CggODYIJtnhnuEl3eHaHhwpklGBG"
+  },
+  {
+    "id": "81120029-a0d7-4f38-bac5-78304cb84801",
+    "title": "Crack of Light",
+    "width": 1376,
+    "height": 768,
+    "description": "RED Komodo with Leica R 100mm Macro at T2.8: View looking directly into the thin gap between a door and its frame, with light bleeding through from the other side. Shot with the lens parallel to and almost touching the door surface, making the gap itself the subject. The crack of light creates a vertical luminous line, with wood grain texture razor-sharp on one side, darkness on the other. Dust particles visible in the light beam.",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/c280805b-e616-4753-9379-8bcf9f15ddad.png",
+    "thumbhash": "ihgKHIQNslt3iHh2iIgvePeDdw=="
+  },
+  {
+    "id": "258f9a20-d21c-4c2c-931f-80bd85caa96b",
+    "title": "Buried Sky",
+    "width": 1248,
+    "height": 832,
+    "description": "Leica SL3 with Summicron-SL 35mm f/2: A small circular mirror resting on dark, damp soil, reflecting an overcast sky with faint cloud texture. Camera positioned low, slightly off-axis, so the mirror reads as a portal in the earth. Shallow depth keeps the soil soft around the edges. Muted, Tarkovskian color palette — greens pushed toward grey, sky nearly white. Natural diffused light. Film emulation grain",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/f7a9caf5-f397-41b2-8613-28d1574cc845.png",
+    "thumbhash": "UPgJBYAIt2eOiHeZe+RojQR9DCyP"
+  },
+
+  {
+    "id": "0f2bbe1e-679c-4833-826e-8c8f83bcced8",
+    "title": "Tidal Mirror",
+    "width": 1264,
+    "height": 848,
+    "description": "Circular fisheye 8mm, positioned at wet sand/water interface: Lens nearly touching the sand where retreating waves leave glossy surface. The curved horizon shows incoming wave or distant water meeting sky. The wet sand's reflective quality mirrors the sky, creating spatial confusion. Shot during blue hour when sky and water share similar tonality. The fisheye makes the beach curve like a miniature planet.",
+    "provider": "nano-banana-2",
+    "image_url": "https://app-uploads.krea.ai/public/eac2e1c8-3549-4705-b505-1b7d7b68760c-image.jpeg",
+    "thumbhash": "loUNHYZKVmePdod1hmd4h5igjAm5"
+  },
+
+  {
+    "id": "82757e37-8695-475a-bc6c-cf10e024ec2d",
+    "title": "The Inverted Atelier",
+    "width": 1376,
+    "height": 768,
+    "description": "Long lens from low position, camera almost touching still water surface in dark room containing several sculptures and easels. Frame is split naturally—bottom half is the perfect mirror reflection, top half is the actual scene, but you can't immediately tell which is which. A single light source in the distance (possibly window or doorway). Compressed perspective makes near and far feel wrong. Cool monochromatic blue-grey grade. Photo shot as if taken with an Arri Alexa Mini LF with Signature Prime 125mm T2.8",
+    "provider": "nano-banana-2",
+    "image_url": "https://app-uploads.krea.ai/public/226c077a-fa71-4626-9dc0-835885db48dc.png",
+    "thumbhash": "S9cJDIInqTd/h3d4eoj4gYYfZw=="
+  },
+  {
+    "id": "e5b46b70-0ebc-4f2c-a158-c480a7371c92",
+    "title": "Sunlit Pages Adrift",
+    "width": 1264,
+    "height": 848,
+    "description": "Open magazine partially submerged in clear water with sunlight reflections, floating slightly below the surface, creating a serene and artistic scene with visible jewelry images, pages are starting to wilter, small splashes of water as the last remnants of the magazine having falling into the water",
+    "provider": "nano-banana-2",
+    "image_url": "https://app-uploads.krea.ai/public/e3df0e91-cb1a-4878-b61d-d3fbf4edc00a-image.jpeg",
+    "thumbhash": "pwgGFYY3C0R4mXd/e1tnZwGKWrCI"
+  },
+
+  {
+    "id": "76a0b96d-2777-4417-a54a-de0fcbf357a8",
+    "title": "Automaton Lullaby",
+    "width": 1376,
+    "height": 768,
+    "description": "Film still of a animatronic installation as taken from a David Lynch movie. Mysterious and eery atmosphere that feels off and uncanny.",
+    "provider": "nano-banana-2",
+    "image_url": "https://app-uploads.krea.ai/public/cbd85eb5-dd16-4e54-bd4a-396f597cd28d-image.jpeg",
+    "thumbhash": "yCgGFIQEO7qmV4plmXkEllZwaQ=="
+  },
+
+  {
+    "id": "6468926c-346e-4232-9a12-20a022b6b07d",
+    "title": "The Inverted Archive",
+    "width": 1376,
+    "height": 768,
+    "description": "Arri Alexa Mini LF with Signature Prime 125mm T2.8: Long lens from low position, camera almost touching still water surface in dark room containing several sculptures of historic technologies. Frame is split naturally—bottom half is the perfect mirror reflection, top half is the actual scene, but you can't immediately tell which is which. A single light source in the distance (possibly window or doorway). Compressed perspective makes near and far feel wrong. Cool monochromatic blue-grey grade.",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/72965e1c-ff29-4aec-b3c7-59c5fee5bcd8.png",
+    "thumbhash": "jucNDIIJplmHd4l0iYe2j3r8qA=="
+  },
+  {
+    "id": "250853f6-14f5-45aa-ab94-3d2f55410ea7",
+    "title": "Verdant Orb at Dawn",
+    "width": 1376,
+    "height": 768,
+    "description": "Circular fisheye 8mm, 1.5 inches above moss-covered stone or forest floor: Dense moss texture in sharp detail foreground, curved horizon reveals misty forest or overcast sky through trees. The fisheye makes the moss patch appear as a small green planet. Diffused overcast light, cool 4500K temperature. Morning mist at horizon line adds depth separation. The organic texture feels alien through the curved distortion.",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/b3d13841-c543-48e8-a3ee-18b6539fecb2.png",
+    "thumbhash": "U/gRDIAXSId/hHaJdogIcXALqA=="
+  },
+  {
+    "id": "de089398-3266-415c-8b88-e08d21ebecae",
+    "title": "Conservatory of White Moths",
+    "width": 1376,
+    "height": 768,
+    "description": "Arri Alexa 35 with Master Anamorphic 50mm T1.9: Interior of decrepit conservatory at blue hour, broken glass roof panels missing, wild vines reclaiming the space, hundreds of white moths have gathered and cover every surface—walls, remaining glass, hanging plants—creating undulating living wallpaper. One work table in mid-ground still has scattered tools and open journals getting damp from evening dew, small lantern provides warm practical light. Anamorphic flares from lantern, deep teal and amber color palette, fog rolling in through broken panels.",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/871b61f9-12c3-42ed-9815-ebd70982f713.png",
+    "thumbhash": "jdcNDIIKhYiMdXeJdom1c08/xw=="
+  },
+  {
+    "id": "1605b4a1-b69f-402c-89d7-dcb557327205",
+    "title": "Raked Light Through Concrete Grooves",
+    "width": 1376,
+    "height": 768,
+    "description": "Sigma fp L with 105mm f/1.4 Art wide open: Extreme close-up of clear water rushing through parallel concrete micro-channels in brutalist architecture, shot at 1/60s to capture fluid motion blur while keeping the geometric channel edges razor sharp. Harsh afternoon sunlight rakes across from the side creating dramatic shadows in some channels while others catch direct light. Chromatic aberration visible where bright reflections meet concrete edges. Shallow depth of field isolates middle channel group, foreground and background channels falling into bokeh.",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/615b6eae-2869-42cf-a4d9-3f259bdcb706.png",
+    "thumbhash": "JPgJDIIKdXXheYZXVFca8sMyTw=="
+  },
+  {
+    "id": "bed10fd7-8142-4297-94da-8fb427ad6725",
+    "title": "Blue Hour Pocket Planet",
+    "width": 1376,
+    "height": 768,
+    "description": "Circular fisheye 8mm, positioned at wet sand/water interface: Lens nearly touching the sand where retreating waves leave glossy surface. The curved horizon shows incoming wave or distant water meeting sky. The wet sand's reflective quality mirrors the sky, creating spatial confusion. Shot during blue hour when sky and water share similar tonality. The fisheye makes the beach curve like a miniature planet.",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/559e8482-5b53-4082-83b4-619c7aefa1cb.png",
+    "thumbhash": "HAcSDIIZVnePdXZ2iIfPxf4J7g=="
+  },
+  {
+    "id": "e1da6cc7-9333-415d-b5d9-16b435d7ba10",
+    "title": "Prismatic Geode Cathedral",
+    "width": 1376,
+    "height": 768,
+    "description": "ARRI Alexa 35 with Signature Prime 65mm: Interior of a geode cave where massive quartz crystals catch filtered light from an unseen opening, creating prismatic refractions across the crystalline walls. Deep shadows preserve the cave's mystery while sharp highlights reveal the geometric precision of mineral formations. Anamorphic framing, crushed blacks with luminous detail retention.",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/826778ee-ed79-4f8d-9673-fc1151fd41fb.png",
+    "thumbhash": "DQgODIAJhoeYWJd1eHkHhUQHZg=="
+  },
+  {
+    "id": "cf16975a-9e4a-44fd-996c-092f95d311e3",
+    "title": "Millennia in a Sunbeam",
+    "width": 1376,
+    "height": 768,
+    "description": "RED Monstro 8K VV with Leitz Thalia 32mm: Narrow slot canyon where millennia of erosion reveal dozens of distinct sedimentary layers in warm orange and burgundy tones. Single shaft of sunlight penetrates from above, illuminating the precise stratification. The organic curves contrast with the geometric precision of the layers. Deep shadows, volumetric light beam, southwestern color science.",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/d04be06c-6c68-4494-99a3-b48b86e1e016.png",
+    "thumbhash": "iUgKHIYLpFl6hIp3h3gMeeWAVg=="
+  },
+  {
+    "id": "68c1567d-b0c2-44f7-811e-5361ddb8d16e",
+    "title": "Watcher in the Azure Abyss",
+    "width": 1248,
+    "height": 832,
+    "description": "A man in a trench coat gazes at the interior of an enormous blue hole filled with code, bits, a retro-futuristic poster art style illustration",
+    "provider": "k1",
+    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/66d7b03d-2161-4f24-98d2-cec51fbb9e34.png",
+    "thumbhash": "z/cNBYB2mXmAaHaGeJiHeJaHv8r2"
+  },
+  {
+    "id": "2d92815c-51e6-468a-ab2a-3f69b892ecc6",
+    "title": "Celestial Bearings",
+    "width": 1376,
+    "height": 768,
+    "description": "Canon EOS R5 with 100mm macro: A collection of steel ball bearings perpetually circling in a shallow dish of mercury, captured with high-speed flash freezing their orbital paths, creating corona patterns in the liquid metal surface. Multiple exposure composite showing motion trails as ghost images. Shot from directly above, harsh overhead lighting creating high contrast reflections. Clean white background visible through clear glass dish, precise focus on leading sphere with trailing blur.",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/3b1a352e-3dcd-44bf-9716-807d5f98a8f8.png",
+    "thumbhash": "9AcOBID3SYeId4iMdHf4iTZgWA=="
+  },
+  {
+    "id": "7af10487-addb-4177-8cf6-de68194b7fa1",
+    "title": "Palimpsest Surface",
+    "width": 1376,
+    "height": 768,
+    "description": "super close up macro texture of history, texture, minimalist",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/638604d6-c1a2-4c1d-9439-7d66de7544ca.png",
+    "thumbhash": "WBgCBIDHB0hphoiKgIfQuj6PZg=="
+  },
+
+  {
+    "id": "661bac9a-88ab-473a-bccc-a1ac6b8f3ea3",
+    "title": "Silent Lamellae",
+    "width": 1248,
+    "height": 832,
+    "description": "macro texture of white mushoom gils, texture, minimalist",
+    "provider": "k1",
+    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/94365d43-a44b-48e0-9176-609b4d8b1d3c.png",
+    "thumbhash": "XxgGBYBIaGcwlYdjjUiMllOQKAaa"
   },
   {
     "id": "cd4ebbfb-8b37-49a1-8991-84468763f862",
-    "title": "Futuristic Man in Fog",
+    "title": "Sentinel in Amber Fog",
     "width": 1248,
     "height": 832,
     "description": "movie still, close-up, a man in a futuristic coat in an orange sand patch, minimalist, hazy, foggy, red and amber, low contrast, muted tones",
@@ -129,29 +245,20 @@
     "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/7d772d14-2577-449a-9793-6e272b6b4d7d.png",
     "thumbhash": "23kOFYS3WJePd3eHd3h4iPaHZB9Y"
   },
+
   {
-    "id": "84c5ac26-2d7e-41a1-a8d4-a5bca765d5c3",
-    "title": "Zen Garden Mercury Pool",
-    "width": 1024,
-    "height": 1024,
-    "description": "Leica SL3 with 90mm APO: Zen garden with traditional rake patterns butspecific stones are surrounded by rippling mercury-like liquid, while crystalline structures grow only around these dynamic points. Close-up perspective, high key lighting, focus on texture contrast.",
+    "id": "8a3767e2-2c1f-49d4-9b2f-11cc9aeee226",
+    "title": "Petals for the Void",
+    "width": 1184,
+    "height": 896,
+    "description": "cinematic shot of an astronaut lying in the middle of roses, shot in the style of Denis Villeneuve with wide camera lens, helmet is reflection the scene around it hyper-realistic, raw cinematic shot, medium high angle shot",
     "provider": "krea-flux",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/d261b72e-8cea-412f-aa12-89c08f2243ec.png",
-    "thumbhash": "zucFDwJniFd0d3hwiUaHqGiLp7CYC4gF"
-  },
-  {
-    "id": "0741b004-2568-4a4b-892e-e26b15171d6e",
-    "title": "Abandoned Lot Void",
-    "width": 1024,
-    "height": 1024,
-    "description": "photo of a person from the 70s, back to the camera standing in an abandoned parking lot, looking into a big black void which emits shiny fluorescent particles",
-    "provider": "krea-flux",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/9b3e0c0f-9956-4a62-a1bc-9d4757e9ae63.png",
-    "thumbhash": "zgcKDwJZZ4dwhHt2i3WJh2d5pg23+nQL"
+    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/908d86ed-619a-4346-a68b-bbe4ea0ef7a2.png",
+    "thumbhash": "UBgGDYRQmlbBZ4S0N7mTV/wd+8+x"
   },
   {
     "id": "8e89a0b7-92d5-4d09-8795-95f1c0cb3c0a",
-    "title": "Corn Field Encounter",
+    "title": "Midnight Harvest Glow",
     "width": 848,
     "height": 1264,
     "description": "A person, back to the camera is standing in a corn field. Glowing particles are being emitted from the ground. Dark and mysterious atmosphere.",
@@ -160,48 +267,8 @@
     "thumbhash": "CwgKBQBXeI942He4d3Z5Z6iPrf7I"
   },
   {
-    "id": "fbe1337b-d7d3-400a-b1ca-51ec7d114ee3",
-    "title": "Blue Sky",
-    "width": 1184,
-    "height": 896,
-    "description": "The image shows a blue sky with some clouds",
-    "provider": "krea-flux",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/331978d4-3870-4918-a310-c35c4203c416.png",
-    "thumbhash": "HrYNDYR5eHdweHeCh5iHeVcLftf2"
-  },
-  {
-    "id": "6d563789-8065-4e58-b914-430ec7caf899",
-    "title": "Magazine Underwater",
-    "width": 1024,
-    "height": 1024,
-    "description": "Leica SL3 with 90mm APO: Open magazine submerged in clear water with sunlight reflections, floating slightly below the surface, creating a serene and artistic scene with visible jewelry images. Pages are wet from the water starting to come apart. Hyper realistic",
-    "provider": "gpt-image-tool",
-    "image_url": "https://app-uploads.krea.ai/9d65e0b7-422a-4636-97d7-538a08f0e43f/d75fadf3-2760-4f60-ad15-2e5aa083bd3c-image.png",
-    "thumbhash": "IOgFDwSIiIZ+dYaAaml4qId2aqYHR4oA"
-  },
-  {
-    "id": "bb18df2c-bfd9-493e-93ef-c9ac32d79428",
-    "title": "VHS Landscape Tape",
-    "width": 1376,
-    "height": 768,
-    "description": "an eery and mood still of a VHS tape of a landscape with a big lake. there are strong artifacts from the VHS tape visible. Everything is slightly distorted",
-    "provider": "krea-flux",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/68a10489-b616-4f88-9732-5724976675a5.png",
-    "thumbhash": "IfgVFIRYh3d/iIeIeYlVjF+3+A=="
-  },
-  {
-    "id": "58714ab6-5989-4729-af1b-9943063366b2",
-    "title": "VHS Tape Distortion",
-    "width": 1376,
-    "height": 768,
-    "description": "An eery and moody still frame of a VHS tape. there are strong artifacts from the VHS tape visible. Everything is slightly distorted.",
-    "provider": "krea-flux",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/20d2c994-7147-4218-b5db-1bffe73ad71a.png",
-    "thumbhash": "BvgFDIAJk3hRrId5h5gJZIf6Lg=="
-  },
-  {
     "id": "d7b468e9-86be-43da-b0e9-fc351a09d50a",
-    "title": "Woman by Lake",
+    "title": "Lakebound Silence",
     "width": 1024,
     "height": 1024,
     "description": "A black and white photograph of a woman walking away from the viewer towards a lake, with distinctive leaves visible in the frame., bw-retro, high resolution",
@@ -210,63 +277,73 @@
     "thumbhash": "KQgKBwDqZIproIimhpl5Vnh0ha86ZMAK"
   },
   {
-    "id": "0453a1bc-31f3-48aa-a8fd-73d8c4131c6b",
-    "title": "PERSON IN CORNFIELD",
+    "id": "3e328568-76d1-4178-9fd1-fde7ad27efa2",
+    "title": "Floating Glass Cosmos",
     "width": 1376,
     "height": 768,
-    "description": "A person, back to the camera is standing in a corn field. Glowing particles are being emitted from the ground. Clashing, contrasting and bright colors.",
+    "description": "low quality photo of a glass cube floating on the surface of the ocean. inside of the glass cube, reflections bounce off of each other making it look like there is an entire universe inside out it",
     "provider": "krea-flux",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/96ee093b-dee2-4b95-abe0-ed2501b6f76f.png",
-    "thumbhash": "yxgGJIZ2OqaAeYt6iGx3gHcGeA=="
+    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/426f1164-6ba5-4ded-b1ef-f5c4276afb3e.png",
+    "thumbhash": "y/cFBIJkpXqQp2d2h3xZb6f5lg=="
   },
   {
-    "id": "6fa885d7-4c50-488d-8879-9be5c25b5468",
-    "title": "Frozen Lake Pools",
-    "width": 1376,
-    "height": 768,
-    "description": "A perfectly still frozen lake with singular spots of water remaining liquid and rippling, featuring steam rising only from these dynamic pools. The scene is shot from above, bathed in morning light, highlighting extreme contrast between the textured ice and the fluid motion of the liquid areas.",
-    "provider": "krea-flux",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/39306eb8-228c-4a54-a188-1dbe545eaab6.png",
-    "thumbhash": "4ucRDICXiIhwdohyd4EqsORJ/A=="
-  },
-  {
-    "id": "0f942ae9-9fa4-45c5-b2c3-55bd9e80273a",
-    "title": "Bicycle Retro Futurism",
-    "width": 1024,
-    "height": 1024,
-    "description": "The image depicts a man on a bicycle looking at a large digital display, while a man in a suit stands nearby., full-ornate-retro-futurism, high resolution",
-    "provider": "",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/32034deb-be27-4b84-ab3b-ae8e0c2d0686.png",
-    "thumbhash": "0OcJDwQGiXlshoaVijepl3mGtg5o+oMM"
-  },
-  {
-    "id": "8a3767e2-2c1f-49d4-9b2f-11cc9aeee226",
-    "title": "Astronaut in Roses",
-    "width": 1184,
-    "height": 896,
-    "description": "cinematic shot of an astronaut lying in the middle of roses, shot in the style of Denis Villeneuve with wide camera lens, helmet is reflection the scene around it hyper-realistic, raw cinematic shot, medium high angle shot ",
-    "provider": "krea-flux",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/908d86ed-619a-4346-a68b-bbe4ea0ef7a2.png",
-    "thumbhash": "UBgGDYRQmlbBZ4S0N7mTV/wd+8+x"
-  },
-  {
-    "id": "6b66e0ff-5fe2-4f82-a390-a576fbad3c12",
-    "title": "VHS Tape in Grass",
+    "id": "58174e20-6893-4b4c-a503-c70c0f44704b",
+    "title": "Static Hour in Bloom",
     "width": 1376,
     "height": 768,
     "description": "An eery and moody still frame of a VHS tape that shows an analog clock lying in the grass. lush colors. flowers. lense flare. there are strong artifacts from the VHS tape visible. Everything is slightly distorted",
     "provider": "krea-flux",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/520b5d25-0767-48ac-b9c4-a45a2b7df128.png",
-    "thumbhash": "jPgJFIBWmWeGeIeAeXl2dkBfog=="
+    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/153d3ac5-279b-4535-a793-1575f3e58bca.png",
+    "thumbhash": "i/gFDIAYkoxkmndwu4smRfDgLA=="
   },
   {
-    "id": "3c27bfb2-df5d-4a34-abec-b61b944a2767",
-    "title": "Old VHS Time Machine Footage",
+    "id": "58714ab6-5989-4729-af1b-9943063366b2",
+    "title": "Residual Signal",
     "width": 1376,
     "height": 768,
-    "description": "An eery and moody still frame of a VHS tape that shows underwater footage of a nautical time machine at the bottom of the ocean there are strong artifacts from the VHS tape visible. Everything is distorted. Fish eye lense. Dirt and gravel are floating",
+    "description": "An eery and moody still frame of a VHS tape. there are strong artifacts from the VHS tape visible. Everything is slightly distorted.",
     "provider": "krea-flux",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/0e3b55ff-b481-492e-9b90-23484ae11768.png",
-    "thumbhash": "TegFDIRWhnjal2d/eZZmsH0Jdg=="
+    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/20d2c994-7147-4218-b5db-1bffe73ad71a.png",
+    "thumbhash": "BvgFDIAJk3hRrId5h5gJZIf6Lg=="
+  },
+  {
+    "id": "0a915874-b3ea-4565-a008-03b83b436f27",
+    "title": "Static Memory Loop",
+    "width": 1376,
+    "height": 768,
+    "description": "An eery and moody still frame of a VHS tape. there are strong artifacts from the VHS tape visible. Everything is slightly distorted.",
+    "provider": "krea-flux",
+    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/ba64c4ef-1465-459d-82bb-89b825a0acd0.png",
+    "thumbhash": "iigGDIIImqN6hniBbIUMisGQKA=="
+  },
+  {
+    "id": "83041518-d0c7-44da-82e1-635fa6dc7377",
+    "title": "Watcher at the Blue Abyss",
+    "width": 1248,
+    "height": 832,
+    "description": "A man in a trench coat gazes at the interior of an enormous blue hole, retro-futuristic poster",
+    "provider": "k1",
+    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/b8d88619-dcbe-4c90-bc1f-cc7493b9a664.png",
+    "thumbhash": "6PcJDYLHZ1dxhHd4gSVogPZzfE/H"
+  },
+  {
+    "id": "fb11291a-a3a1-491c-bc3c-5d75dd171e9b",
+    "title": "False Horizon",
+    "width": 1376,
+    "height": 768,
+    "description": "Arri Alexa Mini LF with Signature Prime 125mm T2.8: Long lens from low position, camera almost touching still water surface in dark room, shooting across the water horizontally. Frame is split naturally—bottom half is the perfect mirror reflection, top half is the actual scene, but you can't immediately tell which is which. A single light source in the distance (possibly window or doorway). Compressed perspective makes near and far feel wrong. Cool monochromatic blue-grey grade.",
+    "provider": "k1",
+    "image_url": "https://gen.krea.ai/images/b1f75e6a-daf6-42cd-9fb9-5320677c7440.png",
+    "thumbhash": "k+cVDIIGmoaId4iGeHn6iKh/hw=="
+  },
+  {
+    "id": "16774d06-9404-4dcb-b149-39fee242a11a",
+    "title": "Pinned Echoes on Silver",
+    "width": 1024,
+    "height": 768,
+    "description": "The pinboard shot as a one-of-a-kind tintype — hand-poured silver emulsion on a black aluminum plate. The collodion chemistry shifts all colour to monochrome silver and deep black, but with that unmistakable wet plate quality — chemical runs frozen at the plate's edges where the emulsion was poured unevenly, dark voids where it didn't coat, a faint iridescent sheen. The tonal range is compressed and luminous. Long exposure means anything that moved — a curling paper edge — ghosts slightly",
+    "provider": "qwen-2512",
+    "image_url": "https://gen.krea.ai/images/b2155923-7fac-40b1-a617-fa440c4240ae.png",
+    "thumbhash": "DfgJBYCKB2ieZ4V5g1mFgk+qsRIJ"
   }
 ]
