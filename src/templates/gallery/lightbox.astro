@@ -123,7 +123,7 @@ const { items } = Astro.props;
       </h2>
       <p
         id="lightbox-description"
-        class="mx-auto max-w-prose text-sm leading-relaxed text-pretty text-zinc-400"
+        class="mx-auto line-clamp-6 max-w-prose text-sm leading-relaxed text-pretty text-zinc-400"
         aria-live="polite"
       >
       </p>
@@ -187,6 +187,7 @@ const { items } = Astro.props;
       lightboxImage.alt = item.title;
       lightboxTitle.textContent = item.title;
       lightboxDescription.textContent = item.description || "";
+      lightboxDescription.title = item.description || "";
     }
 
     function showPrevious() {
