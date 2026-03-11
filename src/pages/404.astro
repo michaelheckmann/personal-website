@@ -1,0 +1,69 @@
+---
+import { cn } from "@/lib/utils";
+import Layout from "@/components/layout/layout.astro";
+---
+
+<Layout
+  lang="en"
+  title="404 - Page Not Found"
+  description="The page you're looking for doesn't exist. Return to the homepage."
+>
+  <div class="h-screen flex-1">
+    <section
+      class="mx-auto flex size-full max-w-6xl flex-1 flex-col items-center justify-center gap-10 px-6 text-center max-sm:pt-20 max-sm:pb-12"
+    >
+      <div class="space-y-4 text-center">
+        <div
+          class={cn(
+            "text-4xl font-semibold text-neutral-200 tabular-nums sm:text-4xl",
+            "motion-opacity-in-20 motion-blur-in-lg motion-translate-y-in-100 motion-duration-500",
+          )}
+        >
+          404
+        </div>
+        <h1
+          class={cn(
+            "text-xl tracking-[-0.01em] text-neutral-200 sm:text-2xl",
+            "motion-opacity-in-20 motion-blur-in-lg motion-translate-y-in-100 motion-duration-500 motion-delay-75",
+          )}
+        >
+          Page not found
+        </h1>
+        <p
+          class={cn(
+            "mx-auto max-w-md text-balance text-neutral-400",
+            "motion-opacity-in-20 motion-blur-in-lg motion-translate-y-in-100 motion-duration-500 motion-delay-150",
+          )}
+        >
+          Couldn't find the page you're looking for. It might have been moved or
+          deleted.
+        </p>
+      </div>
+
+      <div
+        class={cn(
+          "motion-opacity-in-20 motion-blur-in-md motion-translate-y-in-100 motion-duration-500 motion-delay-200",
+        )}
+      >
+        <a
+          id="home-link"
+          href="/en"
+          class={cn(
+            "relative cursor-pointer rounded-lg border border-neutral-800 bg-clip-padding px-7 py-2 align-middle",
+            "text-sm text-shadow-sm",
+            "shadow-xs inset-shadow-sm inset-shadow-white/2",
+            "bg-neutral-850",
+            "hover:bg-neutral-800",
+            "active:scale-[98%]",
+            "disabled:cursor-not-allowed disabled:border-neutral-900 disabled:bg-neutral-900 disabled:text-neutral-600",
+            "outline-none focus-visible:border-neutral-500",
+            "ease-snappy transition-all duration-200",
+            "min-w-40 whitespace-nowrap max-sm:w-full",
+          )}
+        >
+          Return to Home
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>

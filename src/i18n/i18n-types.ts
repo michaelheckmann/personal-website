@@ -165,7 +165,7 @@ type RootTranslation = {
 		 */
 		enterEmail: string
 		/**
-		 * Y​o​u​'​r​e​ ​n​o​w​ ​s​u​b​s​c​r​i​b​e​d​ ​t​o​ ​t​h​e​ ​n​e​w​s​l​e​t​t​e​r​!
+		 * C​l​i​c​k​ ​t​h​e​ ​l​i​n​k​ ​i​n​ ​y​o​u​r​ ​e​m​a​i​l​ ​t​o​ ​c​o​n​f​i​r​m​ ​y​o​u​r​ ​s​u​b​s​c​r​i​p​t​i​o​n
 		 */
 		newsletterSuccess: string
 		/**
@@ -340,7 +340,7 @@ export type TranslationFunctions = {
 		 */
 		enterEmail: () => LocalizedString
 		/**
-		 * You're now subscribed to the newsletter!
+		 * Click the link in your email to confirm your subscription
 		 */
 		newsletterSuccess: () => LocalizedString
 		/**

@@ -53,7 +53,8 @@ const en = {
     newsletter:
       "Want to know when I publish new content? Enter your email to join my free newsletter.",
     enterEmail: "Enter your email",
-    newsletterSuccess: "You're now subscribed to the newsletter!",
+    newsletterSuccess:
+      "Click the link in your email to confirm your subscription",
     pagination: "Pagination",
     previous: "Previous",
     next: "Next",

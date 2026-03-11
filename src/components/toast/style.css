@@ -2,22 +2,32 @@
   --radius: 8px;
   --stack-gap: 20px;
   --safe-area-gap: env(safe-area-inset-bottom);
+  --toast-max-viewport-width: calc(100vw - 48px);
+  --toast-default-width: min(
+    var(--toast-max-width, 360px),
+    var(--toast-max-viewport-width)
+  );
 
   position: fixed;
   display: block;
-  max-width: 360px;
+  width: var(--toast-stack-width, var(--toast-default-width));
+  max-width: var(--toast-max-viewport-width);
   bottom: calc(var(--safe-area-gap, 0px) + 24px);
-  right: 24px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 5000;
   transition: all 0.4s ease;
 
   & .toast {
     position: absolute;
     bottom: 0;
-    right: 0;
-    width: 360px;
+    left: 50%;
+    width: min(
+      var(--toast-width, var(--toast-max-width, 360px)),
+      var(--toast-max-viewport-width)
+    );
     transition: all 0.4s ease;
-    transform: translate3d(0, 86px, 0);
+    transform: translate3d(-50%, 86px, 0);
     opacity: 0;
 
     & .toast-inner {
@@ -158,13 +168,13 @@
     }
 
     &.toast-1 {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(-50%, 0, 0);
       opacity: 1;
     }
 
     &:not(:last-child) {
       --i: calc(var(--index) - 1);
-      transform: translate3d(0, calc(1px - (var(--stack-gap) * var(--i))), 0)
+      transform: translate3d(-50%, calc(1px - (var(--stack-gap) * var(--i))), 0)
         scale(calc(1 - 0.05 * var(--i)));
       opacity: 1;
 
@@ -190,7 +200,7 @@
 
 .toast-container:hover .toast {
   transform: translate3d(
-    0,
+    -50%,
     calc(var(--hover-offset-y) - var(--stack-gap) * (var(--index) - 1)),
     0
   );
@@ -206,11 +216,6 @@
 
 @media (max-width: 440px) {
   .toast-container {
-    max-width: 90vw;
-    right: 5vw;
-
-    & .toast {
-      width: 90vw;
-    }
+    --toast-max-viewport-width: 90vw;
   }
 }

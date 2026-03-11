@@ -16,6 +16,7 @@ export interface Action {
 export type Message = string | HTMLElement;
 
 export type ActionCallback = (toast: Toast) => void;
+export type ToastMaxWidth = number | string;
 
 export interface ToastOptions {
   /**
@@ -30,6 +31,10 @@ export interface ToastOptions {
   type?: "success" | "error" | "warning" | "dark" | "default";
   action?: Action;
   cancel?: string;
+  /**
+   * Maximum toast width in pixels or any valid CSS length value
+   */
+  maxWidth?: ToastMaxWidth;
 }
 
 export class Toast {
@@ -40,7 +45,7 @@ export class Toast {
   private timeoutId?: number;
 
   constructor(message: Message, options: ToastOptions = {}) {
-    const { timeout = 0, action, type = "default", cancel } = options;
+    const { timeout = 0, action, type = "default", cancel, maxWidth } = options;
 
     this.message = message;
     this.options = {
@@ -48,6 +53,7 @@ export class Toast {
       action,
       type,
       cancel,
+      maxWidth,
     };
 
     this.setContainer();
@@ -62,6 +68,11 @@ export class Toast {
     el.setAttribute("aria-live", "assertive");
     el.setAttribute("aria-atomic", "true");
     el.setAttribute("aria-hidden", "false");
+
+    const maxWidth = getToastWidthValue(this.options.maxWidth);
+    if (maxWidth) {
+      el.style.setProperty("--toast-width", maxWidth);
+    }
 
     const { action, type, cancel } = this.options;
 
@@ -125,7 +136,7 @@ export class Toast {
 
     el.style.opacity = "0";
     el.style.visibility = "hidden";
-    el.style.transform = "translateY(10px)";
+    el.style.transform = "translate3d(-50%, 10px, 0)";
 
     this.stopTimer();
 
@@ -202,14 +213,22 @@ export function destoryAllToasts(): void {
 function sortToast(): void {
   const toasts = Array.from(instances).reverse().slice(0, 4);
 
+  if (toasts.length === 0) {
+    container?.style.removeProperty("--toast-stack-width");
+    return;
+  }
+
   const heights: Array<number> = [];
+  let stackWidth = 0;
 
   toasts.forEach((toast, index) => {
     const sortIndex = index + 1;
     const el = toast.el as HTMLDivElement;
     const height = +(el.getAttribute("data-height") || 0) || el.clientHeight;
+    const width = el.offsetWidth;
 
     heights.push(height);
+    stackWidth = Math.max(stackWidth, width);
 
     el.className = `toast toast-${sortIndex}`;
     el.dataset.height = `${height}`;
@@ -226,6 +245,20 @@ function sortToast(): void {
       el.style.removeProperty("--hover-offset-y");
     }
   });
+
+  container.style.setProperty("--toast-stack-width", `${stackWidth}px`);
+}
+
+function getToastWidthValue(maxWidth?: ToastMaxWidth): string | undefined {
+  if (typeof maxWidth === "number") {
+    return `${maxWidth}px`;
+  }
+
+  if (typeof maxWidth === "string" && maxWidth.trim()) {
+    return maxWidth;
+  }
+
+  return undefined;
 }
 
 function typoWarning(method: string) {

@@ -33,6 +33,7 @@ const t = getTranslation("blog");
 
   import { createToast } from "../toast";
 
+  const lang = document.documentElement.lang;
   const form = document.querySelector("form");
   const submitButton = form?.querySelector("button[type=submit]");
   const aurora = document.getElementById("aurora");
@@ -123,7 +124,7 @@ const t = getTranslation("blog");
                 </svg>
                 <p>${error}</p>
             </div>`,
-            { timeout: 5000 },
+            { timeout: 7000 },
           );
           return;
         }
@@ -136,7 +137,7 @@ const t = getTranslation("blog");
                 </svg>
                 <p>${successText}</p>
             </div>`,
-          { timeout: 5000 },
+          { timeout: 7000, maxWidth: lang === "de" ? 560 : 460 },
         );
 
         // Disable the button and inputs inside the form
@@ -150,7 +151,7 @@ const t = getTranslation("blog");
           aurora.style.opacity = "1";
           await sleep(10_000);
           aurora.style.opacity = "0";
-          await sleep(5000);
+          await sleep(7000);
           aurora.style.display = "none";
         }
       });
