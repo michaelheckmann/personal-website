@@ -47,7 +47,7 @@ const locale = $lang.get();
           }}
         />
       </div>
-      <div class="mx-auto space-y-4">
+      <div class="mx-auto max-w-2xl space-y-4">
         <p class="font-mono tracking-wider">
           {
             pubDate.toLocaleDateString(locale, {
@@ -65,7 +65,7 @@ const locale = $lang.get();
         >
           {title}
         </h2>
-        <p class="max-w-2xl text-justify text-pretty hyphens-auto">
+        <p class="text-justify text-pretty hyphens-auto">
           {description}
         </p>
       </div>
