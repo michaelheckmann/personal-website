@@ -19,9 +19,7 @@ const sitemapLocales = Object.fromEntries(
 export default defineConfig({
   site: "https://heckmann.app",
   adapter: cloudflare({
-    platformProxy: {
-      enabled: true,
-    },
+    imageService: "compile",
   }),
   integrations: [
     sitemap({

@@ -18,6 +18,9 @@
   z-index: 5000;
   transition: all 0.4s ease;
 
+  /* This is a temporary fix because the hover state got broken when I centered the toast */
+  pointer-events: none;
+
   & .toast {
     position: absolute;
     bottom: 0;

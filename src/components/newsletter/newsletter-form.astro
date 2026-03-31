@@ -21,14 +21,17 @@ const t = getTranslation("blog");
       fadeColor="#0D0C0F"
       class="scroll-mb-[25vh]"
     />
+    <input
+      type="hidden"
+      name="mailingLists"
+      value="cmnefbt8e0hji0i047ivi3j10"
+    />
   </form>
 </astro-newsletter-form>
 <!-- Make sure size-5 is in the generated CSS. Important for the notification icons -->
 <div class="hidden size-5 space-x-2"></div>
 
 <script>
-  import { actions, isInputError } from "astro:actions";
-
   import { sleep } from "@/lib/utils";
 
   import { createToast } from "../toast";
@@ -88,7 +91,23 @@ const t = getTranslation("blog");
         }
 
         const formData = new FormData(form);
-        const { error } = await actions.subscribeNewsletter(formData);
+
+        // Convert FormData to x-www-form-urlencoded format
+        const searchParams = new URLSearchParams(formData as any);
+        const response = await fetch(
+          "https://app.loops.so/api/newsletter-form/cmnee2mmg00rh0izq5nhths4l",
+          {
+            method: "POST",
+            body: searchParams.toString(),
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          },
+        );
+        const result = (await response.json()) as {
+          success: boolean;
+          message?: string;
+        };
 
         if (submitButton) {
           submitButton.removeAttribute("disabled");
@@ -98,25 +117,13 @@ const t = getTranslation("blog");
                                     </svg>`;
         }
 
-        if (isInputError(error)) {
-          // Handle input errors.
-          if (error.fields.email) {
-            const message = error.fields.email[0];
-            createToast(
-              `<div class="flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-                    </svg>
-                    <p>${message}</p>
-                </div>`,
-              { timeout: 5000 },
-            );
-            return;
-          }
-        }
+        if (!response.ok || result.success === false) {
+          const errorMessage = result.message ?? "An error occurred.";
+          const error =
+            response.status === 429
+              ? "Too many signups, please try again in a little while."
+              : errorMessage;
 
-        if (error) {
-          // Handle other errors.
           createToast(
             `<div class="flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
