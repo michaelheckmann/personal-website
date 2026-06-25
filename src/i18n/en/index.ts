@@ -31,6 +31,7 @@ const en = {
       title: "Connect",
       linkedIn: "Professional network and resume.",
       twitter: "Thoughts, ideas, and updates.",
+      letterboxd: "Movie diary and reviews.",
       email: "Direct inquiries and collaborations.",
     },
   },

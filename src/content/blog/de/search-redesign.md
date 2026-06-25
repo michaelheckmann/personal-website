@@ -5,7 +5,7 @@ pubDate: "Mar 20 2026"
 cover: "../assets/search-redesign/hero.webp"
 coverAlt: "Ein unscharfes Schwarz-Weiß-Foto im Vintage-Stil von einer Pinnwand voller Notizen, Polaroidfotos und kleinen getrockneten Blumen, das die fragmentierte Natur der Erinnerung darstellt."
 colors: ["#CDC4B2", "#90847C"]
-tags: ["Development", "Orbit", "Design"]
+tags: ["Entwicklung", "Orbit", "Design"]
 translated: true
 reference: "search-redesign"
 ---

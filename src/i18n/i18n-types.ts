@@ -103,6 +103,10 @@ type RootTranslation = {
 			 */
 			twitter: string
 			/**
+			 * M​o​v​i​e​ ​d​i​a​r​y​ ​a​n​d​ ​r​e​v​i​e​w​s​.
+			 */
+			letterboxd: string
+			/**
 			 * D​i​r​e​c​t​ ​i​n​q​u​i​r​i​e​s​ ​a​n​d​ ​c​o​l​l​a​b​o​r​a​t​i​o​n​s​.
 			 */
 			email: string
@@ -278,6 +282,10 @@ export type TranslationFunctions = {
 			 * Thoughts, ideas, and updates.
 			 */
 			twitter: () => LocalizedString
+			/**
+			 * Movie diary and reviews.
+			 */
+			letterboxd: () => LocalizedString
 			/**
 			 * Direct inquiries and collaborations.
 			 */

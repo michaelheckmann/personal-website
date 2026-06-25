@@ -33,6 +33,7 @@ const de = {
       title: "Kontakt",
       linkedIn: "Berufliches Netzwerk und Lebenslauf.",
       twitter: "Gedanken, Ideen und Updates.",
+      letterboxd: "Filmtagebuch und Rezensionen.",
       email: "Direkte Anfragen und Zusammenarbeit.",
     },
   },

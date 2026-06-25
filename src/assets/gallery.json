@@ -49,7 +49,6 @@
     "image_url": "https://gen.krea.ai/images/d04b6246-78fb-4b9b-8666-42fe07f413bd.png",
     "thumbhash": "D/gNBYAHl4d4h3hyi3eHeAh6gKcG"
   },
-
   {
     "id": "9cb8a6ac-3e1a-454d-bad1-5160e08fec23",
     "title": "Gold in the Gloom",
@@ -80,7 +79,6 @@
     "image_url": "https://gen.krea.ai/images/f7a9caf5-f397-41b2-8613-28d1574cc845.png",
     "thumbhash": "UPgJBYAIt2eOiHeZe+RojQR9DCyP"
   },
-
   {
     "id": "0f2bbe1e-679c-4833-826e-8c8f83bcced8",
     "title": "Tidal Mirror",
@@ -91,7 +89,6 @@
     "image_url": "https://app-uploads.krea.ai/public/eac2e1c8-3549-4705-b505-1b7d7b68760c-image.jpeg",
     "thumbhash": "loUNHYZKVmePdod1hmd4h5igjAm5"
   },
-
   {
     "id": "82757e37-8695-475a-bc6c-cf10e024ec2d",
     "title": "The Inverted Atelier",
@@ -112,18 +109,6 @@
     "image_url": "https://app-uploads.krea.ai/public/e3df0e91-cb1a-4878-b61d-d3fbf4edc00a-image.jpeg",
     "thumbhash": "pwgGFYY3C0R4mXd/e1tnZwGKWrCI"
   },
-
-  {
-    "id": "76a0b96d-2777-4417-a54a-de0fcbf357a8",
-    "title": "Automaton Lullaby",
-    "width": 1376,
-    "height": 768,
-    "description": "Film still of a animatronic installation as taken from a David Lynch movie. Mysterious and eery atmosphere that feels off and uncanny.",
-    "provider": "nano-banana-2",
-    "image_url": "https://app-uploads.krea.ai/public/cbd85eb5-dd16-4e54-bd4a-396f597cd28d-image.jpeg",
-    "thumbhash": "yCgGFIQEO7qmV4plmXkEllZwaQ=="
-  },
-
   {
     "id": "6468926c-346e-4232-9a12-20a022b6b07d",
     "title": "The Inverted Archive",
@@ -224,7 +209,6 @@
     "image_url": "https://gen.krea.ai/images/638604d6-c1a2-4c1d-9439-7d66de7544ca.png",
     "thumbhash": "WBgCBIDHB0hphoiKgIfQuj6PZg=="
   },
-
   {
     "id": "661bac9a-88ab-473a-bccc-a1ac6b8f3ea3",
     "title": "Silent Lamellae",
@@ -244,17 +228,6 @@
     "provider": "k1",
     "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/7d772d14-2577-449a-9793-6e272b6b4d7d.png",
     "thumbhash": "23kOFYS3WJePd3eHd3h4iPaHZB9Y"
-  },
-
-  {
-    "id": "8a3767e2-2c1f-49d4-9b2f-11cc9aeee226",
-    "title": "Petals for the Void",
-    "width": 1184,
-    "height": 896,
-    "description": "cinematic shot of an astronaut lying in the middle of roses, shot in the style of Denis Villeneuve with wide camera lens, helmet is reflection the scene around it hyper-realistic, raw cinematic shot, medium high angle shot",
-    "provider": "krea-flux",
-    "image_url": "https://test1-emgndhaqd0c9h2db.a01.azurefd.net/images/908d86ed-619a-4346-a68b-bbe4ea0ef7a2.png",
-    "thumbhash": "UBgGDYRQmlbBZ4S0N7mTV/wd+8+x"
   },
   {
     "id": "8e89a0b7-92d5-4d09-8795-95f1c0cb3c0a",
