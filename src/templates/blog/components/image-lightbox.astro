@@ -1,0 +1,182 @@
+---
+interface Props {
+  /** Selector used to find images in the post that should open in the lightbox */
+  selector?: string;
+}
+
+const { selector = ".prose img" } = Astro.props;
+---
+
+<div
+  id="img-lightbox"
+  class="fixed inset-0 z-100 hidden items-center justify-center bg-zinc-950/95 backdrop-blur-sm outline-none"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image lightbox"
+  tabindex="-1"
+>
+  <button
+    type="button"
+    id="img-lightbox-close"
+    class="absolute top-4 right-4 z-10 rounded-full p-2 text-zinc-400 backdrop-blur-md transition-colors hover:bg-zinc-800 hover:text-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+    aria-label="Close lightbox"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M18 6 6 18"></path>
+      <path d="m6 6 12 12"></path>
+    </svg>
+  </button>
+
+  <div
+    id="img-lightbox-content"
+    class="flex h-full w-full flex-col items-center justify-center p-4 md:p-8"
+  >
+    <div
+      class="relative flex max-h-[85vh] w-full max-w-5xl items-center justify-center"
+    >
+      <img
+        id="img-lightbox-image"
+        src=""
+        alt=""
+        class="max-h-[85vh] max-w-full rounded-lg object-contain"
+      />
+    </div>
+
+    <div
+      id="img-lightbox-info"
+      class="mt-4 w-full max-w-5xl space-y-2 pb-4 text-center select-text"
+    >
+      <p
+        id="img-lightbox-caption"
+        class="mx-auto line-clamp-3 max-w-prose text-sm leading-relaxed text-pretty text-zinc-400"
+        aria-live="polite"
+      >
+      </p>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .prose img[data-lightbox-bound="true"] {
+    cursor: zoom-in;
+    outline: none;
+    transition:
+      scale 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .prose img[data-lightbox-bound="true"]:hover {
+    scale: 1.02;
+  }
+
+  .prose img[data-lightbox-bound="true"]:focus-visible {
+    outline: none;
+    box-shadow:
+      0px 5.5px 3.6px rgba(0, 0, 0, 0.024),
+      0px 15.2px 10px rgba(0, 0, 0, 0.035),
+      0px 36.5px 24.1px rgba(0, 0, 0, 0.046),
+      0px 121px 80px rgba(0, 0, 0, 0.07),
+      0 0 0 calc(5px + 0px) #101012,
+      0 0 0 calc(7px + 0px) oklch(84.95% 0.00558 286.029);
+  }
+</style>
+
+<script define:vars={{ selector }}>
+  let isOpen = false;
+  let lastFocusedImage = null;
+  let globalListenersBound = false;
+
+  function initImageLightbox() {
+    const lightbox = document.getElementById("img-lightbox");
+    const lightboxImage = document.getElementById("img-lightbox-image");
+    const lightboxCaption = document.getElementById("img-lightbox-caption");
+    const closeBtn = document.getElementById("img-lightbox-close");
+    const infoPanel = document.getElementById("img-lightbox-info");
+
+    if (!lightbox || !lightboxImage || !lightboxCaption) return;
+
+    const images = Array.from(document.querySelectorAll(selector)).filter(
+      (img) => {
+        if (img.closest("a")) return false; // don't hijack intentional links
+        if (img.closest("[data-no-lightbox]")) return false;
+        if (img.hasAttribute("data-no-lightbox")) return false;
+        return true;
+      },
+    );
+
+    function openLightbox(img) {
+      lastFocusedImage = img;
+      const figure = img.closest("figure");
+      const figcaption = figure?.querySelector("figcaption");
+      const caption = figcaption?.textContent?.trim() || img.alt || "";
+
+      lightboxImage.src = img.currentSrc || img.src;
+      lightboxImage.alt = img.alt || "";
+      lightboxCaption.textContent = caption;
+      lightboxCaption.style.display = caption ? "" : "none";
+
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+      isOpen = true;
+      document.body.style.overflow = "hidden";
+      lightbox.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add("hidden");
+      lightbox.classList.remove("flex");
+      isOpen = false;
+      document.body.style.overflow = "";
+      lastFocusedImage?.focus();
+    }
+
+    // Wire up each qualifying image (dataset flag guards against
+    // double-binding the same element on repeated init calls).
+    images.forEach((img) => {
+      if (img.dataset.lightboxBound === "true") return;
+      img.dataset.lightboxBound = "true";
+      img.tabIndex = 0;
+      img.setAttribute("role", "button");
+      img.setAttribute("aria-label", `View full size: ${img.alt || "image"}`);
+
+      img.addEventListener("click", () => openLightbox(img));
+      img.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openLightbox(img);
+        }
+      });
+    });
+
+    if (globalListenersBound) return;
+    globalListenersBound = true;
+
+    closeBtn?.addEventListener("click", closeLightbox);
+
+    // Click anywhere outside the image/caption/close button closes it.
+    lightbox.addEventListener("click", (e) => {
+      const target = e.target;
+      if (target === closeBtn || closeBtn?.contains(target)) return;
+      if (target === lightboxImage) return;
+      if (infoPanel?.contains(target) || target === infoPanel) return;
+      closeLightbox();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (isOpen && e.key === "Escape") closeLightbox();
+    });
+  }
+
+  initImageLightbox();
+  document.addEventListener("astro:after-swap", initImageLightbox);
+</script>

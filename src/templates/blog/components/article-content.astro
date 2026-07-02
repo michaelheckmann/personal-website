@@ -2,6 +2,7 @@
 import { render, type CollectionEntry } from "astro:content";
 
 import CopyButton from "./copy-button.astro";
+import ImageLightbox from "./image-lightbox.astro";
 
 type Props = CollectionEntry<"blog">;
 
@@ -13,6 +14,7 @@ const { Content } = await render(post);
   <Content />
   <CopyButton />
 </article>
+<ImageLightbox />
 
 <style is:global>
   .expressive-code .frame .header {
@@ -489,5 +491,13 @@ const { Content } = await render(post);
     :where(.prose > :last-child) {
       margin-bottom: 0;
     }
+  }
+
+  .prose img[role="button"] {
+    transition: opacity 0.2s ease;
+  }
+
+  .prose img[role="button"]:hover {
+    opacity: 0.9;
   }
 </style>
