@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 
-import { removeLocaleFromPath } from "@/lib/routing";
+import { ensureTrailingSlash, removeLocaleFromPath } from "@/lib/routing";
 import Link from "@/components/link.astro";
 import { $lang, getTranslation } from "@/i18n/translation";
 
@@ -32,7 +32,9 @@ if (!translatedPost) {
 
 // Construct URL for the translated post
 // Format: /{language}/blog/{post-slug}
-const href = `/${reversedLang}/blog/${removeLocaleFromPath(translatedPost?.id)}`;
+const href = ensureTrailingSlash(
+  `/${reversedLang}/blog/${removeLocaleFromPath(translatedPost?.id)}`,
+);
 ---
 
 <div class="w-full max-w-2xl">

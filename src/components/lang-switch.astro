@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 
 import {
+  ensureTrailingSlash,
   getPostIdFromPath,
   isBlogPost,
   removeLocaleFromPath,
@@ -43,10 +44,14 @@ if (isBlogPost(Astro.url.pathname)) {
 
   // Construct URL for the translated post
   // Format: /{language}/blog/{post-slug}
-  href = `/${reversedLang}/blog/${removeLocaleFromPath(translatedPost?.id)}`;
+  href = ensureTrailingSlash(
+    `/${reversedLang}/blog/${removeLocaleFromPath(translatedPost?.id)}`,
+  );
 } else {
   const originalPathname = Astro.url.pathname;
-  href = originalPathname.replace(/\/de|\/en/, `/${reversedLang}`);
+  href = ensureTrailingSlash(
+    originalPathname.replace(/\/de|\/en/, `/${reversedLang}`),
+  );
 }
 ---
 

@@ -2,6 +2,7 @@
 import geistSans400 from "@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff2";
 import inconsolata400 from "@fontsource/inconsolata/files/inconsolata-latin-400-normal.woff2";
 
+import { ensureTrailingSlash } from "@/lib/routing";
 import type { Locales } from "@/i18n/i18n-types";
 
 import JsonLd from "./json-ld.astro";
@@ -31,12 +32,19 @@ const imageUrl = new URL(image, Astro.url);
 
 const { origin, pathname } = canonicalURL;
 const rawPathname = pathname.split("/").filter(Boolean).slice(1).join("/");
-const germanUrl = new URL(`/de/${rawPathname}`, origin);
-const englishUrl = new URL(`/en/${rawPathname}`, origin);
-const translationLinks = Astro.props.translationLinks ?? [
-  { lang: "de", href: germanUrl },
-  { lang: "en", href: englishUrl },
-];
+const localizedPathname = rawPathname ? `${rawPathname}/` : "";
+const germanUrl = new URL(`/de/${localizedPathname}`, origin);
+const englishUrl = new URL(`/en/${localizedPathname}`, origin);
+const translationLinks = (
+  Astro.props.translationLinks ?? [
+    { lang: "de", href: germanUrl.toString() },
+    { lang: "en", href: englishUrl.toString() },
+  ]
+).map(({ lang, href }) => ({ lang, href: ensureTrailingSlash(href) }));
+const englishFallback = translationLinks.find(({ lang }) => lang === "en");
+const hreflangLinks = englishFallback
+  ? [...translationLinks, { lang: "x-default", href: englishFallback.href }]
+  : translationLinks;
 
 // Determine if this is a blog post or website for JSON-LD
 const isBlogPost = !!blogPost;
@@ -70,7 +78,7 @@ const isBlogPost = !!blogPost;
 
 <!-- Href Lang -->
 {
-  translationLinks.map(({ lang, href }) => (
+  hreflangLinks.map(({ lang, href }) => (
     <link rel="alternate" href={href} hreflang={lang} />
   ))
 }

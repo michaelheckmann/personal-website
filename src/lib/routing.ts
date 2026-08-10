@@ -4,6 +4,30 @@ import { $lang } from "@/i18n/translation";
 type Href = "" | "blog" | "gallery" | `blog/${string}`;
 
 /**
+ * Adds a trailing slash to a route while preserving its query string or hash.
+ * Asset URLs with a file extension are left unchanged.
+ *
+ * @example
+ * ensureTrailingSlash('/about') // returns '/about/'
+ * ensureTrailingSlash('/about?query=1') // returns '/about/?query=1'
+ */
+export const ensureTrailingSlash = (value: string) => {
+  const suffixIndex = value.search(/[?#]/);
+  const pathname = suffixIndex === -1 ? value : value.slice(0, suffixIndex);
+  const suffix = suffixIndex === -1 ? "" : value.slice(suffixIndex);
+
+  if (
+    pathname.endsWith("/") ||
+    pathname === "" ||
+    /\/[^/]+\.[^/]+$/.test(pathname)
+  ) {
+    return value;
+  }
+
+  return `${pathname}/${suffix}`;
+};
+
+/**
  * Prepends the current locale to a given href path.
  * @param href - The href path starting with a forward slash
  * @returns A new href path with the current locale prepended
@@ -13,7 +37,7 @@ type Href = "" | "blog" | "gallery" | `blog/${string}`;
  */
 export const getLocalHref = (href: `/${Href}`) => {
   const locale = $lang.get();
-  return `/${locale}${href}`;
+  return ensureTrailingSlash(`/${locale}${href}`);
 };
 
 /**

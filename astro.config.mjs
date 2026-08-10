@@ -23,9 +23,25 @@ export default defineConfig({
   }),
   integrations: [
     sitemap({
+      filter: (page) => new URL(page).pathname !== "/",
       i18n: {
         defaultLocale: baseLocale,
         locales: sitemapLocales,
+      },
+      serialize: (item) => {
+        const englishAlternate = item.links?.find(
+          ({ lang }) => lang === baseLocale,
+        );
+
+        if (!englishAlternate) return item;
+
+        return {
+          ...item,
+          links: [
+            ...(item.links ?? []),
+            { lang: "x-default", url: englishAlternate.url },
+          ],
+        };
       },
     }),
     expressiveCode({
@@ -57,6 +73,7 @@ export default defineConfig({
     },
     fallback: { de: "en" },
   },
+  trailingSlash: "always",
   vite: { plugins: [tailwindcss()] },
   markdown: { rehypePlugins: [[rehypeExternalLinks, { target: "_blank" }]] },
   build: {

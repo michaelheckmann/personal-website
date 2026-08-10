@@ -14,7 +14,7 @@ reference: "electron-ipc-architecture"
 
 Ich bin ein großer Fan von TypeScript und der Sicherheit, die es bietet. Es wird überall in [Orbit](https://reachorbit.app/) verwendet. Das Problem ist allerdings, dass Electrons IPC-Channel-Namen und Argumente standardmäßig nicht typisiert sind. Ich brauchte dieselbe Sicherheit aber auch über die Prozessgrenzen hinweg. Ich traue mir selbst nicht zu, „stringly-typed“ Channel-Namen und untypisierte Argumente synchron zu halten, während die App und die Codebasis wachsen.
 
-Ich habe diese Lösung bereits in einem früheren [Post](/en/blog/pragmatic-electron-architecture/) angeteasert. Hier ist nun die vollständige Implementierung.
+Ich habe diese Lösung bereits in einem früheren [Post](/de/blog/pragmatic-electron-architecture/) angeteasert. Hier ist nun die vollständige Implementierung.
 
 ## Typisierte IPC Klassen
 

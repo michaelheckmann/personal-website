@@ -1,6 +1,7 @@
 ---
 import type { Page } from "astro";
 
+import { ensureTrailingSlash } from "@/lib/routing";
 import { cn } from "@/lib/utils";
 import { getTranslation } from "@/i18n/translation";
 
@@ -43,7 +44,7 @@ const showPagination = lastPage > 1;
     >
       {/* Previous Button */}
       <a
-        href={url.prev ?? "#"}
+        href={url.prev ? ensureTrailingSlash(url.prev) : "#"}
         class:list={[
           baseButtonStyles,
           url.prev ? activeButtonStyles : disabledButtonStyles,
@@ -77,7 +78,7 @@ const showPagination = lastPage > 1;
 
       {/* Next Button */}
       <a
-        href={url.next ?? "#"}
+        href={url.next ? ensureTrailingSlash(url.next) : "#"}
         class:list={[
           baseButtonStyles,
           url.next ? activeButtonStyles : disabledButtonStyles,

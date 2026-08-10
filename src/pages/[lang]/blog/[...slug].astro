@@ -1,7 +1,11 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 
-import { extractLocaleFromPath, removeLocaleFromPath } from "@/lib/routing";
+import {
+  ensureTrailingSlash,
+  extractLocaleFromPath,
+  removeLocaleFromPath,
+} from "@/lib/routing";
 import type { SiteConfig } from "@/lib/types";
 import Layout from "@/components/layout/layout.astro";
 import { ensureLang, setLanguage } from "@/i18n/translation";
@@ -36,7 +40,9 @@ const config: SiteConfig = {
   image: Astro.props.data.cover.src,
   translationLinks: references.map((ref) => {
     const lang = extractLocaleFromPath(ref.id);
-    const path = `/${lang}/blog/${removeLocaleFromPath(ref.id)}`;
+    const path = ensureTrailingSlash(
+      `/${lang}/blog/${removeLocaleFromPath(ref.id)}`,
+    );
     return { lang, href: `${new URL(path, canonicalURL.origin)}` };
   }),
   blogPost: {
