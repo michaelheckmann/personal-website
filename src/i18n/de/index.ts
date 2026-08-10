@@ -47,6 +47,9 @@ const de = {
     metaTitle: "Blog | Michael Heckmann",
     metaDescription:
       "Ich schreibe über Technologie, Design und den Schnittpunkt beider Disziplinen. Mein Ziel ist es, Wissen zu teilen und Gespräche anzuregen.",
+    paginationMetaTitle: "Blog – Seite {0} | Michael Heckmann",
+    paginationMetaDescription:
+      "Seite {0} mit Artikeln von Michael Heckmann über Technologie, Design, Softwareentwicklung und digitale Produkte.",
     viewAll: "Alle Beiträge anzeigen",
     copy: "In Zwischenablage kopieren",
     copied: "Kopiert!",

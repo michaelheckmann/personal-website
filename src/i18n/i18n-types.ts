@@ -136,6 +136,16 @@ type RootTranslation = {
 		 */
 		metaDescription: string
 		/**
+		 * B​l​o​g​ ​–​ ​P​a​g​e​ ​{​0​}​ ​|​ ​M​i​c​h​a​e​l​ ​H​e​c​k​m​a​n​n
+		 * @param {unknown} 0
+		 */
+		paginationMetaTitle: RequiredParams<'0'>
+		/**
+		 * P​a​g​e​ ​{​0​}​ ​w​i​t​h​ ​a​r​t​i​c​l​e​s​ ​b​y​ ​M​i​c​h​a​e​l​ ​H​e​c​k​m​a​n​n​ ​a​b​o​u​t​ ​t​e​c​h​n​o​l​o​g​y​,​ ​d​e​s​i​g​n​,​ ​s​o​f​t​w​a​r​e​ ​d​e​v​e​l​o​p​m​e​n​t​,​ ​a​n​d​ ​d​i​g​i​t​a​l​ ​p​r​o​d​u​c​t​s​.
+		 * @param {unknown} 0
+		 */
+		paginationMetaDescription: RequiredParams<'0'>
+		/**
 		 * V​i​e​w​ ​a​l​l​ ​p​o​s​t​s
 		 */
 		viewAll: string
@@ -315,6 +325,14 @@ export type TranslationFunctions = {
 		 * I write about technology, design, and the intersection of the two. My goal is to share knowledge and spark conversations.
 		 */
 		metaDescription: () => LocalizedString
+		/**
+		 * Blog – Page {0} | Michael Heckmann
+		 */
+		paginationMetaTitle: (arg0: unknown) => LocalizedString
+		/**
+		 * Page {0} with articles by Michael Heckmann about technology, design, software development, and digital products.
+		 */
+		paginationMetaDescription: (arg0: unknown) => LocalizedString
 		/**
 		 * View all posts
 		 */

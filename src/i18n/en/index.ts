@@ -45,6 +45,9 @@ const en = {
     metaTitle: "Blog | Michael Heckmann",
     metaDescription:
       "I write about technology, design, and the intersection of the two. My goal is to share knowledge and spark conversations.",
+    paginationMetaTitle: "Blog – Page {0} | Michael Heckmann",
+    paginationMetaDescription:
+      "Page {0} with articles by Michael Heckmann about technology, design, software development, and digital products.",
     viewAll: "View all posts",
     copy: "Copy",
     copied: "Copied",

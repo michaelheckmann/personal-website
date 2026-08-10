@@ -7,6 +7,7 @@ import type { Locales } from "@/i18n/i18n-types";
 type WithContext<T> = T & { "@context": "https://schema.org" };
 
 type Person = {
+  "@id": string;
   "@type": "Person";
   name: string;
   url: string;
@@ -14,6 +15,7 @@ type Person = {
 };
 
 type WebSite = {
+  "@id": string;
   "@type": "WebSite";
   name: string;
   url: string;
@@ -41,18 +43,6 @@ type BlogPosting = {
 
 type JsonLdSchema = WithContext<WebSite | BlogPosting>;
 
-// Author/Publisher info - used across all schemas
-const author: Person = {
-  "@type": "Person",
-  name: "Michael Heckmann",
-  url: "https://heckmann.app",
-  sameAs: [
-    "https://github.com/michaelheckmann",
-    "https://linkedin.com/in/heckmannmichael",
-    "https://x.com/mt_heckmann",
-  ],
-};
-
 interface Props {
   type: "website" | "blog-post";
   lang: Locales;
@@ -79,14 +69,29 @@ const {
 } = Astro.props;
 
 const siteUrl = Astro.site?.toString() ?? "https://heckmann.app";
+const englishHomepageUrl = new URL("/en/", siteUrl).toString();
+
+// Author/Publisher info - used across all schemas
+const author: Person = {
+  "@id": `${englishHomepageUrl}#person`,
+  "@type": "Person",
+  name: "Michael Heckmann",
+  url: englishHomepageUrl,
+  sameAs: [
+    "https://github.com/michaelheckmann",
+    "https://linkedin.com/in/heckmannmichael",
+    "https://x.com/mt_heckmann",
+  ],
+};
 
 function buildSchema(): JsonLdSchema {
   if (type === "website") {
     return {
       "@context": "https://schema.org",
+      "@id": `${englishHomepageUrl}#website`,
       "@type": "WebSite",
       name: "Michael Heckmann",
-      url: siteUrl,
+      url: englishHomepageUrl,
       description: description,
       inLanguage: ["en", "de"],
       author,
@@ -112,7 +117,7 @@ function buildSchema(): JsonLdSchema {
     publisher: author,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": url ?? siteUrl,
+      "@id": url ?? englishHomepageUrl,
     },
     inLanguage: lang,
   };

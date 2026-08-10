@@ -26,10 +26,14 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const t = getTranslation("blog");
+const currentPage = Astro.props.page.currentPage;
+const isFirstPage = currentPage === 1;
 const config: SiteConfig = {
   lang,
-  title: t.metaTitle(),
-  description: t.metaDescription(),
+  title: isFirstPage ? t.metaTitle() : t.paginationMetaTitle(currentPage),
+  description: isFirstPage
+    ? t.metaDescription()
+    : t.paginationMetaDescription(currentPage),
 };
 ---
 
