@@ -81,13 +81,20 @@
     <!-- Image container -->
     <div
       id="lightbox-image-container"
-      class="relative flex max-h-[70vh] w-full max-w-5xl items-center justify-center"
+      class="relative flex h-[60vh] w-full max-w-5xl items-center justify-center md:h-[70vh]"
+      aria-busy="false"
     >
+      <img
+        id="lightbox-placeholder"
+        alt=""
+        aria-hidden="true"
+        class="absolute inset-0 h-full w-full scale-[1.02] rounded-lg object-contain opacity-0 blur-xl transition-opacity duration-200"
+      />
       <img
         id="lightbox-image"
         src=""
         alt=""
-        class="max-h-[70vh] max-w-full rounded-lg object-contain"
+        class="absolute inset-0 h-full w-full rounded-lg object-contain opacity-0 transition-opacity duration-300"
       />
     </div>
 
@@ -98,15 +105,16 @@
     >
       <h2
         id="lightbox-title"
-        class="text-lg font-medium text-zinc-100"
+        class="h-7 text-lg font-medium text-zinc-100"
         aria-live="polite"
       >
       </h2>
       <p
         id="lightbox-description"
-        class="mx-auto line-clamp-6 max-w-prose text-sm leading-relaxed text-pretty text-zinc-400"
+        class="mx-auto h-23 max-w-prose text-center text-sm leading-relaxed text-pretty text-zinc-400"
         aria-live="polite"
       >
+        <span id="lightbox-description-text" class="line-clamp-4"></span>
       </p>
     </div>
   </div>
@@ -117,10 +125,19 @@
     const lightbox = document.querySelector<HTMLElement>("#lightbox");
     const lightboxImage =
       document.querySelector<HTMLImageElement>("#lightbox-image");
+    const lightboxPlaceholder = document.querySelector<HTMLImageElement>(
+      "#lightbox-placeholder",
+    );
+    const lightboxImageContainer = document.querySelector<HTMLElement>(
+      "#lightbox-image-container",
+    );
     const lightboxTitle =
       document.querySelector<HTMLElement>("#lightbox-title");
     const lightboxDescription = document.querySelector<HTMLElement>(
       "#lightbox-description",
+    );
+    const lightboxDescriptionText = document.querySelector<HTMLElement>(
+      "#lightbox-description-text",
     );
     const closeBtn =
       document.querySelector<HTMLButtonElement>("#lightbox-close");
@@ -130,16 +147,28 @@
       document.querySelectorAll<HTMLElement>("[data-gallery-item]"),
     );
 
-    if (!lightbox || !lightboxImage || !lightboxTitle || !lightboxDescription)
+    if (
+      !lightbox ||
+      !lightboxImage ||
+      !lightboxPlaceholder ||
+      !lightboxImageContainer ||
+      !lightboxTitle ||
+      !lightboxDescription ||
+      !lightboxDescriptionText
+    )
       return;
 
     const lightboxElement = lightbox;
     const lightboxImageElement = lightboxImage;
+    const lightboxPlaceholderElement = lightboxPlaceholder;
+    const lightboxImageContainerElement = lightboxImageContainer;
     const lightboxTitleElement = lightboxTitle;
     const lightboxDescriptionElement = lightboxDescription;
+    const lightboxDescriptionTextElement = lightboxDescriptionText;
 
     let currentIndex = 0;
     let isOpen = false;
+    let pendingImageUrl = "";
 
     // Focusable elements for focus trap (in visual order: prev, close, next)
     const focusableElements = [prevBtn, closeBtn, nextBtn].filter(
@@ -177,17 +206,67 @@
       if (!item) return;
 
       const image = item.querySelector<HTMLImageElement>("[data-image]");
+      const placeholder =
+        item.querySelector<HTMLImageElement>("[data-placeholder]");
       const description =
         item
           .querySelector<HTMLElement>("[data-description]")
           ?.textContent.trim() ?? "";
-      if (!image?.dataset.fullSrc) return;
+      if (!image?.dataset.fullSrc || !placeholder) return;
 
+      pendingImageUrl = image.dataset.fullSrc;
+      lightboxImageElement.style.opacity = "0";
+      lightboxPlaceholderElement.src = placeholder.src;
+      lightboxPlaceholderElement.style.opacity = "0.5";
+      lightboxImageContainerElement.setAttribute("aria-busy", "true");
       lightboxImageElement.src = image.dataset.fullSrc;
       lightboxImageElement.alt = image.alt;
       lightboxTitleElement.textContent = image.alt;
-      lightboxDescriptionElement.textContent = description;
+      lightboxDescriptionTextElement.textContent = description;
       lightboxDescriptionElement.title = description;
+      updateDescriptionAlignment();
+
+      if (
+        lightboxImageElement.complete &&
+        lightboxImageElement.naturalWidth > 0
+      ) {
+        revealLoadedImage();
+      }
+    }
+
+    function revealLoadedImage() {
+      if (lightboxImageElement.src !== pendingImageUrl) return;
+
+      lightboxImageElement.style.opacity = "1";
+      lightboxPlaceholderElement.style.opacity = "0";
+      lightboxImageContainerElement.setAttribute("aria-busy", "false");
+    }
+
+    function handleImageError() {
+      if (lightboxImageElement.src !== pendingImageUrl) return;
+
+      lightboxImageContainerElement.setAttribute("aria-busy", "false");
+    }
+
+    function updateDescriptionAlignment() {
+      requestAnimationFrame(() => {
+        const lineHeight = Number.parseFloat(
+          getComputedStyle(lightboxDescriptionTextElement).lineHeight,
+        );
+        const textHeight =
+          lightboxDescriptionTextElement.getBoundingClientRect().height;
+        const hasMoreThanTwoLines =
+          Number.isFinite(lineHeight) && textHeight > lineHeight * 2 + 1;
+
+        lightboxDescriptionElement.classList.toggle(
+          "text-justify",
+          hasMoreThanTwoLines,
+        );
+        lightboxDescriptionElement.classList.toggle(
+          "text-center",
+          !hasMoreThanTwoLines,
+        );
+      });
     }
 
     function showPrevious() {
@@ -271,6 +350,8 @@
     // Navigation buttons
     prevBtn?.addEventListener("click", showPrevious);
     nextBtn?.addEventListener("click", showNext);
+    lightboxImageElement.addEventListener("load", revealLoadedImage);
+    lightboxImageElement.addEventListener("error", handleImageError);
 
     // Click anywhere to close, except on interactive elements or content area
     lightboxElement.addEventListener("click", (e) => {
