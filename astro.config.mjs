@@ -74,6 +74,13 @@ export default defineConfig({
     fallback: { de: "en" },
   },
   trailingSlash: "always",
+  image: {
+    domains: [
+      "app-uploads.krea.ai",
+      "gen.krea.ai",
+      "test1-emgndhaqd0c9h2db.a01.azurefd.net",
+    ],
+  },
   vite: { plugins: [tailwindcss()] },
   markdown: { rehypePlugins: [[rehypeExternalLinks, { target: "_blank" }]] },
   build: {
