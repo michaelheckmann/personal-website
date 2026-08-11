@@ -5,7 +5,6 @@ interface Props {
   href: string;
   openInNewTab?: boolean;
   class: string;
-  wrapperClass?: string;
 }
 
 const {
@@ -14,7 +13,6 @@ const {
   href,
   openInNewTab = true,
   class: className,
-  wrapperClass = "",
 }: Props = Astro.props;
 ---
 
@@ -25,7 +23,6 @@ const {
     class:list={[
       "group block",
       "rounded-sm ring-zinc-200 ring-offset-zinc-950 outline-none focus-visible:text-zinc-200 focus-visible:ring-1 focus-visible:ring-offset-4",
-      wrapperClass,
     ]}
   >
     <h3
