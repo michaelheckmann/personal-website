@@ -150,6 +150,10 @@ type RootTranslation = {
 		 */
 		viewAll: string
 		/**
+		 * R​e​l​a​t​e​d​ ​p​o​s​t​s
+		 */
+		relatedPosts: string
+		/**
 		 * C​o​p​y
 		 */
 		copy: string
@@ -337,6 +341,10 @@ export type TranslationFunctions = {
 		 * View all posts
 		 */
 		viewAll: () => LocalizedString
+		/**
+		 * Related posts
+		 */
+		relatedPosts: () => LocalizedString
 		/**
 		 * Copy
 		 */

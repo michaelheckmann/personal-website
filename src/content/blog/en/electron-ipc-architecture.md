@@ -1,5 +1,5 @@
 ---
-title: "Type-safe IPC in Electron"
+title: "Type-safe Electron IPC with TypeScript"
 description: "I show how to build a type-safe IPC layer in Electron using typed IPC wrappers. You'll see how types flow from handlers to the renderer, how I register handlers safely, and what trade-offs this structure introduces."
 pubDate: "Dec 04 2025"
 cover: "../assets/electron-ipc-architecture/hero.webp"
@@ -9,7 +9,7 @@ tags: ["Orbit", "Development", "Electron"]
 reference: "electron-ipc-architecture"
 ---
 
-# Type-safe IPC in Electron
+# Type-safe Electron IPC with TypeScript
 
 I'm a big fan of TypeScript and the safety it provides. It's used throughout [Orbit](https://reachorbit.app/). The problem is that Electron's IPC channel names and arguments aren't typed by default. I needed that same safety across the process boundary as well. I don't trust myself to keep stringly-typed channel names and untyped arguments in sync between the main and renderer processes as the app grows.
 

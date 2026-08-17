@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+import { getLocalHref, removeLocaleFromPath } from "@/lib/routing";
+import Section from "@/components/section.astro";
+import { getTranslation } from "@/i18n/translation";
+
+interface Props {
+  posts: CollectionEntry<"blog">[];
+}
+
+const { posts } = Astro.props;
+const t = getTranslation("blog");
+---
+
+{
+  posts.length > 0 && (
+    <Section _title="related-posts" class="pb-32">
+      <h2 class="mb-8 font-mono text-sm text-zinc-500">{t.relatedPosts()}</h2>
+      <ul class="grid gap-8 sm:grid-cols-3 sm:gap-2 md:gap-4 lg:gap-8">
+        {posts.map(({ id, data }) => (
+          <li>
+            <a
+              href={getLocalHref(`/blog/${removeLocaleFromPath(id)}`)}
+              class="group block rounded-lg ring-zinc-200 ring-offset-4 ring-offset-black outline-none focus-visible:ring-1"
+            >
+              <Image
+                src={data.cover}
+                alt={data.coverAlt}
+                width={640}
+                height={360}
+                class="aspect-video w-full rounded-lg object-cover shadow-lg"
+              />
+              <h3 class="mt-4 text-pretty text-zinc-300 underline decoration-zinc-600 underline-offset-4 transition-colors duration-300 group-hover:text-zinc-100 group-hover:decoration-zinc-300">
+                {data.title}
+              </h3>
+              <p class="mt-2 line-clamp-3 text-sm text-pretty">
+                {data.description}
+              </p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  )
+}

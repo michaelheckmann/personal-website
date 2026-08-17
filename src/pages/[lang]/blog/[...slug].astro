@@ -33,6 +33,28 @@ const references = posts.filter((post) => {
   return post.data.reference === Astro.props.data.reference;
 });
 
+const currentTags = new Set(
+  Astro.props.data.tags.map((tag) => tag.toLocaleLowerCase()),
+);
+const relatedPosts = posts
+  .filter(
+    (post) =>
+      post.id !== Astro.props.id && post.id.startsWith(`${lang}/`),
+  )
+  .map((post) => ({
+    post,
+    sharedTags: post.data.tags.filter((tag) =>
+      currentTags.has(tag.toLocaleLowerCase()),
+    ).length,
+  }))
+  .sort(
+    (a, b) =>
+      b.sharedTags - a.sharedTags ||
+      b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf(),
+  )
+  .slice(0, 3)
+  .map(({ post }) => post);
+
 const config: SiteConfig = {
   lang,
   title: Astro.props.data.title,
@@ -55,5 +77,5 @@ setLanguage(config.lang);
 ---
 
 <Layout {...config}>
-  <ArticleTemplate {...Astro.props} />
+  <ArticleTemplate {...Astro.props} relatedPosts={relatedPosts} />
 </Layout>

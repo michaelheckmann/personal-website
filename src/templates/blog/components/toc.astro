@@ -22,7 +22,7 @@ const computeRectWidth = (depth: number): number => {
 ---
 
 <style>
-  /* If the viewport is smaller thna 940px, hide the toc-container */
+  /* If the viewport is smaller than 940px, hide the toc-container */
   @media (max-width: 940px) {
     .toc-container {
       display: none;
@@ -42,13 +42,15 @@ const computeRectWidth = (depth: number): number => {
       width 0.3s;
     /* Start hidden */
     opacity: 0;
+    pointer-events: none;
     width: auto;
   }
   .toc-container.visible {
     /* When visible, fade in */
     opacity: 1;
+    pointer-events: auto;
   }
-  .toc-container.visible:focus-within .toc-panel {
+  .toc-container.visible:has(.toc-panel-item:focus-visible) .toc-panel {
     opacity: 1;
     pointer-events: auto;
   }
@@ -214,34 +216,21 @@ const computeRectWidth = (depth: number): number => {
     window.addEventListener("scroll", updateActiveHeadingOnScroll);
     updateActiveHeadingOnScroll();
 
-    // Replace IntersectionObserver with scroll-based visibility for toc.
     const tocContainer = document.querySelector(".toc-container");
-    const h1Element = document.querySelector("article h1");
-    const updateTocVisibility = () => {
-      if (h1Element && tocContainer) {
-        const h1Rect = h1Element.getBoundingClientRect();
-        // When the bottom of h1 is above half the viewport, show toc.
-        if (h1Rect.bottom < window.innerHeight / 2) {
-          tocContainer.classList.add("visible");
-        } else {
-          tocContainer.classList.remove("visible");
-        }
-      }
-    };
+    const article = document.querySelector("article.prose");
 
-    window.addEventListener("scroll", updateTocVisibility);
-    updateTocVisibility();
+    if (tocContainer && article) {
+      // Collapse the observer's root to the viewport midpoint. The article
+      // intersects it from the moment its top reaches 50% until its bottom
+      // reaches 50%, without doing layout work on every scroll event.
+      const visibilityObserver = new IntersectionObserver(
+        ([entry]) => {
+          tocContainer.classList.toggle("visible", entry.isIntersecting);
+        },
+        { rootMargin: "-50% 0px -50% 0px" },
+      );
 
-    // Remove old container focus listener
-    // tocContainer?.addEventListener("focusin", () => {
-    //   tocContainer.classList.add("visible");
-    // });
-
-    // Add focus listeners on each panel link
-    document.querySelectorAll(".toc-panel-item").forEach((panelLink) => {
-      panelLink.addEventListener("focus", () => {
-        tocContainer?.classList.add("visible");
-      });
-    });
+      visibilityObserver.observe(article);
+    }
   })();
 </script>

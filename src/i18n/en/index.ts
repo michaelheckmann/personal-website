@@ -49,6 +49,7 @@ const en = {
     paginationMetaDescription:
       "Page {0} with articles by Michael Heckmann about technology, design, software development, and digital products.",
     viewAll: "View all posts",
+    relatedPosts: "Related posts",
     copy: "Copy",
     copied: "Copied",
     autoTranslated: "AI translation from {0}",

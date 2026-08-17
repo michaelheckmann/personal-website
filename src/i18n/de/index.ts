@@ -51,6 +51,7 @@ const de = {
     paginationMetaDescription:
       "Seite {0} mit Artikeln von Michael Heckmann über Technologie, Design, Softwareentwicklung und digitale Produkte.",
     viewAll: "Alle Beiträge anzeigen",
+    relatedPosts: "Ähnliche Beiträge",
     copy: "In Zwischenablage kopieren",
     copied: "Kopiert!",
     autoTranslated: "KI Übersetzung aus dem {0}",

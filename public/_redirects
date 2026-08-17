@@ -1,1 +1,9 @@
 / /en/ 301
+/en /en/ 301
+/de /de/ 301
+/en/blog /en/blog/ 301
+/de/blog /de/blog/ 301
+/en/gallery /en/gallery/ 301
+/de/gallery /de/gallery/ 301
+/en/blog/:slug /en/blog/:slug/ 301
+/de/blog/:slug /de/blog/:slug/ 301

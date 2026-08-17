@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { type CollectionEntry } from "astro:content";
 
 import { getLocalHref } from "@/lib/routing";
+import Footer from "@/components/footer.astro";
 import Header from "@/components/header.astro";
 import Newsletter from "@/components/newsletter/newsletter.astro";
 import ScrollTopButton from "@/components/scroll-top-button.astro";
@@ -11,11 +12,14 @@ import { getTranslation } from "@/i18n/translation";
 
 import ArticleContent from "./components/article-content.astro";
 import ArticleLangSwitch from "./components/article-lang-switch.astro";
+import RelatedPosts from "./components/related-posts.astro";
 import Toc from "./components/toc.astro";
 
-type Props = CollectionEntry<"blog">;
+type Props = CollectionEntry<"blog"> & {
+  relatedPosts: CollectionEntry<"blog">[];
+};
 
-const { id, data } = Astro.props;
+const { id, data, relatedPosts } = Astro.props;
 const t = getTranslation("blog");
 ---
 
@@ -25,7 +29,7 @@ const t = getTranslation("blog");
   class="flex max-w-none flex-col items-center justify-center gap-12 pt-12 pb-12"
 >
   <Toc {...Astro.props} />
-  <div class="relative h-96 w-full max-w-7xl lg:h-[32rem]">
+  <div class="relative h-96 w-full max-w-7xl lg:h-128">
     <div
       class="absolute top-1/2 left-1/10 z-0 h-1/2 w-4/5 bg-radial from-red-500 opacity-20 blur-3xl"
       style={{
@@ -49,7 +53,9 @@ const t = getTranslation("blog");
     <ArticleContent {...Astro.props} />
   </div>
 </Section>
+<RelatedPosts posts={relatedPosts} />
 <Section _title="newsletter" class="pb-32">
   <Newsletter />
 </Section>
+<Footer back={{ href: getLocalHref("/blog"), text: t.viewAll() }} />
 <ScrollTopButton />
