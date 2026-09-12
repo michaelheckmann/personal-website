@@ -14,7 +14,8 @@ export const initFormatters: FormattersInitializer<Locales, Formatters> = (
 ) => {
   const formatters: Formatters = {
     // add your formatter functions here
-    atag: (params: AtagParams) => {
+    atag: (value) => {
+      const params = value as AtagParams;
       const target = params.openInTab ? 'target="_blank"' : "";
       const classString = Array.isArray(params.class)
         ? params.class.join(" ")

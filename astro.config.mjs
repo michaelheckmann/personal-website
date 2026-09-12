@@ -2,6 +2,7 @@
 import expressiveCode from "astro-expressive-code";
 import { defineConfig } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
+import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -82,7 +83,11 @@ export default defineConfig({
     ],
   },
   vite: { plugins: [tailwindcss()] },
-  markdown: { rehypePlugins: [[rehypeExternalLinks, { target: "_blank" }]] },
+  markdown: {
+    processor: unified({
+      rehypePlugins: [[rehypeExternalLinks, { target: "_blank" }]],
+    }),
+  },
   build: {
     assetsPrefix: "https://heckmann-app.b-cdn.net",
   },
