@@ -57,7 +57,7 @@ Mit einer Sticky Navigation macht man selten etwas falsch. Besonders, wenn sie d
 
 Nachdem ich mit custom Easing Values experimentiert und [mich über die `cubic-bezier` Function eingelesen habe](https://blog.maximeheckel.com/posts/cubic-bezier-from-math-to-motion/), habe ich eine gefunden, die mir gefällt: `cubic-bezier(0.34, 1.56, 0.64, 1)`. Sie fühlt sich ziemlich befriedigend an, wie ein mechanisches Teil, das mit einem leichten Rebound einrastet. Manchmal ertappe ich mich dabei, wie ich auf der Landing Page hin und her scrolle, nur um diese Snapping-Bewegung zu beobachten.
 
-<video controls autoplay loop muted style="object-fit: contain; width: 100%; border-radius: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);"
+<video autoplay loop muted playsinline
 src="https://heckmann-assets.b-cdn.net/heckmann-blog/orbit-website-details/video.webm"
 aria-label="Demo of the navigation bar easing animation.">
 Your browser does not support the video tag.

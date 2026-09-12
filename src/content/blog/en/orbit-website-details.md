@@ -55,7 +55,7 @@ You seldom go wrong with a sticky nav bar. Especially one that transitions betwe
 
 After experimenting with custom easing values and [reading up on the `cubic-bezier` function](https://blog.maximeheckel.com/posts/cubic-bezier-from-math-to-motion/), I found one I like: `cubic-bezier(0.34, 1.56, 0.64, 1)`. It feels pretty satisfying, like a mechanical piece clicking into place with a slight rebound. I sometimes catch myself scrolling on the landing page, going back and forth, just to watch this snapping motion.
 
-<video controls autoplay loop muted style="object-fit: contain; width: 100%; border-radius: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);"
+<video autoplay loop muted playsinline
 src="https://heckmann-assets.b-cdn.net/heckmann-blog/orbit-website-details/video.webm"
 aria-label="Demo of the navigation bar easing animation.">
 Your browser does not support the video tag.

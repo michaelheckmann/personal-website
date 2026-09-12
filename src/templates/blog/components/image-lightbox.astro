@@ -1,10 +1,10 @@
 ---
 interface Props {
-  /** Selector used to find images in the post that should open in the lightbox */
+  /** Selector used to find media in the post that should open in the lightbox */
   selector?: string;
 }
 
-const { selector = ".prose img" } = Astro.props;
+const { selector = ".prose img, .prose video" } = Astro.props;
 ---
 
 <div
@@ -12,7 +12,7 @@ const { selector = ".prose img" } = Astro.props;
   class="fixed inset-0 z-100 hidden items-center justify-center bg-zinc-950/95 backdrop-blur-sm outline-none"
   role="dialog"
   aria-modal="true"
-  aria-label="Image lightbox"
+  aria-label="Media lightbox"
   tabindex="-1"
 >
   <button
@@ -50,6 +50,15 @@ const { selector = ".prose img" } = Astro.props;
         alt=""
         class="max-h-[85vh] max-w-full rounded-lg object-contain"
       />
+      <video
+        id="img-lightbox-video"
+        class="hidden max-h-[85vh] max-w-full rounded-lg object-contain"
+        autoplay
+        loop
+        muted
+        playsinline
+      >
+      </video>
     </div>
 
     <div
@@ -67,7 +76,7 @@ const { selector = ".prose img" } = Astro.props;
 </div>
 
 <style is:global>
-  .prose img[data-lightbox-bound="true"] {
+  .prose :is(img, video)[data-lightbox-bound="true"] {
     cursor: zoom-in;
     outline: none;
     transition:
@@ -75,11 +84,14 @@ const { selector = ".prose img" } = Astro.props;
       box-shadow 0.15s ease;
   }
 
-  .prose img[data-lightbox-bound="true"]:hover {
+  .prose :is(img, video)[data-lightbox-bound="true"]:hover {
     scale: 1.02;
   }
 
-  .prose img[data-lightbox-bound="true"]:focus-visible {
+  .prose
+    :is(img, video)[data-lightbox-bound="true"]:focus-visible:not(
+      [data-lightbox-restored-focus="true"]
+    ) {
     outline: none;
     box-shadow:
       0px 5.5px 3.6px rgba(0, 0, 0, 0.024),
@@ -93,35 +105,58 @@ const { selector = ".prose img" } = Astro.props;
 
 <script define:vars={{ selector }}>
   let isOpen = false;
-  let lastFocusedImage = null;
+  let lastFocusedMedia = null;
+  let sourceVideo = null;
+  let sourceVideoWasPlaying = false;
   let globalListenersBound = false;
 
   function initImageLightbox() {
     const lightbox = document.getElementById("img-lightbox");
     const lightboxImage = document.getElementById("img-lightbox-image");
+    const lightboxVideo = document.getElementById("img-lightbox-video");
     const lightboxCaption = document.getElementById("img-lightbox-caption");
     const closeBtn = document.getElementById("img-lightbox-close");
     const infoPanel = document.getElementById("img-lightbox-info");
 
-    if (!lightbox || !lightboxImage || !lightboxCaption) return;
+    if (!lightbox || !lightboxImage || !lightboxVideo || !lightboxCaption)
+      return;
 
-    const images = Array.from(document.querySelectorAll(selector)).filter(
-      (img) => {
-        if (img.closest("a")) return false; // don't hijack intentional links
-        if (img.closest("[data-no-lightbox]")) return false;
-        if (img.hasAttribute("data-no-lightbox")) return false;
+    const media = Array.from(document.querySelectorAll(selector)).filter(
+      (item) => {
+        if (item.closest("a")) return false; // don't hijack intentional links
+        if (item.closest("[data-no-lightbox]")) return false;
+        if (item.hasAttribute("data-no-lightbox")) return false;
         return true;
       },
     );
 
-    function openLightbox(img) {
-      lastFocusedImage = img;
-      const figure = img.closest("figure");
+    function openLightbox(item) {
+      lastFocusedMedia = item;
+      const figure = item.closest("figure");
       const figcaption = figure?.querySelector("figcaption");
-      const caption = figcaption?.textContent?.trim() || img.alt || "";
+      const caption =
+        figcaption?.textContent?.trim() ||
+        item.getAttribute("alt") ||
+        item.dataset.lightboxDescription ||
+        "";
 
-      lightboxImage.src = img.currentSrc || img.src;
-      lightboxImage.alt = img.alt || "";
+      if (item instanceof HTMLVideoElement) {
+        sourceVideo = item;
+        sourceVideoWasPlaying = !item.paused;
+        item.pause();
+
+        lightboxImage.classList.add("hidden");
+        lightboxVideo.classList.remove("hidden");
+        lightboxVideo.src = item.currentSrc || item.src;
+        lightboxVideo.poster = item.poster;
+        lightboxVideo.currentTime = item.currentTime;
+      } else {
+        lightboxVideo.classList.add("hidden");
+        lightboxImage.classList.remove("hidden");
+        lightboxImage.src = item.currentSrc || item.src;
+        lightboxImage.alt = item.alt || "";
+      }
+
       lightboxCaption.textContent = caption;
       lightboxCaption.style.display = caption ? "" : "none";
 
@@ -130,30 +165,56 @@ const { selector = ".prose img" } = Astro.props;
       isOpen = true;
       document.body.style.overflow = "hidden";
       lightbox.focus();
+
+      if (item instanceof HTMLVideoElement) {
+        lightboxVideo.play().catch(() => {});
+      }
     }
 
     function closeLightbox() {
+      if (!isOpen) return;
+
+      if (sourceVideo) {
+        sourceVideo.currentTime = lightboxVideo.currentTime;
+        if (sourceVideoWasPlaying) sourceVideo.play().catch(() => {});
+      }
+
+      lightboxVideo.pause();
+      lightboxVideo.removeAttribute("src");
+      lightboxVideo.load();
+      lightboxImage.removeAttribute("src");
       lightbox.classList.add("hidden");
       lightbox.classList.remove("flex");
       isOpen = false;
       document.body.style.overflow = "";
-      lastFocusedImage?.focus();
+      sourceVideo = null;
+      sourceVideoWasPlaying = false;
+      lastFocusedMedia?.setAttribute("data-lightbox-restored-focus", "true");
+      lastFocusedMedia?.focus();
     }
 
-    // Wire up each qualifying image (dataset flag guards against
+    // Wire up each qualifying media element (dataset flag guards against
     // double-binding the same element on repeated init calls).
-    images.forEach((img) => {
-      if (img.dataset.lightboxBound === "true") return;
-      img.dataset.lightboxBound = "true";
-      img.tabIndex = 0;
-      img.setAttribute("role", "button");
-      img.setAttribute("aria-label", `View full size: ${img.alt || "image"}`);
+    media.forEach((item) => {
+      if (item.dataset.lightboxBound === "true") return;
+      item.dataset.lightboxBound = "true";
+      item.tabIndex = 0;
+      item.setAttribute("role", "button");
+      const description =
+        item.getAttribute("alt") ||
+        item.getAttribute("aria-label") ||
+        (item instanceof HTMLVideoElement ? "video" : "image");
+      item.dataset.lightboxDescription = description;
+      item.setAttribute("aria-label", `View full size: ${description}`);
+      item.addEventListener("blur", () => {
+        item.removeAttribute("data-lightbox-restored-focus");
+      });
 
-      img.addEventListener("click", () => openLightbox(img));
-      img.addEventListener("keydown", (e) => {
+      item.addEventListener("click", () => openLightbox(item));
+      item.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          openLightbox(img);
+          openLightbox(item);
         }
       });
     });
@@ -168,6 +229,7 @@ const { selector = ".prose img" } = Astro.props;
       const target = e.target;
       if (target === closeBtn || closeBtn?.contains(target)) return;
       if (target === lightboxImage) return;
+      if (target === lightboxVideo) return;
       if (infoPanel?.contains(target) || target === infoPanel) return;
       closeLightbox();
     });

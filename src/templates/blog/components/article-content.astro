@@ -268,8 +268,21 @@ const { Content } = await render(post);
       margin-bottom: 2em;
     }
     :where(video) {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      overflow: hidden;
+      border: 1px solid rgb(255 255 255 / 10%);
+      border-radius: 0.5em;
+      background: var(--color-zinc-950);
       margin-top: 2em;
       margin-bottom: 2em;
+      box-shadow:
+        0px 5.5px 3.6px rgba(0, 0, 0, 0.024),
+        0px 15.2px 10px rgba(0, 0, 0, 0.035),
+        0px 36.5px 24.1px rgba(0, 0, 0, 0.046),
+        0px 121px 80px rgba(0, 0, 0, 0.07);
     }
     :where(kbd) {
       font-weight: 500;
@@ -493,11 +506,11 @@ const { Content } = await render(post);
     }
   }
 
-  .prose img[role="button"] {
+  .prose :is(img, video)[role="button"] {
     transition: opacity 0.2s ease;
   }
 
-  .prose img[role="button"]:hover {
+  .prose :is(img, video)[role="button"]:hover {
     opacity: 0.9;
   }
 </style>
