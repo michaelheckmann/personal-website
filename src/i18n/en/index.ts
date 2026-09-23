@@ -22,7 +22,7 @@ const en = {
     },
     projects: {
       title: "Projects",
-      orbit: "Record your screen and revisit anything you've seen.",
+      memoryMachine: "Record your screen and revisit anything you've seen.",
       stanford: "Set up and manage studies without technical expertise.",
       amay: "Preventing mental health issues through AI.",
       qart: "Making e-commerce accessible for everyone.",

@@ -22,7 +22,7 @@ const de = {
     },
     projects: {
       title: "Projekte",
-      orbit:
+      memoryMachine:
         "Automatische Bildschirmaufnahme. Finde alles wieder, was du gesehen hast.",
       stanford:
         "Studien ohne technische Vorkenntnisse erstellen und verwalten.",
