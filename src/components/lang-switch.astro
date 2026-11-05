@@ -37,16 +37,13 @@ if (isBlogPost(Astro.url.pathname)) {
       post.data.reference === currentLanguagePost?.data.reference,
   );
 
-  // Error if no translation exists
-  if (!translatedPost) {
-    throw new Error(`Translated post not found for ${Astro.url.pathname}`);
-  }
-
   // Construct URL for the translated post
   // Format: /{language}/blog/{post-slug}
-  href = ensureTrailingSlash(
-    `/${reversedLang}/blog/${removeLocaleFromPath(translatedPost?.id)}`,
-  );
+  if (translatedPost) {
+    href = ensureTrailingSlash(
+      `/${reversedLang}/blog/${removeLocaleFromPath(translatedPost.id)}`,
+    );
+  }
 } else {
   const originalPathname = Astro.url.pathname;
   href = ensureTrailingSlash(
@@ -55,4 +52,4 @@ if (isBlogPost(Astro.url.pathname)) {
 }
 ---
 
-<Link href={href}>{text}</Link>
+{href && <Link href={href}>{text}</Link>}
